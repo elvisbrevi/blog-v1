@@ -33,4 +33,4 @@ jobs:
         npm install -g aws-cdk
         cdk synth
         cdk bootstrap
-        cdk deploy $EXAMPLE_LAMBDA --require-approval never
+        cdk deploy $FRONTEND_STACK --require-approval never
