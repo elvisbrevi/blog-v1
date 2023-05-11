@@ -2,7 +2,7 @@ name: Blog deployment.
 on:
   push:
     branches:
-      - master
+      - main
   pull_request_review:
     types:
       - submitted
