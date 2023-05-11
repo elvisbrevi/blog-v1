@@ -28,6 +28,7 @@ jobs:
     - name: Build Vite Project
       run: |
         cd frontend
+        npm install
         npm run build
     
     - name: Create Frontend stack with CDK
