@@ -1,5 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import * as s3 from 'aws-cdk-lib/aws-s3'; 
+import * as s3deploy from 'aws-cdk-lib/aws-s3-deployment';
 import * as route53 from 'aws-cdk-lib/aws-route53'; 
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
@@ -58,17 +59,12 @@ export class FrontendStack extends cdk.Stack {
         recordName: WWW_DOMAIN_NAME
     });
 
-    // new s3deploy.BucketDeployment(this, `BucketDeployment-${id}`, {
-    //   sources: [s3deploy.Source.asset('../dist')], 
-    //   destinationBucket: staticWebsiteBucket,
-    //   distributionPaths: ['/*'], 
-    //   distribution: cloudFrontDistribution,
-    //   // cacheControl: [
-    //   //     {
-    //   //         value: "max-age=1",
-    //   //     }
-    //   // ]
-    // });
+    new s3deploy.BucketDeployment(this, `BucketDeployment-${id}`, {
+      sources: [s3deploy.Source.asset('../../frontend/dist')], 
+      destinationBucket: staticWebsiteBucket,
+      distributionPaths: ['/*'], 
+      distribution: cloudFrontDistribution,
+    });
 
   }
 }

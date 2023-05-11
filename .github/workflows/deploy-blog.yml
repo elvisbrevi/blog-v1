@@ -24,6 +24,11 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
+
+    - name: Build Vite Project
+      run: |
+        cd frontend
+        npm run build
     
     - name: Create Frontend stack with CDK
       run: |
@@ -31,6 +36,4 @@ jobs:
         npm install
         npm ci
         npm install -g aws-cdk
-        cdk synth
-        cdk bootstrap
         cdk deploy $FRONTEND_STACK --require-approval never
