@@ -1,0 +1,86 @@
+/* Paleta de colores */  
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  td {
+    border: 1px solid var(--main-color);
+    text-align: center;
+    padding: 15px;
+    vertical-align: middle;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .button-linkedin {
+    background-color: var(--main-color);
+  }
+  
+  .button-github {
+    background-color: var(--accent-color);
+  }
+  
+  .button-twitter {
+    background-color: var(--secondary-color);
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    table {
+      width: 100%;
+    }
+  
+    td {
+      display: block;
+      width: 100%;
+    }
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-links a {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white; /* Cambiar el color del texto a blanco */
+    transition: opacity 0.3s ease; /* Añadir transición para el efecto hover */
+  }
+  
+  .social-links a:hover {
+    opacity: 0.8; /* Añadir opacidad al hacer hover */
+  }
+  
+  /* Colores de las redes sociales */
+  .social-links .linkedin {
+    background-color: #0077b5;
+  }
+  
+  .social-links .github {
+    background-color: #333;
+  }
+  
+  .social-links .twitter {
+    background-color: #1da1f2;
+  }
+  
