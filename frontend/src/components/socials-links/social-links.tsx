@@ -1,6 +1,6 @@
 import './social-links.css';
 
-const SocialLinks: preact.FunctionComponent = () => {
+const SocialLinks: preact.ComponentType = () => {
   return (
     <div className="social-links">
       <a

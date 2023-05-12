@@ -1,11 +1,11 @@
 import './about.css';
 import SocialLinks from '../../components/socials-links/social-links';
 
-const AboutPage: preact.FunctionComponent = () => {
+const AboutPage: preact.ComponentType = () => {
   return (
     <div className="about-container">
       <div className="about-image-container">
-        <h1 className="about-title post-title-font">Welcome!</h1>
+        <h1 className="about-title post-title-font">Hi!</h1>
         <p className="about-description post-description-font">
           This is my personal 'programmer' website! Here you'll find everything related to my passion for 
           programming. If you're interested in getting to know me better, you can find my official LinkedIn, 
