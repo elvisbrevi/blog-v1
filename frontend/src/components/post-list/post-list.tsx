@@ -9,8 +9,8 @@ interface Post {
 }
 
 const PostList: preact.ComponentType = () => {
-
-    const [posts, setPosts] = useState<Post[] | null>(null); // Initialize with null
+  
+  const [posts, setPosts] = useState<Post[] | null>(null); // Initialize with null
 
   useEffect(() => {
     async function fetchDataAsync() {
