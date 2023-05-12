@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+}
+
+ul li a {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+ul li a:hover {
+    font-size: 1.21rem;
+    text-decoration: underline;
+}

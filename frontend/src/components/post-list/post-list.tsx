@@ -28,7 +28,11 @@ const PostList: preact.ComponentType = () => {
   return (
     <ul>
       {posts.map((post) => (
-        <li key={post.slug}>{post.title}</li>
+        <li key={post.slug}>
+          <a href={`/post/${post.slug}`} class="post-title-font">
+            {post.title}
+          </a>
+        </li>
       ))}
     </ul>
   );
