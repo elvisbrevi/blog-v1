@@ -42,7 +42,15 @@ export class FrontendStack extends cdk.Stack {
             viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         },
         domainNames: [DOMAIN_NAME, WWW_DOMAIN_NAME],
-        certificate: httpsCertificate
+        certificate: httpsCertificate,
+        errorResponses: [
+            {
+                httpStatus: 404,
+                responseHttpStatus: 200,
+                responsePagePath: '/index.html',
+                ttl: cdk.Duration.minutes(30)
+            }
+          ],
     });
 
     // Add DNS records to the hosted zone to redirect from the domain name to the CloudFront distribution
