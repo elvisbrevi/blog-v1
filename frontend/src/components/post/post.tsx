@@ -37,7 +37,7 @@ const Post = () => {
 
 async function fetchData(): Promise<Post> {
 
-    const params = new URLSearchParams(window.location.pathname);
+    //const params = new URLSearchParams(window.location.pathname);
     let slug : string | null = "how-to-display-hashnode-posts-on-your-website";//params.get("slug") || null;
 
     const query = `
