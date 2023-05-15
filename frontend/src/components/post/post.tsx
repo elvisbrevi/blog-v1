@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'preact/hooks';
-import { useSearchParams } from "react-router-dom";
 
 interface Post {
     title: string;
