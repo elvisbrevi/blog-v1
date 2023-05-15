@@ -9,15 +9,13 @@ interface Post {
     contentMarkdown: string;
 }
 
-const Post: preact.ComponentType = () => {
+const Post = () => {
     
     const [post, setPost] = useState<Post | null>(null);
 
     useEffect(() => {
         async function fetchDataAsync() {
-            // const params = new URLSearchParams(window.location.pathname);
-            // let slug : string | null = params.get("slug") || null;
-            const postData = await fetchData("how-to-display-hashnode-posts-on-your-website");
+            const postData = await fetchData();
             setPost(postData);
         }
 
@@ -31,12 +29,16 @@ const Post: preact.ComponentType = () => {
     return (
         <div>
             <h1>{post.title}</h1>
+            <img width={500} src={post.coverImage} />
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
     );
 };
 
-async function fetchData(slug: string): Promise<Post> {
+async function fetchData(): Promise<Post> {
+
+    const params = new URLSearchParams(window.location.pathname);
+    let slug : string | null = "how-to-display-hashnode-posts-on-your-website";//params.get("slug") || null;
 
     const query = `
         {

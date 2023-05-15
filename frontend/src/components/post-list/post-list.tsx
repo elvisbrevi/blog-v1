@@ -8,7 +8,7 @@ interface Post {
     cuid: string;
 }
 
-const PostList: preact.ComponentType = () => {
+const PostList = () => {
   
   const [posts, setPosts] = useState<Post[] | null>(null); // Initialize with null
 

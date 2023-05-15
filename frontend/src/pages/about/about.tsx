@@ -1,7 +1,7 @@
 import './about.css';
 import SocialLinks from '../../components/socials-links/social-links';
 
-const AboutPage: preact.ComponentType = () => {
+const AboutPage = () => {
   return (
     <div className="about-container">
       <div className="about-image-container">

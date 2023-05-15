@@ -1,6 +1,6 @@
 import Post from "../../components/post/post";
 
-const PostPage: preact.ComponentType = () => {
+const PostPage = () => {
 
   return (
     <Post />

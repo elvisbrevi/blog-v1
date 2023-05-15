@@ -3,7 +3,7 @@ import './header.css';
 import { useEffect, useState } from 'preact/hooks';
 import { Link } from 'react-router-dom';
 
-const Header: preact.ComponentType = () => {
+const Header = () => {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
   useEffect(() => {

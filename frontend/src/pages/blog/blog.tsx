@@ -1,6 +1,6 @@
 import PostList from "../../components/post-list/post-list";
 
-const BlogPage: preact.ComponentType = () => {
+const BlogPage = () => {
   return (
     <PostList />
   );
