@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
+import { useSearchParams } from "react-router-dom";
 
 interface Post {
     title: string;
@@ -14,6 +15,7 @@ const Post = () => {
     const [post, setPost] = useState<Post | null>(null);
 
     useEffect(() => {
+
         async function fetchDataAsync() {
             const postData = await fetchData();
             setPost(postData);
@@ -37,8 +39,7 @@ const Post = () => {
 
 async function fetchData(): Promise<Post> {
 
-    //const params = new URLSearchParams(window.location.pathname);
-    let slug : string | null = "how-to-display-hashnode-posts-on-your-website";//params.get("slug") || null;
+    let slug : string | null = window.location.pathname.split("/").slice(-1)[0] || null;
 
     const query = `
         {
