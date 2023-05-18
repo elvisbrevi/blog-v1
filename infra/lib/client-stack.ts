@@ -18,14 +18,13 @@ export class FrontendStack extends cdk.Stack {
     const staticWebsiteBucket = new s3.Bucket(this, `WebsiteBucket-${id}`, {
       bucketName: DOMAIN_NAME,
       websiteIndexDocument: 'index.html',
-      publicReadAccess: true,
       removalPolicy: cdk.RemovalPolicy.RETAIN,
-      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ACLS,
-      accessControl: s3.BucketAccessControl.BUCKET_OWNER_FULL_CONTROL
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
     });
 
     const hostedZone = route53.HostedZone.fromLookup(
-      this, `HostedZone`, { domainName: DOMAIN_NAME });
+      this, `HostedZone`, { domainName: DOMAIN_NAME }
+    );
 
     // Create the HTTPS certificate
     const httpsCertificate = new acm.Certificate(this, `HttpsCertificate-${id}`, {
@@ -37,6 +36,7 @@ export class FrontendStack extends cdk.Stack {
 
     // Create the CloudFront distribution linked to the website hosting bucket and the HTTPS certificate
     const cloudFrontDistribution = new cloudfront.Distribution(this, `CloudFrontDistribution-${id}`, {
+        defaultRootObject: 'index.html',
         defaultBehavior: {
             origin: new S3Origin(staticWebsiteBucket),
             viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
@@ -53,6 +53,30 @@ export class FrontendStack extends cdk.Stack {
           ],
     });
 
+    const origin = new cloudfront.CfnOriginAccessControl(this, `CfnOriginAccessControl-${id}`, {
+      originAccessControlConfig: {
+        name: `BlogCfnOriginAccessControl`,
+        originAccessControlOriginType: 's3',
+        signingBehavior: 'always',
+        signingProtocol: 'sigv4',
+      },
+    });
+
+    const bucketPolicy = staticWebsiteBucket.addToResourcePolicy(
+      new cdk.aws_iam.PolicyStatement({
+        effect: cdk.aws_iam.Effect.ALLOW,
+        principals: [new cdk.aws_iam.ServicePrincipal('cloudfront.amazonaws.com')],
+        actions: ['s3:GetObject'], 
+        resources: [`${staticWebsiteBucket.bucketArn}/*`],
+        conditions: {
+          StringEquals: {
+            'AWS:SourceArn': `arn:aws:cloudfront::${ cdk.Aws.ACCOUNT_ID }:distribution/${cloudFrontDistribution.distributionId}`
+          },
+        }
+      })
+    );
+
+
     // Add DNS records to the hosted zone to redirect from the domain name to the CloudFront distribution
     new route53.ARecord(this, `CloudFrontRedirect-${id}`, {
       zone: hostedZone,
@@ -68,7 +92,7 @@ export class FrontendStack extends cdk.Stack {
     });
 
     new s3deploy.BucketDeployment(this, `BucketDeployment-${id}`, {
-      sources: [s3deploy.Source.asset('../frontend/dist')], 
+      sources: [s3deploy.Source.asset('../client/dist')], 
       destinationBucket: staticWebsiteBucket,
       distributionPaths: ['/*'], 
       distribution: cloudFrontDistribution,
