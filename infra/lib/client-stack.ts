@@ -15,6 +15,7 @@ export class FrontendStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    // Create the S3 bucket
     const staticWebsiteBucket = new s3.Bucket(this, `WebsiteBucket-${id}`, {
       bucketName: DOMAIN_NAME,
       websiteIndexDocument: 'index.html',
@@ -22,6 +23,7 @@ export class FrontendStack extends cdk.Stack {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
     });
 
+    // Hosted zone for the domain
     const hostedZone = route53.HostedZone.fromLookup(
       this, `HostedZone`, { domainName: DOMAIN_NAME }
     );
@@ -34,26 +36,8 @@ export class FrontendStack extends cdk.Stack {
       certificateName: `Certificate-${id}`,
     });
 
-    // Create the CloudFront distribution linked to the website hosting bucket and the HTTPS certificate
-    const cloudFrontDistribution = new cloudfront.Distribution(this, `CloudFrontDistribution-${id}`, {
-        defaultRootObject: 'index.html',
-        defaultBehavior: {
-            origin: new S3Origin(staticWebsiteBucket),
-            viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-        },
-        domainNames: [DOMAIN_NAME, WWW_DOMAIN_NAME],
-        certificate: httpsCertificate,
-        errorResponses: [
-            {
-                httpStatus: 404,
-                responseHttpStatus: 200,
-                responsePagePath: '/index.html',
-                ttl: cdk.Duration.minutes(30)
-            }
-          ],
-    });
-
-    const origin = new cloudfront.CfnOriginAccessControl(this, `CfnOriginAccessControl-${id}`, {
+    // Create the CloudFront origin access control
+    const oac = new cloudfront.CfnOriginAccessControl(this, `CfnOriginAccessControl-${id}`, {
       originAccessControlConfig: {
         name: `BlogCfnOriginAccessControl`,
         originAccessControlOriginType: 's3',
@@ -62,7 +46,30 @@ export class FrontendStack extends cdk.Stack {
       },
     });
 
-    const bucketPolicy = staticWebsiteBucket.addToResourcePolicy(
+    // Create the CloudFront distribution linked to the website hosting bucket and the HTTPS certificate
+    const cloudFrontDistribution = new cloudfront.Distribution(this, `CloudFrontDistribution-${id}`, {
+        defaultRootObject: 'index.html',
+        defaultBehavior: {
+            origin: new S3Origin(staticWebsiteBucket, {
+              originId: oac.attrId,
+            }),
+            viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        },
+        priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
+        domainNames: [DOMAIN_NAME, WWW_DOMAIN_NAME],
+        certificate: httpsCertificate,
+        errorResponses: [
+            {
+                httpStatus: 404,
+                responseHttpStatus: 200,
+                responsePagePath: '/index.html',
+                ttl: cdk.Duration.minutes(1)
+            }
+          ],
+    });
+
+    // Bucket policy to allow CloudFront to read the object
+    staticWebsiteBucket.addToResourcePolicy(
       new cdk.aws_iam.PolicyStatement({
         effect: cdk.aws_iam.Effect.ALLOW,
         principals: [new cdk.aws_iam.ServicePrincipal('cloudfront.amazonaws.com')],
@@ -75,7 +82,6 @@ export class FrontendStack extends cdk.Stack {
         }
       })
     );
-
 
     // Add DNS records to the hosted zone to redirect from the domain name to the CloudFront distribution
     new route53.ARecord(this, `CloudFrontRedirect-${id}`, {
@@ -91,11 +97,12 @@ export class FrontendStack extends cdk.Stack {
         recordName: WWW_DOMAIN_NAME
     });
 
+    // Deploy the website
     new s3deploy.BucketDeployment(this, `BucketDeployment-${id}`, {
       sources: [s3deploy.Source.asset('../client/dist')], 
       destinationBucket: staticWebsiteBucket,
       distributionPaths: ['/*'], 
-      distribution: cloudFrontDistribution,
+      distribution: cloudFrontDistribution
     });
 
   }
