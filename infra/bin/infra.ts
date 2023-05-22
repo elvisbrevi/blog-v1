@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { FrontendStack } from '../lib/frontend-stack';
+import { FrontendStack } from '../lib/client-stack';
 
 const env = { 
   account: process.env.CDK_DEFAULT_ACCOUNT, 
