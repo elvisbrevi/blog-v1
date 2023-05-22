@@ -27,7 +27,7 @@ jobs:
 
     - name: Build Vite Project
       run: |
-        cd frontend
+        cd client
         npm install
         npm run build
     
