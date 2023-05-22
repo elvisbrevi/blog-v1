@@ -37,7 +37,7 @@ export class FrontendStack extends cdk.Stack {
     });
 
     // Create the CloudFront origin access control
-    const oac = new cloudfront.CfnOriginAccessControl(this, `CfnOriginAccessControl-${id}`, {
+    const oac = new cloudfront.CfnOriginAccessControl(this, `BlogOriginAccessControl-${id}`, {
       originAccessControlConfig: {
         name: `BlogCfnOriginAccessControl`,
         originAccessControlOriginType: 's3',
@@ -52,6 +52,7 @@ export class FrontendStack extends cdk.Stack {
         defaultBehavior: {
             origin: new S3Origin(staticWebsiteBucket, {
               originId: oac.attrId,
+              
             }),
             viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         },
@@ -66,6 +67,13 @@ export class FrontendStack extends cdk.Stack {
                 ttl: cdk.Duration.minutes(1)
             }
           ],
+    });
+
+    cloudFrontDistribution.node.children.forEach(child => {
+      if (child instanceof cloudfront.CfnOriginAccessControl) {
+        child.addPropertyOverride('DistributionConfig.Origins.0.OriginId', oac.attrId);
+        child.addPropertyOverride('DistributionConfig.DefaultCacheBehavior.TargetOriginId', oac.attrId);
+      }
     });
 
     // Bucket policy to allow CloudFront to read the object
