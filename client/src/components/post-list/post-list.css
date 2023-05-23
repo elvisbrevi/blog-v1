@@ -25,3 +25,15 @@ ul li a {
 ul li a:hover {
     text-decoration: none;
 }
+
+@media (max-width: 768px) {
+    ul li {
+        display: block;
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    ul li:hover {
+        zoom: 1;
+    }
+}
