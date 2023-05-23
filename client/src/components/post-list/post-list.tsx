@@ -2,10 +2,10 @@ import './post-list.css';
 import { useEffect, useState } from 'preact/hooks';
 
 interface Post {
-    title: string;
-    brief: string;
-    slug: string;
-    cuid: string;
+  title: string;
+  brief: string;
+  slug: string;
+  cuid: string;
 }
 
 const PostList = () => {
@@ -22,7 +22,7 @@ const PostList = () => {
   }, []);
 
   if (posts === null) {
-    return <div>Loading...</div>; // Handle loading state
+    return <div>Loading...</div>;
   }
 
   return (

@@ -1,3 +1,4 @@
+import './post.css';
 import { useEffect, useState } from 'preact/hooks';
 
 interface Post {
@@ -28,9 +29,9 @@ const Post = () => {
     }
 
     return (
-        <div>
-            <h1>{post.title}</h1>
-            <img width={500} src={post.coverImage} />
+        <div class="post-content">
+            <h1 class="post-title">{post.title}</h1>
+            <img class="featured-image" width={500} src={post.coverImage} />
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
     );

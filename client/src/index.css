@@ -1,9 +1,10 @@
 /* Nueva paleta de colores */
 :root {
   --main-color: #F6F1F1;
-  --accent-color: #c1e6f0;
+  --accent-color: #96c6d3;
   --light-color: #146C94;
   --secondary-color: #000000;
+  --greenberet: #7b8a62;
 }
 
 /* Aplica tus estilos aquí, por ejemplo: */
