@@ -8,7 +8,7 @@ on:
       - submitted
 
 env:
-  FRONTEND_STACK: FrontendStack
+  BLOG_STACK: BlogStack
 
 jobs:
   build:
@@ -37,4 +37,4 @@ jobs:
         npm install
         npm ci
         npm install -g aws-cdk
-        cdk deploy $FRONTEND_STACK --require-approval never
+        cdk deploy $BLOG_STACK --require-approval never
