@@ -1,13 +1,27 @@
 ul {
     list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+ul li {
+    display: inline;
+    margin: 1rem;
+    background: var(--secondary-color);
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+ul li:hover {
+    zoom: 1.1;
 }
 
 ul li a {
     font-size: 1.2rem;
-    color: var(--secondary-color);
+    color: var(--main-color);
+    padding: 0 0.5rem;
 }
 
 ul li a:hover {
-    font-size: 1.21rem;
-    text-decoration: underline;
+    text-decoration: none;
 }
