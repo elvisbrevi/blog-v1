@@ -4,22 +4,20 @@ import * as s3deploy from 'aws-cdk-lib/aws-s3-deployment';
 import * as route53 from 'aws-cdk-lib/aws-route53'; 
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
-import { S3Origin } from 'aws-cdk-lib/aws-cloudfront-origins';
 import { CloudFrontTarget } from 'aws-cdk-lib/aws-route53-targets';
 import { Construct } from 'constructs';
 
 const DOMAIN_NAME = "elvisbrevi.com";
 const WWW_DOMAIN_NAME = `www.${DOMAIN_NAME}`;
 
-export class FrontendStack extends cdk.Stack {
+export class BlogStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     // Create the S3 bucket
-    const staticWebsiteBucket = new s3.Bucket(this, `WebsiteBucket-${id}`, {
+    const staticWebsiteBucket = new s3.Bucket(this, `BlogWebsiteBucket-${id}`, {
       bucketName: DOMAIN_NAME,
       websiteIndexDocument: 'index.html',
-      removalPolicy: cdk.RemovalPolicy.RETAIN,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
     });
 
@@ -29,7 +27,7 @@ export class FrontendStack extends cdk.Stack {
     );
 
     // Create the HTTPS certificate
-    const httpsCertificate = new acm.Certificate(this, `HttpsCertificate-${id}`, {
+    const httpsCertificate = new acm.Certificate(this, `BlogHttpsCertificate-${id}`, {
       domainName: DOMAIN_NAME,
       subjectAlternativeNames: [WWW_DOMAIN_NAME],
       validation: acm.CertificateValidation.fromDns(hostedZone),
@@ -46,35 +44,45 @@ export class FrontendStack extends cdk.Stack {
       },
     });
 
-    // Create the CloudFront distribution linked to the website hosting bucket and the HTTPS certificate
-    const cloudFrontDistribution = new cloudfront.Distribution(this, `CloudFrontDistribution-${id}`, {
-        defaultRootObject: 'index.html',
-        defaultBehavior: {
-            origin: new S3Origin(staticWebsiteBucket, {
-              originId: oac.attrId,
-              
-            }),
-            viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-        },
-        priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
-        domainNames: [DOMAIN_NAME, WWW_DOMAIN_NAME],
-        certificate: httpsCertificate,
-        errorResponses: [
+    // Create the CloudFront distribution
+    const cloudFrontDistribution = new cloudfront.CloudFrontWebDistribution(this, `BlogCloudFrontDistribution-${id}`, {
+      defaultRootObject: 'index.html',
+      viewerCertificate: cloudfront.ViewerCertificate.fromAcmCertificate(httpsCertificate, {
+        aliases: [DOMAIN_NAME, WWW_DOMAIN_NAME]
+      }),
+      originConfigs: [
+        {
+          s3OriginSource: {
+            s3BucketSource: staticWebsiteBucket
+          },
+          behaviors: [
             {
-                httpStatus: 404,
-                responseHttpStatus: 200,
-                responsePagePath: '/index.html',
-                ttl: cdk.Duration.minutes(1)
+              isDefaultBehavior: true,
+              viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
             }
-          ],
+          ]
+        }
+      ],
+      errorConfigurations: [
+        {
+          errorCode: 403,
+          responsePagePath: '/index.html',
+          responseCode: 200,
+          errorCachingMinTtl: 60
+        }
+      ]
     });
 
-    cloudFrontDistribution.node.children.forEach(child => {
-      if (child instanceof cloudfront.CfnOriginAccessControl) {
-        child.addPropertyOverride('DistributionConfig.Origins.0.OriginId', oac.attrId);
-        child.addPropertyOverride('DistributionConfig.DefaultCacheBehavior.TargetOriginId', oac.attrId);
-      }
-    });
+    // Add the CloudFront distribution ID to the origin access control
+    const cfnDistribution = cloudFrontDistribution.node.defaultChild as cloudfront.CfnDistribution;
+    cfnDistribution.addPropertyOverride('DistributionConfig.Origins.0.OriginAccessControlId', oac.getAtt('Id'))
+
+    // cloudFrontDistribution.node.children.forEach(child => {
+    //   if (child instanceof cloudfront.CfnOriginAccessControl) {
+    //     child.addPropertyOverride('DistributionConfig.Origins.0.OriginId', oac.attrId);
+    //     child.addPropertyOverride('DistributionConfig.DefaultCacheBehavior.TargetOriginId', oac.attrId);
+    //   }
+    // });
 
     // Bucket policy to allow CloudFront to read the object
     staticWebsiteBucket.addToResourcePolicy(
@@ -92,21 +100,21 @@ export class FrontendStack extends cdk.Stack {
     );
 
     // Add DNS records to the hosted zone to redirect from the domain name to the CloudFront distribution
-    new route53.ARecord(this, `CloudFrontRedirect-${id}`, {
+    new route53.ARecord(this, `BlogCloudFrontRedirect-${id}`, {
       zone: hostedZone,
       target: route53.RecordTarget.fromAlias(new CloudFrontTarget(cloudFrontDistribution)),
       recordName: DOMAIN_NAME
     });
     
     // Same from www.sub-domain
-    new route53.ARecord(this, `CloudFrontWWWRedirect-${id}`, {
+    new route53.ARecord(this, `BlogCloudFrontWWWRedirect-${id}`, {
         zone: hostedZone,
         target: route53.RecordTarget.fromAlias(new CloudFrontTarget(cloudFrontDistribution)),
         recordName: WWW_DOMAIN_NAME
     });
 
     // Deploy the website
-    new s3deploy.BucketDeployment(this, `BucketDeployment-${id}`, {
+    new s3deploy.BucketDeployment(this, `BlogBucketDeployment-${id}`, {
       sources: [s3deploy.Source.asset('../client/dist')], 
       destinationBucket: staticWebsiteBucket,
       distributionPaths: ['/*'], 
@@ -115,3 +123,4 @@ export class FrontendStack extends cdk.Stack {
 
   }
 }
+     
