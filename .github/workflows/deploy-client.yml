@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    name: Build Frontend Stack
+    name: Build React Changes
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
@@ -23,16 +23,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
-
-    - name: Build Vite Project
-      run: |
-        cd client
-        npm install
-        npm run build
     
-    - name: Deploy to S3
-      uses: reggionick/s3-deploy@v3
-      with:
-        folder: build
-        bucket: ${{ secrets.BLOG_BUCKET }}
-        bucket-region: us-east-1
+    - name: Deploy static site to S3 bucket
+      run: aws s3 sync ./public/ s3://${{ secrets.BLOG_BUCKET }} --delete
