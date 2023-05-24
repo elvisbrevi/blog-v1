@@ -2,6 +2,14 @@
     margin: 0rem 5rem;
 }
 
+.post-content .post-date {
+    background: var(--secondary-color);
+    color: var(--main-color);
+    padding: 0.3rem;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+}
+
 .post-content .post-title {
     line-height: 3.2rem;
     text-align: center;

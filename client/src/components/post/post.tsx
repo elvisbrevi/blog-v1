@@ -8,6 +8,7 @@ interface Post {
     coverImage: string;
     content: string;
     contentMarkdown: string;
+    dateAdded: string;
 }
 
 const Post = () => {
@@ -30,6 +31,7 @@ const Post = () => {
 
     return (
         <div class="post-content">
+            <span class="post-date">{post.dateAdded.substring(0, 10)}</span>
             <h1 class="post-title">{post.title}</h1>
             <img class="featured-image" width={500} src={post.coverImage} />
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
@@ -49,7 +51,8 @@ async function fetchData(): Promise<Post> {
                 cuid,
                 coverImage,
                 content,
-                contentMarkdown
+                contentMarkdown,
+                dateAdded
             }
         }
     `;
