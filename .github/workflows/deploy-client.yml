@@ -1,0 +1,41 @@
+name: Client deployment.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - client
+  pull_request_review:
+    types:
+      - submitted
+
+env:
+  BLOG_STACK: BlogStack
+
+jobs:
+  build:
+    name: Build Frontend Stack
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Build Vite Project
+      run: |
+        cd client
+        npm install
+        npm run build
+    
+    - name: Deploy to S3
+      uses: reggionick/s3-deploy@v3
+      with:
+        folder: build
+        bucket: ${{ secrets.BLOG_BUCKET }}
+        bucket-region: us-east-1

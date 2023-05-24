@@ -1,8 +1,10 @@
-name: Blog deployment.
+name: Infra deployment.
 on:
   push:
     branches:
       - main
+    paths:
+      - infra
   pull_request_review:
     types:
       - submitted
