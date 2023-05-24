@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - './client/*'
+      - 'client/**'
 
 env:
   BLOG_STACK: BlogStack
