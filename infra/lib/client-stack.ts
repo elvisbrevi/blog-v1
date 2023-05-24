@@ -77,13 +77,6 @@ export class BlogStack extends cdk.Stack {
     const cfnDistribution = cloudFrontDistribution.node.defaultChild as cloudfront.CfnDistribution;
     cfnDistribution.addPropertyOverride('DistributionConfig.Origins.0.OriginAccessControlId', oac.getAtt('Id'))
 
-    // cloudFrontDistribution.node.children.forEach(child => {
-    //   if (child instanceof cloudfront.CfnOriginAccessControl) {
-    //     child.addPropertyOverride('DistributionConfig.Origins.0.OriginId', oac.attrId);
-    //     child.addPropertyOverride('DistributionConfig.DefaultCacheBehavior.TargetOriginId', oac.attrId);
-    //   }
-    // });
-
     // Bucket policy to allow CloudFront to read the object
     staticWebsiteBucket.addToResourcePolicy(
       new cdk.aws_iam.PolicyStatement({
