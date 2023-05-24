@@ -5,9 +5,9 @@ on:
       - main
     paths:
       - 'client/**'
-
-env:
-  BLOG_STACK: BlogStack
+  pull_request_review:
+    types:
+      - submitted
 
 jobs:
   build:
@@ -33,5 +33,7 @@ jobs:
     - name: Deploy static site to S3 bucket
       run: |
         cd client 
-        ls
         aws s3 sync dist s3://${{ secrets.BLOG_BUCKET }} --delete
+        aws cloudfront create-invalidation \
+          --distribution-id ${{ secrets.BLOG_DISTRIBUTION }} \
+          --paths "/*"
