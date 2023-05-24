@@ -2,12 +2,9 @@ name: Client deployment.
 on:
   push:
     branches:
-    - main
+      - main
     paths:
-    - 'client/*'
-  pull_request_review:
-    types:
-      - submitted
+      - 'client/*'
 
 env:
   BLOG_STACK: BlogStack
