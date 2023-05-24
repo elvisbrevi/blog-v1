@@ -2,9 +2,9 @@ name: Client deployment.
 on:
   push:
     branches:
-      - main
+    - main
     paths:
-      - 'client/*'
+    - 'client/*'
   pull_request_review:
     types:
       - submitted
