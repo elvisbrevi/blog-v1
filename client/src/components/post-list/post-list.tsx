@@ -26,7 +26,7 @@ const PostList = () => {
   }
 
   return (
-    <ul>
+    <ul class="post-list">
       {posts.map((post) => (
         <li key={post.slug}>
           <a href={`/post/${post.slug}`} class="post-title-font">

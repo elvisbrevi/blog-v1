@@ -1,10 +1,10 @@
-ul {
+.post-list {
     list-style: none;
     padding: 0;
     text-align: center;
 }
 
-ul li {
+.post-list li {
     display: inline;
     margin: 1rem;
     background: var(--secondary-color);
@@ -12,28 +12,13 @@ ul li {
     cursor: pointer;
 }
 
-ul li:hover {
-    zoom: 1.1;
-}
-
-ul li a {
+.post-list li a {
     font-size: 1.2rem;
     color: var(--main-color);
     padding: 0 0.5rem;
-}
-
-ul li a:hover {
     text-decoration: none;
 }
 
-@media (max-width: 768px) {
-    ul li {
-        display: block;
-        width: 100%;
-        margin: 1rem 0;
-    }
-
-    ul li:hover {
-        zoom: 1;
-    }
+.post-list li a:hover {
+    text-decoration: underline;
 }
