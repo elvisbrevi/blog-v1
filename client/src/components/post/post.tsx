@@ -33,8 +33,8 @@ const Post = () => {
         <div class="post-content">
             <span class="post-date">{post.dateAdded.substring(0, 10)}</span>
             <h1 class="post-title">{post.title}</h1>
-            <img class="featured-image" width={500} src={post.coverImage} />
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <img class="post-featured-image" width={500} src={post.coverImage} />
+            <div class="post-body" dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
     );
 };
