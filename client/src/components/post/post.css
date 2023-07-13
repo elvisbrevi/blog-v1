@@ -11,6 +11,10 @@
     max-width: 100%;
     float: left;
     overflow-x: scroll;
+    background: #222;
+    color: #ffffff;
+    border-radius: 0.7rem;
+    font-size: 1.1rem;
 }
 
 .post-content .post-date {
