@@ -4,7 +4,7 @@
 
 .post-content pre {
     display: inline-grid;
-    max-width: 100%
+    width: 100%
 }
 
 .post-content pre code {
