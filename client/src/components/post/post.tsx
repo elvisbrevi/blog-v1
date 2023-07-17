@@ -51,7 +51,6 @@ async function fetchData(): Promise<Post> {
                 cuid,
                 coverImage,
                 content,
-                contentMarkdown,
                 dateAdded
             }
         }

@@ -7,6 +7,11 @@
     width: 100%
 }
 
+.post-content pre .copy-code-button {
+    margin: auto 0 auto auto;
+    text-align: right;
+}
+
 .post-content pre code {
     max-width: 100%;
     float: left;
@@ -14,8 +19,9 @@
     background: #222;
     color: #ffffff;
     border-radius: 0.7rem;
-    font-size: 1.1rem;
-    padding-right: 0.7rem;
+    font-size: 1rem;
+    padding: 1rem;
+    line-height: 1.5rem;
 }
 
 .post-content .post-date {
@@ -33,6 +39,7 @@
     font-size: 3.5rem;
     color: var(--accent-color);
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 4px 4px #a5a0a0;
+    margin-bottom: 1.5rem;
 }
 
 .post-content .post-featured-image {
@@ -47,10 +54,15 @@
 }
 
 .post-content .post-body {
-    font-size: 1.5rem;
-    line-height: 2.5rem;
-    text-align: left;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    text-align: justify;
     margin: 0 0 2rem 0;
+}
+
+.post-content .post-body h1 {
+    font-size: 2.5rem;
+    margin: 4rem 0 1rem 0;
 }
 
 .post-content .post-body a {
