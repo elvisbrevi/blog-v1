@@ -2,28 +2,6 @@
     max-width: 100%
 }
 
-.post-content pre {
-    display: inline-grid;
-    width: 100%
-}
-
-.post-content pre .copy-code-button {
-    margin: auto 0 auto auto;
-    text-align: right;
-}
-
-.post-content pre code {
-    max-width: 100%;
-    float: left;
-    overflow-x: scroll;
-    background: #222;
-    color: #ffffff;
-    border-radius: 0.7rem;
-    font-size: 1rem;
-    padding: 1rem;
-    line-height: 1.5rem;
-}
-
 .post-content .post-date {
     background: var(--secondary-color);
     color: var(--main-color);
@@ -78,4 +56,38 @@
 .post-content .post-body ul {
     text-align: left;
     padding: 1rem;
+}
+
+.post-content .post-body pre {
+    display: inline-grid;
+    width: 100%
+}
+
+.post-content .post-body pre code {
+    max-width: 100%;
+    float: left;
+    overflow-x: scroll;
+    background: #222;
+    color: #ffffff;
+    border-radius: 0.7rem;
+    font-size: 1rem;
+    padding: 1rem;
+    line-height: 1.5rem;
+    padding: 2.2rem 1rem;
+}
+
+.post-content .post-body .btn-copy-code {
+    color: #fff;
+    text-align: left;
+    margin: auto 0.5rem -2rem auto;
+    z-index: 1;
+    font-size: .8rem;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.post-content .post-body .btn-copy-code i {
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 0.2rem;
 }

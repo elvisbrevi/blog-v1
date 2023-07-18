@@ -65,6 +65,11 @@ async function fetchData(): Promise<Post> {
     });
 
     const { data } = await response.json();
+
+    data.post.content = data.post.content.replace(
+        /<pre><code/g, 
+        '<pre><span class="btn-copy-code">COPY<i class="bi bi-clipboard"></i></span><code');
+
     return data.post;
 }
 
