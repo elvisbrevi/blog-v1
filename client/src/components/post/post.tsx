@@ -15,6 +15,7 @@ const Post = () => {
     
     const [post, setPost] = useState<Post | null>(null);
 
+    // Fetch post data from Hashnode API
     useEffect(() => {
 
         async function fetchDataAsync() {
@@ -41,8 +42,10 @@ const Post = () => {
 
 async function fetchData(): Promise<Post> {
 
+    // Get post slug from URL
     let slug : string | null = window.location.pathname.split("/").slice(-1)[0] || null;
 
+    // Get post data from Hashnode API
     const query = `
         {
             post(slug:"${slug}", hostname:"elvisbrevi.hashnode.dev") {
@@ -66,6 +69,7 @@ async function fetchData(): Promise<Post> {
 
     const { data } = await response.json();
 
+    // Add copy button to code blocks
     data.post.content = data.post.content.replace(
         /<pre><code/g, 
         '<pre><span class="btn-copy-code">COPY<i class="bi bi-clipboard"></i></span><code');
