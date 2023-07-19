@@ -40,7 +40,6 @@
       // Clipboard
       var clipboard = new ClipboardJS('.btn-copy-code', {
         target: function (trigger) {
-          console.log(trigger);
           return trigger.nextElementSibling;
         },
       });
@@ -48,13 +47,11 @@
       // Clipboard success
       clipboard.on('success', function (e) {
         let oldtext = e.trigger.textContent;
-        
         var old = e.trigger.cloneNode(true);
         e.trigger.textContent = 'Copied!';
 
         setTimeout(() => 
           {
-            
             e.trigger.parentElement.prepend(old);
             e.trigger.remove();
           },
