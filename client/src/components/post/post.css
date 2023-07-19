@@ -34,7 +34,7 @@
 }
 
 .post-content .post-body img {
-    width: 100%;
+    max-width: 100%;
     object-fit: cover;
     border: 1px solid black;
     padding: 0.2rem;
