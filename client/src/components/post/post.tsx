@@ -1,5 +1,6 @@
 import './post.css';
 import { useEffect, useState } from 'preact/hooks';
+import * as cheerio from 'cheerio';
 
 interface Post {
     title: string;
@@ -74,7 +75,25 @@ async function fetchData(): Promise<Post> {
         /<pre><code/g, 
         '<pre><span class="btn-copy-code">COPY<i class="bi bi-clipboard"></i></span><code');
 
+    data.post.content = replaceImgWithLink(data.post.content);
+
     return data.post;
 }
+
+function replaceImgWithLink(html: string): string {
+    const $ = cheerio.load(html);
+  
+    $('img').each((_, element) => {
+        const imgSrc = $(element).attr('src');
+        const newLink = $('<a>')
+            .attr('href', `${imgSrc}`)
+            .attr('data-fancybox', '')
+            .append($(element).clone());
+
+        $(element).replaceWith(newLink);
+    });
+  
+    return $.html();
+  }
 
 export default Post;
