@@ -12,7 +12,7 @@ interface ShareButtonProps {
 
 const ShareButton = ({ title }: ShareButtonProps) => {
   return (
-    <div class="dropdown">
+    <div class="dropdown fixed-bottom d-none">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Share This !
         </button>
@@ -20,14 +20,15 @@ const ShareButton = ({ title }: ShareButtonProps) => {
             <li>
                 <FacebookShareButton url={currentUrl} quote={title}>
                     <FacebookIcon size={32} round />
-                </FacebookShareButton>
+                    Facebook
+                </FacebookShareButton> 
             </li>
             <li>
                 <TwitterShareButton url={currentUrl} title={title} >
                     <TwitterIcon size={32} round />
-                </TwitterShareButton>
+                    Twitter
+                </TwitterShareButton> 
             </li>
-            <li><a class="dropdown-item" href="#">Action three</a></li>
         </ul>
     </div>
   );
