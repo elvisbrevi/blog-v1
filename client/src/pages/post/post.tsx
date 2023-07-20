@@ -13,11 +13,11 @@ const PostPage = () => {
       setPost(postData);
 
       // Update meta tags
-      // const metaTitle = document.querySelector('meta[name="title"]');
-      // metaTitle?.setAttribute('content', post?.title || "title");
+      const metaTitle = document.querySelector('meta[name="title"]');
+      metaTitle?.setAttribute('content', post?.title || "title");
 
-      // const metaDescription = document.querySelector('meta[name="description"]');
-      // metaDescription?.setAttribute('content', "description");
+      const metaDescription = document.querySelector('meta[name="description"]');
+      metaDescription?.setAttribute('content', "description");
     }
     
     fetchDataAsync();
