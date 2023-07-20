@@ -11,13 +11,6 @@ const PostPage = () => {
     async function fetchDataAsync() {
       const postData = await fetchData();
       setPost(postData);
-
-      // Update meta tags
-      const metaTitle = document.querySelector('meta[name="title"]');
-      metaTitle?.setAttribute('content', post?.title || "title");
-
-      const metaDescription = document.querySelector('meta[name="description"]');
-      metaDescription?.setAttribute('content', "description");
     }
     
     fetchDataAsync();

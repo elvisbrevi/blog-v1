@@ -33,6 +33,22 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="/js/clipboard.min.js"></script>
     <script>
+      // SEO
+      if (window.location.href.indexOf('/post/') !== -1) {
+        // La URL contiene '/post/'
+        const metaDescription = document.querySelector('meta[name="description"]');
+        console.log(metaDescription);
+        if (metaDescription) {
+          metaDescription.setAttribute('content', 'Nuevo contenido para las publicaciones');
+        }
+        document.querySelector('meta[name="description"]').setAttribute("content", "_desc");
+
+      } else {
+        // La URL no contiene '/post/'
+        console.log('La URL no contiene "/post/".');
+      }
+
+      // Highlight
       hljs.configure({
         languageDetectRe: /\blang-([\w-]+)\b/i
       });
