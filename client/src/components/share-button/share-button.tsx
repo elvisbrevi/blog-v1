@@ -12,7 +12,7 @@ interface ShareButtonProps {
 
 const ShareButton = ({ title }: ShareButtonProps) => {
   return (
-    <div class="dropdown fixed-bottom d-none">
+    <div class="dropdown fixed-bottom">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Share This !
         </button>
