@@ -24,7 +24,7 @@ const PostPage = () => {
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <ShareButton title="" />
+          <ShareButton />
         </div>
         <div class="col-lg-8 col-sm-12">
           <div class="post-content">

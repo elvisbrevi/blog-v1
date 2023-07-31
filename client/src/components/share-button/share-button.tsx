@@ -1,41 +1,22 @@
 import './share-button.css';
-import {
-    FacebookShareButton, FacebookIcon,
-    TwitterShareButton, TwitterIcon
-  } from "react-share";
 
-var currentUrl = "https://www.elvisbrevi.com/post/static-website-infrastructure-as-code-and-cicd-with-aws-and-github-actions";//window.location.href;
-
-interface ShareButtonProps {
-  title: string;
-}
-
-const ShareButton = ({ title }: ShareButtonProps) => {
+const ShareButton = () => {
   return (
-    <div class="dropdown fixed-bottom">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <div class="dropdown fixed-bottom share-button">
+        <button class="btn btn-secondary dropdown-toggle" type="button" 
+        data-bs-toggle="dropdown" aria-expanded="false">
             Share This !
         </button>
-        <ul class="dropdown-menu bg-transparent">
-            <li>
-                <FacebookShareButton url={currentUrl} quote={title}>
-                    <FacebookIcon size={32} round />
-                    Facebook
-                </FacebookShareButton> 
-            </li>
-            <li>
-                <TwitterShareButton url={currentUrl} title={title} >
-                    <TwitterIcon size={32} round />
-                    Twitter
-                </TwitterShareButton> 
-            </li>
-            <li>
-            <a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world"
-  data-size="large">
-Tweet</a>
-            </li>
+        <ul class="dropdown-menu bg-transparent a2a_kit a2a_kit_size_32 a2a_default_style">
+          <li><a class="a2a_button_linkedin"></a></li>
+          <li><a class="a2a_button_twitter"></a></li>
+          <li><a class="a2a_button_facebook"></a></li>
+          <li><a class="a2a_button_email"></a></li>
+          <li><a class="a2a_button_reddit"></a></li>
+          <li><a class="a2a_button_copy_link"></a></li>
+          <li><a class="a2a_dd" href="https://www.addtoany.com/share"></a></li>
         </ul>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
     </div>
   );
 };
