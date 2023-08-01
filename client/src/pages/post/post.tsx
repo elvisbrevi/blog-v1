@@ -1,5 +1,4 @@
 import './post.css';
-import ShareButton from "../../components/share-button/share-button";
 import { useEffect, useState } from 'preact/hooks';
 import PostBody from '../../components/post-body/post-body';
 
@@ -23,9 +22,7 @@ const PostPage = () => {
   return (
     <div class="container-fluid">
       <div class="row">
-        <div class="col">
-          <ShareButton />
-        </div>
+        <div class="col" />
         <div class="col-lg-8 col-sm-12">
           <div class="post-content">
               <span class="post-date">{post.dateAdded.substring(0, 10)}</span>
