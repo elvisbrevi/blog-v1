@@ -32,7 +32,7 @@
     font-size: 2rem;
     font-weight: 700;
     float: left;
-    font-family: 'Anton', sans-serif;
+    /* font-family: 'Anton', sans-serif; */
   }
   
   @media (max-width: 768px) {
