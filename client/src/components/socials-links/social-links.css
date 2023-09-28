@@ -51,9 +51,9 @@
 
 .social-links a {
   display: inline-block;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 16px;
+  padding: 0.1rem 0.7rem;
+  border-radius: .2rem;
+  font-size: 2rem;
   text-decoration: none;
   color: var(--main-color);
   transition: opacity 0.3s ease; 
@@ -69,10 +69,10 @@
 }
 
 .social-links .github {
-  background-color: #333;
+  background-color: #000000;
 }
 
 .social-links .twitter {
-  background-color: #1da1f2;
+  background-color: #000000;
 }
   
