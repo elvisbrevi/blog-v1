@@ -1,10 +1,10 @@
 /* Nueva paleta de colores */
 :root {
-  --main-color: #F6F1F1;
-  --accent-color: #96c6d3;
-  --light-color: #146C94;
-  --secondary-color: #000000;
-  --greenberet: #7b8a62;
+  --main-color: #fbf1dd;
+  --accent-color: #EDB651;
+  --light-color: #769D50;
+  --secondary-color: #EA7150;
+  --main-font-color: #361E0E;
 }
 
 /* Aplica tus estilos aquí, por ejemplo: */
@@ -24,14 +24,6 @@ header {
   padding: 0.5rem 1rem;
   width: 100%;
   position: relative;
-}
-
-.post-title-font {
-  /* font-family: 'Koh Santepheap', cursive; */
-}
-
-.post-description-font {
-  /* font-family: 'Noto Serif JP', serif; */
 }
 
 .menu-btn {
