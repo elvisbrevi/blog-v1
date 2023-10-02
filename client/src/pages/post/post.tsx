@@ -24,25 +24,14 @@ const PostPage = () => {
     <div class="container-fluid">
       <SuperSEO
         title={post.title}
-        description="Elvis Brevi Blog."
-        lang="en"
-        openGraph={{
-          ogImage: {
-            ogImage: post.coverImage,
-            ogImageAlt: "Kittens",
-            ogImageWidth: 1200,
-            ogImageHeight: 630,
-            ogImageType: "image/jpeg",
-          },
-        }}
-        twitter={{
-          twitterSummaryCard: {
-            summaryCardImage: post.coverImage,
-            summaryCardImageAlt: "Kittens",
-            summaryCardSiteUsername: "elvisbrevi",
-          },
-        }}
-      />
+        description="Elvis Brevi Blog"
+      >
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content="Elvis Brevi Blog" />
+        <meta property="og:image" content={post.coverImage} />
+        <meta property="og:url" content={"https://www.elvisbrevi.com/post/"+post.slug}></meta>
+      </SuperSEO>
+      
       <div class="row">
         <div class="col" />
         <div class="col-lg-8 col-sm-12">
