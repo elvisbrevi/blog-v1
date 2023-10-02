@@ -1,6 +1,7 @@
 import './post.css';
 import { useEffect, useState } from 'preact/hooks';
 import PostBody from '../../components/post-body/post-body';
+import { SuperSEO } from "react-super-seo";
 
 const PostPage = () => {
   const [post, setPost] = useState<PostData | null>(null);
@@ -21,6 +22,27 @@ const PostPage = () => {
 
   return (
     <div class="container-fluid">
+      <SuperSEO
+        title={post.title}
+        description="Elvis Brevi Blog."
+        lang="en"
+        openGraph={{
+          ogImage: {
+            ogImage: post.coverImage,
+            ogImageAlt: "Kittens",
+            ogImageWidth: 1200,
+            ogImageHeight: 630,
+            ogImageType: "image/jpeg",
+          },
+        }}
+        twitter={{
+          twitterSummaryCard: {
+            summaryCardImage: post.coverImage,
+            summaryCardImageAlt: "Kittens",
+            summaryCardSiteUsername: "elvisbrevi",
+          },
+        }}
+      />
       <div class="row">
         <div class="col" />
         <div class="col-lg-8 col-sm-12">
