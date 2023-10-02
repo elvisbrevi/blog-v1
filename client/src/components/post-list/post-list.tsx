@@ -4,7 +4,7 @@ import { useEffect, useState } from 'preact/hooks';
 interface Post {
   title: string;
   slug: string;
-  dateFeatured: string;
+  dateAdded: string;
 }
 
 const PostList = () => {
@@ -28,9 +28,8 @@ const PostList = () => {
     <ul class="post-list">
       {posts.map((post) => (
         <li key={post.slug}>
-          <p>{post.dateFeatured}</p>
           <a href={`/post/${post.slug}`} class="post-title-font">
-            {post.title}
+            {post.dateAdded.slice(0, 10)} | {post.title}
           </a>
         </li>
       ))}
@@ -46,7 +45,7 @@ async function fetchData(): Promise<Post[]> {
             posts {
               title
               slug
-              dateFeatured
+              dateAdded
             }
           }
         }
@@ -62,6 +61,7 @@ async function fetchData(): Promise<Post[]> {
     });
   
     const { data } = await response.json();
+    console.log(data)
     return data.user.publication.posts;
   }
 
