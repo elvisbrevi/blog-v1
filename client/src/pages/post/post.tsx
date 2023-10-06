@@ -1,7 +1,6 @@
 import './post.css';
 import { useEffect, useState } from 'preact/hooks';
 import PostBody from '../../components/post-body/post-body';
-import { SuperSEO } from "react-super-seo";
 
 const PostPage = () => {
   const [post, setPost] = useState<PostData | null>(null);
@@ -22,16 +21,6 @@ const PostPage = () => {
 
   return (
     <div class="container-fluid">
-      <SuperSEO
-        title={post.title}
-        description="Elvis Brevi Blog"
-      >
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content="Elvis Brevi Blog" />
-        <meta property="og:image" content={post.coverImage} />
-        <meta property="og:url" content={"https://www.elvisbrevi.com/post/"+post.slug}></meta>
-      </SuperSEO>
-      
       <div class="row">
         <div class="col" />
         <div class="col-lg-8 col-sm-12">
