@@ -13,13 +13,16 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="header-nav">
-      <div className={`header-menu ${windowWidth <= 768 ? 'responsive' : ''}`}>
-        <Link to="/blog"><p id="title" className='anton-font'>Elvis Brevi</p></Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/about">About</Link>
-      </div>
-    </nav>
+    <>
+      <nav className="header-nav">
+        <div className={`header-menu ${windowWidth <= 768 ? 'responsive' : ''}`}>
+          <Link to="/blog"><p id="title" className='anton-font'>Elvis Brevi</p></Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/about">About</Link>
+        </div>
+      </nav>
+      <section class="spikes"></section>
+    </>
   );
 };
 
