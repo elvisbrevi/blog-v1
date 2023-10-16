@@ -5,16 +5,15 @@
 }
 
 .post-list li {
-    display: inline;
+    width: 100%;
     margin: 1rem;
-    background: var(--secondary-color);
     padding: 0.5rem 0;
     cursor: pointer;
 }
 
 .post-list li a {
     font-size: 1.2rem;
-    color: var(--main-color);
+    color: var(--secondary-color);
     padding: 0 0.5rem;
     text-decoration: none;
 }
