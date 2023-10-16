@@ -1,5 +1,6 @@
 import './post-list.css';
 import { useEffect, useState } from 'preact/hooks';
+import { Loading } from '../loading/loading';
 
 interface Post {
   title: string;
@@ -21,7 +22,7 @@ const PostList = () => {
   }, []);
 
   if (posts === null) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

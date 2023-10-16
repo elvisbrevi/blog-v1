@@ -1,6 +1,7 @@
 import './post-body.css';
 import { useEffect, useState } from 'preact/hooks';
 import * as cheerio from 'cheerio';
+import { Loading } from '../loading/loading';
 
 const PostBody = ( post : PostData) => {
 
@@ -15,7 +16,7 @@ const PostBody = ( post : PostData) => {
     }, []);
 
     if (!post) {
-        return <div>Loading...</div>;
+        return <Loading />;
     }
 
     return (

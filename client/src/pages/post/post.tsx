@@ -1,6 +1,7 @@
 import './post.css';
 import { useEffect, useState } from 'preact/hooks';
 import PostBody from '../../components/post-body/post-body';
+import { Loading } from '../../components/loading/loading';
 
 const PostPage = () => {
   const [post, setPost] = useState<PostData | null>(null);
@@ -16,7 +17,8 @@ const PostPage = () => {
   }, []);
 
   if (!post) {
-    return <div>Loading...</div>;
+    // loading icon
+    return <Loading />;
   }
 
   return (
