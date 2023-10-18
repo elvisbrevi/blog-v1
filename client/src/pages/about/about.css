@@ -1,8 +1,17 @@
 .about-container {
-    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+  }
+
+  .about-container p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    text-align: left;
+    margin-bottom: 0rem;
+  }
+
+  .about-container a {
+    color: var(--light-color);
   }
   
   .about-image-container {
@@ -16,10 +25,12 @@
   }
     
   .about-title {
-    font-size: 2rem;
-    font-weight: 100;
-    text-align: left;
-    margin: 0;
+    line-height: 3.2rem;
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--light-color);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 4px 4px #a5a0a0;
+    margin: 1rem 0rem;
   }
   
   svg {
