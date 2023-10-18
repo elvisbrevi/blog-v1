@@ -1,5 +1,4 @@
 import './about.css';
-import SocialLinks from '../../components/socials-links/social-links';
 
 const AboutPage = () => {
   return (
