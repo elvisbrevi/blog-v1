@@ -1,4 +1,5 @@
 import './about.css';
+import SocialLinks from '../../components/socials-links/social-links';
 
 const AboutPage = () => {
   return (
@@ -28,10 +29,7 @@ const AboutPage = () => {
             and an innovative manufacturing company called <a href="https://www.teknip.cl/web/?lang=en" target="_blank">Teknip</a>.</p>
 
             <h1 className="about-title">Contact:</h1>
-            <p>Don't hesitate to get in touch with me!</p>
-            <p>Twitter/X: <a href="https://twitter.com/elvisbrevi" target="_blank">https://twitter.com/elvisbrevi</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/elvisbrevi" target="_blank">https://www.linkedin.com/in/elvisbrevi</a></p>
-            <p>GitHub: <a href="https://github.com/elvisbrevi" target="_blank">https://github.com/elvisbrevi</a></p>
+            <SocialLinks />
         </div>
         </div>
         <div class="col" />
