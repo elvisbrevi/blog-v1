@@ -4,25 +4,21 @@ import { useEffect, useState } from 'preact/hooks';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
-    <>
-      <nav className="header-nav">
-        <div className={`header-menu ${windowWidth <= 768 ? 'responsive' : ''}`}>
-          <Link to="/blog"><p id="title" className='anton-font'>Elvis Brevi</p></Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/about">About</Link>
-        </div>
-      </nav>
-      <section class="spikes"></section>
-    </>
+    <nav class="navbar navbar-expand-lg">
+      <a class="title" href="#">Elvis Brevi</a>
+      <div class="list navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About me</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 
