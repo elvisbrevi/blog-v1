@@ -28,7 +28,7 @@ const PostPage = () => {
         <div class="col-lg-8 col-sm-12">
           <div class="post-content">
               <span class="post-date">{post.dateAdded.substring(0, 10)}</span>
-              <h1 class="post-title">{post.title}</h1>
+              <h1 class="title">{post.title}</h1>
               <img class="post-featured-image" width={500} src={post.coverImage} />
               <PostBody {...post} />
           </div>

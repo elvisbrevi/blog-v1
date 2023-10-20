@@ -8,7 +8,7 @@ const AboutPage = () => {
         <div class="col" />
         <div class="col-lg-8 col-sm-12">
         <div className="about-container">
-            <h1 className="about-title">About Me:</h1>
+            <h1 className="title">About Me:</h1>
             <p>My name is Elvis Brevi. I am a Fullstack developer. I cherish my family time with my wife and 
             our two daughters. One of my greatest passions is expressing my creativity through programming. 
             Throughout my career, I have worked in almost every technical area of IT: backend, frontend, mobile, 
@@ -19,7 +19,7 @@ const AboutPage = () => {
             <p>I have created this personal wiki as my "second brain". I often explore technologies or ideas and 
             note them down here as a way to remember and share my learnings and thoughts.</p>
 
-            <h1 className="about-title">Work:</h1>
+            <h1 className="title">Work:</h1>
             <p>Currently, I work in the Development department of a ministry in the Chilean government. 
             Before that, I had the opportunity to work at a prominent news outlet 
             called <a href="https://www.biobiochile.cl/" target="_blank">Biobío Chile</a>, 
@@ -28,7 +28,7 @@ const AboutPage = () => {
             , <a href="https://www.ecofor.cl/" target="_blank">Ecofor</a>, 
             and an innovative manufacturing company called <a href="https://www.teknip.cl/web/?lang=en" target="_blank">Teknip</a>.</p>
 
-            <h1 className="about-title">Contact:</h1>
+            <h1 className="title">Contact:</h1>
             <SocialLinks />
         </div>
         </div>
