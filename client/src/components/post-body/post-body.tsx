@@ -8,7 +8,7 @@ const PostBody = ( post : PostData) => {
     const [postContent, setPostContent] = useState<string>("");
     useEffect(() => {
         // Add copy button to code blocks
-        var postContent = post.content.replace(
+        var postContent = post.content.html.replace(
             /<pre><code/g,
             '<pre><span class="btn-copy-code">COPY<i class="bi bi-clipboard"></i></span><code');
         postContent = replaceImgWithLink(postContent);

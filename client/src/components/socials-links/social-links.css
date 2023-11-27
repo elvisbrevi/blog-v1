@@ -45,15 +45,15 @@
 
 .social-links {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   gap: 10px;
 }
 
 .social-links a {
   display: inline-block;
-  padding: 0.1rem 0.7rem;
-  border-radius: .2rem;
-  font-size: 2rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
   text-decoration: none;
   color: var(--main-color);
   transition: opacity 0.3s ease; 

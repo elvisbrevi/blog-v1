@@ -1,9 +1,11 @@
 interface PostData {
     title: string;
     slug: string;
-    cuid: string;
-    coverImage: string;
-    content: string;
-    contentMarkdown: string;
-    dateAdded: string;
+    publishedAt: string;
+    coverImage: {
+      url: string;
+    };
+    content: {
+      html: string;
+    }
   }

@@ -27,9 +27,9 @@ const PostPage = () => {
         <div class="col" />
         <div class="col-lg-8 col-sm-12">
           <div class="post-content">
-              <span class="post-date">{post.dateAdded.substring(0, 10)}</span>
+              <span class="post-date">{post.publishedAt.substring(0, 10)}</span>
               <h1 class="title">{post.title}</h1>
-              <img class="post-featured-image" width={500} src={post.coverImage} />
+              <img class="post-featured-image" width={500} src={post.coverImage.url} />
               <PostBody {...post} />
           </div>
         </div>
@@ -46,26 +46,31 @@ async function fetchData(): Promise<PostData> {
 
   // Get post data from Hashnode API
   const query = `
-    {
-      post(slug:"${slug}", hostname:"elvisbrevi.hashnode.dev") {
-        title,
-        slug,
-        cuid,
-        coverImage,
-        content,
-        dateAdded
+  query Publication {
+    publication(host: "elvisbrevi.hashnode.dev") {
+      post(slug: "${slug}") {
+        title
+        slug
+        publishedAt
+        coverImage {
+          url
+        }
+        content {
+          html
+        }
       }
     }
+  }
   `;
 
-  const response = await fetch("https://api.hashnode.com", {
+  const response = await fetch("https://gql.hashnode.com", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query })
   });
 
   const { data } = await response.json();
-  return data.post;
+  return data.publication.post;
 }
 
 export default PostPage;

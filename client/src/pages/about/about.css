@@ -1,11 +1,17 @@
-.about-container {
+  .about-container {
     flex-direction: column;
     justify-content: center;
   }
 
+  .about-container .title  {
+    margin: .5rem 0rem;
+    text-align: left;
+    font-size: 1.8rem;
+  }
+
   .about-container p {
-    font-size: 1.2rem;
-    line-height: 1.8rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
     text-align: left;
     margin-bottom: 0rem;
   }
