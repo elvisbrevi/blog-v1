@@ -5,7 +5,7 @@
     <h1 align="center">BLOG-V1</h1>
 </p>
 <p align="center">
-    <em>Building Blogs Better: Visibility, Versatility, Velocity with blog-v1</em>
+    <em>The "static-site-cdk" repository contains code and infrastructure as code (IAC) for deploying a static website on AWS using Vite for the frontend and AWS CDK for infrastructure setup. It integrates continuous deployment with GitHub Actions.</em>
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/elvisbrevi/blog-v1?style=flat&color=0080ff" alt="license">
@@ -49,7 +49,13 @@
 
 ##  Overview
 
-Blog-v1 is a robust blogging platform that balances aesthetics with efficiency. This project leverages automated CI/CD workflows, ensuring smooth deployment of enriched frontend interfaces. The inclusion of cross-platform compatible image assets, CSS styling, and scripting augments user experience, facilitating an elegant and intuitive blog application.
+This repository contains the source code and infrastructure configuration for my personal blog, Elvis Brevi. The blog is a static website hosted on AWS services and deployed using Continuous Integration and Continuous Deployment (CI/CD) pipelines with GitHub Actions. The "static-site-cdk" repository contains the source code and infrastructure as code (IAC) used to create and deploy a static website using AWS free-tier services and continuous integration/continuous deployment (CI/CD) practices with GitHub Actions. It includes:
+
+Static Frontend with Vite: A static website developed with Vite, utilizing Preact and TypeScript for modern and efficient development.
+
+Infrastructure with AWS CDK: Utilizes AWS Cloud Development Kit (CDK) to define the necessary infrastructure on AWS, including an S3 bucket for hosting the static site, CloudFront distribution for optimized content delivery, SSL/TLS certificate for security, and DNS routing via Route53.
+
+This repository provides a complete solution for automating the creation, deployment, and management of a static blog, leveraging infrastructure as code and continuous integration capabilities.
 
 ---
 
