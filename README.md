@@ -33,7 +33,7 @@
 ##  Quick Links
 
 > - [ Overview](#-overview)
-> - [ Features](#-features)
+> - [ Stack](#-stack)
 > - [ Repository Structure](#-repository-structure)
 > - [ Modules](#-modules)
 > - [ Getting Started](#-getting-started)
@@ -59,20 +59,12 @@ This repository provides a complete solution for automating the creation, deploy
 
 ---
 
-##  Features
+## Stack
 
-|    |   Feature         | Description |
-|----|-------------------|---------------------------------------------------------------|
-| ⚙️  | **Architecture**  | The project has a clear separation of client-side code and automated deployment infrastructure, aiding in efficient development and deployment. |
-| 🔩 | **Code Quality**  | Code quality appears to be prioritized, with TypeScript being used for type safety and ease of maintenance.|
-| 📄 | **Documentation** | Documentation is limited, with some in-code comments available. Detailed project documentation is notably absent. |
-| 🔌 | **Integrations**  | The project uses GitHub actions for CI/CD processes, demonstrating a good understanding of modern development practices.|
-| 🧩 | **Modularity**    | Code is separated into dedicated files and directories, which indicates modular design and promotes code reusability. |
-| 🧪 | **Testing**       | Jest mentioned in dependencies, indicating a focus on testing, though specific test files are not directly mentioned.|
-| ⚡️  | **Performance**   | Performance specifics not provided directly, but the usage of Vite indicates an emphasis on speed and efficiency.|
-| 🛡️ | **Security**      | Security measures not explicitly mentioned within the provided information. Project may benefit from a detailed security audit.|
-| 📦 | **Dependencies**  | Uses important dependencies such as Vite, Preact, TypeScript, Jest, and AWS CDK among others, showing a modern tech stack.|
-
+- **Frontend Technology**: Vite (with Preact and TypeScript) for creating the static website.
+- **Infrastructure as Code (IAC)**: AWS Cloud Development Kit (CDK) for defining and deploying AWS resources.
+- **AWS Services**: S3 Bucket, CloudFront, Route53, AWS Certificate Manager.
+- **Continuous Integration/Continuous Deployment (CI/CD)**: GitHub Actions for automating deployments.
 
 ---
 
