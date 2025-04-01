@@ -9,7 +9,7 @@ const SocialLinks = () => {
         target="_blank"
         className="linkedin" 
       >
-        <i class="bi bi-linkedin mr-10"></i>
+        <i className="bi bi-linkedin mr-10"></i>
       </a>
       <a
         id="link-github"
@@ -17,7 +17,7 @@ const SocialLinks = () => {
         target="_blank"
         className="github" 
       >
-        <i class="bi bi-github"></i>
+        <i className="bi bi-github"></i>
       </a>
       <a
         id="link-twitter"
@@ -25,7 +25,7 @@ const SocialLinks = () => {
         target="_blank"
         className="twitter" 
       >
-        <i class="bi bi-twitter-x"></i>
+        <i className="bi bi-twitter-x"></i>
       </a>
     </div>
   );

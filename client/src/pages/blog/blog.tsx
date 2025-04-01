@@ -2,13 +2,13 @@ import PostList from "../../components/post-list/post-list";
 
 const BlogPage = () => {
   return (
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col" />
-        <div class="col-lg-8 col-sm-12">
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col" />
+        <div className="col-lg-8 col-sm-12">
           <PostList />
         </div>
-        <div class="col" />
+        <div className="col" />
       </div>
     </div>
   );
