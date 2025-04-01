@@ -4,6 +4,7 @@
     padding: .5rem;
     width: 100%;
     box-shadow: 5px 5px 1px 0px rgb(165 160 160);
+    align-content: baseline;
   }
 
   .navbar a {
@@ -27,11 +28,12 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    flex: none;
+    display: grid;
   }
 
   .navbar .list ul {
     display: inline; 
+    list-style: none;
   }
 
   .navbar .list ul li {

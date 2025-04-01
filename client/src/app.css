@@ -1,3 +1,14 @@
 main {
   padding: 2rem;
 }
+
+.row {
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .row {
+    max-width: 800px;
+    margin: auto;
+  }
+}
