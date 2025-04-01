@@ -1,13 +1,12 @@
-
 import './header.css';
 const Header = () => {
 
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar">
       <a className="title" href="/">Elvis Brevi</a>
-      <div className="list navbar-collapse">
-        <ul className="navbar-nav">
-          <li className="nav-item active">
+      <div className="list">
+        <ul className="nav-list">
+          <li className="nav-item">
             <a className="nav-link" href="/blog">Blog</a>
           </li>
           <li className="nav-item">

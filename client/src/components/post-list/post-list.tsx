@@ -33,8 +33,8 @@ const PostList = () => {
     <ul className="post-list">
       {posts.map((post) => (
         <li key={post.slug}>
-          <a className="h5" href={`/post/${post.slug}`}>
-            <small className="text-muted">{post.publishedAt.slice(0, 10)}: </small>
+          <a href={`/post/${post.slug}`}>
+            <span className="post-date">{post.publishedAt.slice(0, 10)}: </span>
             {post.title}
           </a>
         </li>

@@ -3,10 +3,10 @@ import SocialLinks from '../../components/socials-links/social-links';
 
 const AboutPage = () => {
   return (
-    <div className="container-fluid">
+    <div>
       <div className="row">
-        <div className="col" />
-        <div className="col-lg-8 col-sm-12">
+        <div />
+        <div>
         <div className="about-container">
             <h1 className="title">About Me:</h1>
             <p>My name is Elvis Brevi. I am a Fullstack developer. I cherish my family time with my wife and 
@@ -32,7 +32,7 @@ const AboutPage = () => {
             <SocialLinks />
         </div>
         </div>
-        <div className="col" />
+        <div />
       </div>
     </div>
     

@@ -27,10 +27,10 @@ const PostPage = () => {
   }
 
   return (
-    <div className="container-fluid">
+    <div>
       <div className="row">
-        <div className="col" />
-        <div className="col-lg-8 col-sm-12">
+        <div />
+        <div>
           <div className="post-content">
               <span className="post-date">{post.publishedAt.substring(0, 10)}</span>
               <h1 className="title">{post.title}</h1>
@@ -38,7 +38,7 @@ const PostPage = () => {
               <PostBody {...post} />
           </div>
         </div>
-        <div className="col" />
+        <div />
       </div>
     </div>
   );
