@@ -9,12 +9,12 @@ const PostBody = ( post : PostData) => {
     const [postContent, setPostContent] = useState<string>("");
     useEffect(() => {
         // Add copy button to code blocks
-        var postContent = post.content.html.replace(
+        const contentWithButtons = post.content.html.replace(
             /<pre><code/g,
             '<pre><span class="btn-copy-code">COPY<i className="bi bi-clipboard"></i></span><code');
-        postContent = replaceImgWithLink(postContent);
-        setPostContent(postContent);
-    }, []);
+        const finalContent = replaceImgWithLink(contentWithButtons);
+        setPostContent(finalContent);
+    }, [post.content.html]);
 
     if (!post) {
         return <Loading />;
