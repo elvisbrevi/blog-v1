@@ -11,7 +11,7 @@ export function App() {
       <Header />
       <main>
         <Routes>
-          <Route path="/" index element={<BlogPage />} />
+          <Route path="/" element={<BlogPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/post/:slug" element={<PostPage />} />
           <Route path="/about" element={<AboutPage />} />

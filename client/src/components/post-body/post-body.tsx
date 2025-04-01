@@ -1,7 +1,8 @@
 import './post-body.css';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'react';
 import * as cheerio from 'cheerio';
 import { Loading } from '../loading/loading';
+import type { PostData } from '../../interfaces/PostData';
 
 const PostBody = ( post : PostData) => {
 
@@ -20,7 +21,7 @@ const PostBody = ( post : PostData) => {
     }
 
     return (
-        <div class="post-body" dangerouslySetInnerHTML={{ __html: postContent }} />
+        <div className="post-body" dangerouslySetInnerHTML={{ __html: postContent }} />
     );
 };
 

@@ -1,5 +1,5 @@
 import './post-list.css';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'react';
 import { Loading } from '../loading/loading';
 
 interface Post {
@@ -30,11 +30,11 @@ const PostList = () => {
   }
 
   return (
-    <ul class="post-list">
+    <ul className="post-list">
       {posts.map((post) => (
         <li key={post.slug}>
-          <a class="h5" href={`/post/${post.slug}`}>
-            <small class="text-muted">{post.publishedAt.slice(0, 10)}: </small>
+          <a className="h5" href={`/post/${post.slug}`}>
+            <small className="text-muted">{post.publishedAt.slice(0, 10)}: </small>
             {post.title}
           </a>
         </li>

@@ -1,20 +1,25 @@
 import './post.css';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'react';
 import PostBody from '../../components/post-body/post-body';
 import { Loading } from '../../components/loading/loading';
+import { useParams } from 'react-router-dom';
+import type { PostData } from '../../interfaces/PostData';
 
 const PostPage = () => {
   const [post, setPost] = useState<PostData | null>(null);
+  const { slug } = useParams<{ slug: string }>();
   
   // Fetch post data from Hashnode API
   useEffect(() => {
     async function fetchDataAsync() {
-      const postData = await fetchData();
-      setPost(postData);
+      if (slug) {
+        const postData = await fetchData(slug);
+        setPost(postData);
+      }
     }
     
     fetchDataAsync();
-  }, []);
+  }, [slug]);
 
   if (!post) {
     // loading icon
@@ -22,28 +27,24 @@ const PostPage = () => {
   }
 
   return (
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col" />
-        <div class="col-lg-8 col-sm-12">
-          <div class="post-content">
-              <span class="post-date">{post.publishedAt.substring(0, 10)}</span>
-              <h1 class="title">{post.title}</h1>
-              <img class="post-featured-image" width={500} src={post.coverImage.url} />
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col" />
+        <div className="col-lg-8 col-sm-12">
+          <div className="post-content">
+              <span className="post-date">{post.publishedAt.substring(0, 10)}</span>
+              <h1 className="title">{post.title}</h1>
+              <img className="post-featured-image" width={500} src={post.coverImage.url} />
               <PostBody {...post} />
           </div>
         </div>
-        <div class="col" />
+        <div className="col" />
       </div>
     </div>
   );
 };
 
-async function fetchData(): Promise<PostData> {
-  
-  // Get post slug from URL
-  let slug : string | null = window.location.pathname.split("/").slice(-1)[0] || null;
-
+async function fetchData(slug: string): Promise<PostData> {
   // Get post data from Hashnode API
   const query = `
   query Publication {
