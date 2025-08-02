@@ -1,78 +1,128 @@
-/* Paleta de colores */  
-.container {
+.social-links-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-}
-  
-.social-links table {
-  border-collapse: collapse;
-  width: 100%;
-  max-width: 800px;
-}
-  
-.social-links td {
-  border: 1px solid var(--main-color);
-  text-align: center;
-  padding: 15px;
-  vertical-align: middle;
-}
-  
-.social-links .button-linkedin {
-  background-color: var(--main-color);
-}
-  
-.social-links .button-github {
-  background-color: var(--accent-color);
-}
-
-.social-links .button-twitter {
-  background-color: var(--secondary-color);
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-  .social-links table {
-    width: 100%;
-  }
-
-  .social-links td {
-    display: block;
-    width: 100%;
-  }
+  padding: 2rem 0;
 }
 
 .social-links {
   display: flex;
-  justify-content: left;
-  gap: 10px;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .social-links a {
-  display: inline-block;
-  padding: 0.1rem 0.5rem;
-  border-radius: 0.2rem;
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
   text-decoration: none;
-  color: var(--main-color);
-  transition: opacity 0.3s ease; 
+  color: var(--primary-text);
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  min-width: 120px;
+  justify-content: center;
 }
 
 .social-links a:hover {
-  opacity: 0.8; /* Añadir opacidad al hacer hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Colores de las redes sociales */
+.social-links a i {
+  font-size: 1.1rem;
+}
+
+/* Social platform specific colors */
 .social-links .linkedin {
-  background-color: #0077b5;
+  background: linear-gradient(135deg, #0077b5, #005885);
+  color: white;
+  border-color: #0077b5;
+}
+
+.social-links .linkedin:hover {
+  background: linear-gradient(135deg, #005885, #004065);
+  color: white;
 }
 
 .social-links .github {
-  background-color: #000000;
+  background: linear-gradient(135deg, var(--surface0), var(--surface1));
+  color: var(--primary-text);
+  border-color: var(--border);
+}
+
+.social-links .github:hover {
+  background: linear-gradient(135deg, var(--surface1), var(--surface2));
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
 }
 
 .social-links .twitter {
-  background-color: #000000;
+  background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+  color: white;
+  border-color: #1da1f2;
+}
+
+.social-links .twitter:hover {
+  background: linear-gradient(135deg, #0d8bd9, #0a73b8);
+  color: white;
+}
+
+.social-links .email {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--base);
+  border-color: var(--accent-primary);
+}
+
+.social-links .email:hover {
+  background: linear-gradient(135deg, var(--accent-secondary), var(--mauve));
+  color: var(--base);
+}
+
+.social-links .website {
+  background: linear-gradient(135deg, var(--green), var(--teal));
+  color: var(--base);
+  border-color: var(--green);
+}
+
+.social-links .website:hover {
+  background: linear-gradient(135deg, var(--teal), var(--sky));
+  color: var(--base);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .social-links {
+    gap: 0.75rem;
+    padding: 0 1rem;
+  }
+  
+  .social-links a {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    min-width: 100px;
+  }
+  
+  .social-links a i {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .social-links a {
+    width: 100%;
+    max-width: 200px;
+  }
 }
   

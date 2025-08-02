@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.4.1"

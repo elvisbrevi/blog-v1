@@ -1,42 +1,88 @@
+.about-container {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-container .title {
+  color: var(--primary-text);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  border-bottom: 2px solid var(--accent-primary);
+  padding-bottom: 1rem;
+}
+
+.about-container p {
+  color: var(--secondary-text);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.about-container a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-primary);
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+
+.about-container a:hover {
+  color: var(--accent-secondary);
+  text-decoration-color: var(--accent-secondary);
+}
+
+.about-image-container {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  color: var(--base);
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.about-image-container:hover {
+  transform: translateY(-4px);
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+@media (max-width: 768px) {
   .about-container {
-    flex-direction: column;
-    justify-content: center;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
   }
-
-  .about-container .title  {
-    margin: .5rem 0rem;
-    text-align: left;
-    font-size: 1.8rem;
-  }
-
-  .about-container p {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    text-align: left;
-    margin-bottom: 0rem;
-  }
-
-  .about-container a {
-    color: var(--light-color);
+  
+  .about-container .title {
+    font-size: 1.75rem;
   }
   
   .about-image-container {
-    font-size: 1.1rem;
-    width: 60%;
-    text-align: center;
-    background: var(--accent-color);
-    margin: 2rem;
-    padding: 1rem;
-    box-shadow: 0.8rem -1.3rem var(--light-color);
+    margin: 1.5rem auto;
+    padding: 1.5rem;
   }
   
-  svg {
-    width: 100%;
-    height: auto;
+  .about-container p {
+    text-align: left;
   }
-  
-  @media (max-width: 768px) {
-    .about-image-container {
-      width: 100%;
-    }
-  }
+}

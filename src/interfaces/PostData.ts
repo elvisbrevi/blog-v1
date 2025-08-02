@@ -1,11 +1,9 @@
 export interface PostData {
   title: string;
   slug: string;
-  publishedAt: string;
-  coverImage: {
-    url: string;
-  };
-  content: {
-    html: string;
-  }
+  date: string;
+  description: string;
+  tags: string[];
+  cover: string;
+  content: string;
 }

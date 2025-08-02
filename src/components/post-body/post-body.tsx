@@ -2,19 +2,18 @@ import './post-body.css';
 import { useEffect, useState } from 'react';
 import * as cheerio from 'cheerio';
 import { Loading } from '../loading/loading';
-import type { PostData } from '../../interfaces/PostData';
+import { BlogPost } from '../../services/blog-service';
 
-const PostBody = ( post : PostData) => {
+const PostBody = ( post : BlogPost) => {
 
     const [postContent, setPostContent] = useState<string>("");
     useEffect(() => {
-        // Add copy button to code blocks
-        const contentWithButtons = post.content.html.replace(
-            /<pre><code/g,
-            '<pre><span class="btn-copy-code">COPY<i className="bi bi-clipboard"></i></span><code');
-        const finalContent = replaceImgWithLink(contentWithButtons);
+        // For now, display markdown content as-is
+        // In a real implementation, you'd convert markdown to HTML here
+        const htmlContent = post.content.replace(/\n/g, '<br>');
+        const finalContent = replaceImgWithLink(htmlContent);
         setPostContent(finalContent);
-    }, [post.content.html]);
+    }, [post.content]);
 
     if (!post) {
         return <Loading />;

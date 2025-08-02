@@ -1,24 +1,15 @@
 import './post-list.css';
 import { useEffect, useState } from 'react';
 import { Loading } from '../loading/loading';
-
-interface Post {
-  title: string;
-  slug: string;
-  publishedAt: string;
-}
-
-interface PostWrapper {
-  node: Post;
-}
+import { BlogPost, loadBlogPosts } from '../../services/blog-service';
 
 const PostList = () => {
   
-  const [posts, setPosts] = useState<Post[] | null>(null); // Initialize with null
+  const [posts, setPosts] = useState<BlogPost[] | null>(null);
 
   useEffect(() => {
     async function fetchDataAsync() {
-      const postsData = await fetchData();
+      const postsData = await loadBlogPosts();
       setPosts(postsData);
     }
 
@@ -34,7 +25,7 @@ const PostList = () => {
       {posts.map((post) => (
         <li key={post.slug}>
           <a href={`/post/${post.slug}`}>
-            <span className="post-date">{post.publishedAt.slice(0, 10)}: </span>
+            <span className="post-date">{post.date.slice(0, 10)}: </span>
             {post.title}
           </a>
         </li>
@@ -43,40 +34,5 @@ const PostList = () => {
   );
 };
 
-async function fetchData(): Promise<Post[]> {
-    const query = `
-      query Publication {
-        publication(host: "elvisbrevi.hashnode.dev") {
-          posts(first: 20) {
-            edges {
-              node {
-                title
-                slug
-                publishedAt
-              }
-            }
-          }
-        }
-      }
-    `;
-  
-    const response = await fetch("https://gql.hashnode.com", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query }),
-    });
-
-    const { data } = await response.json();
-
-    const postsData: Post[] = data.publication.posts.edges.map((item: PostWrapper) => ({
-      title: item.node.title,
-      slug: item.node.slug,
-      publishedAt: item.node.publishedAt
-    }));
-
-    return postsData;
-  }
 
 export default PostList;

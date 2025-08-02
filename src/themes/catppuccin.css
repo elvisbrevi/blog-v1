@@ -1,0 +1,431 @@
+/* Modern Theme System - Enhanced with new themes */
+
+/* Vague2k Theme - Default */
+:root {
+  /* Background Colors */
+  --base: #18181a;
+  --mantle: #161618;
+  --crust: #141416;
+  
+  /* RGB Values for rgba() functions */
+  --base-rgb: 24, 24, 26;
+  --secondary-bg-rgb: 44, 44, 48;
+  --tertiary-bg-rgb: 58, 58, 64;
+  --border-rgb: 72, 72, 90;
+  --accent-primary-rgb: 66, 165, 245;
+  --accent-secondary-rgb: 221, 160, 221;
+  --green-rgb: 129, 199, 132;
+  --blue-rgb: 66, 165, 245;
+  
+  /* Surface Colors */
+  --surface0: #2c2c30;
+  --surface1: #3a3a40;
+  --surface2: #48485a;
+  
+  /* Overlay Colors */
+  --overlay0: #565670;
+  --overlay1: #646480;
+  --overlay2: #727290;
+  
+  /* Text Colors */
+  --text: #dfdfe0;
+  --subtext1: #c0c0c7;
+  --subtext0: #a1a1aa;
+  
+  /* Accent Colors */
+  --rosewater: #f7c7c7;
+  --flamingo: #f4a7a7;
+  --pink: #f48fb1;
+  --mauve: #dda0dd;
+  --red: #ff6b6b;
+  --maroon: #e57373;
+  --peach: #ffb74d;
+  --yellow: #fff176;
+  --green: #81c784;
+  --teal: #4db6ac;
+  --sky: #4fc3f7;
+  --sapphire: #29b6f6;
+  --blue: #42a5f5;
+  --lavender: #b39ddb;
+  
+  /* Semantic Colors */
+  --primary-bg: var(--base);
+  --secondary-bg: var(--surface0);
+  --tertiary-bg: var(--surface1);
+  --primary-text: var(--text);
+  --secondary-text: var(--subtext1);
+  --muted-text: var(--subtext0);
+  --accent-primary: var(--blue);
+  --accent-secondary: var(--mauve);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
+  --border: var(--surface2);
+  --hover: var(--surface1);
+}
+
+/* Catppuccin Mocha Theme */
+[data-theme="mocha"] {
+  /* Background Colors */
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+  
+  /* RGB Values for rgba() functions */
+  --base-rgb: 30, 30, 46;
+  --secondary-bg-rgb: 49, 50, 68;
+  --tertiary-bg-rgb: 69, 71, 90;
+  --border-rgb: 88, 91, 112;
+  --accent-primary-rgb: 137, 180, 250;
+  
+  /* Surface Colors */
+  --surface0: #313244;
+  --surface1: #45475a;
+  --surface2: #585b70;
+  
+  /* Overlay Colors */
+  --overlay0: #6c7086;
+  --overlay1: #7f849c;
+  --overlay2: #9399b2;
+  
+  /* Text Colors */
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  
+  /* Accent Colors */
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  
+  /* Semantic Colors */
+  --primary-bg: var(--base);
+  --secondary-bg: var(--surface0);
+  --tertiary-bg: var(--surface1);
+  --primary-text: var(--text);
+  --secondary-text: var(--subtext1);
+  --muted-text: var(--subtext0);
+  --accent-primary: var(--blue);
+  --accent-secondary: var(--mauve);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
+  --border: var(--surface2);
+  --hover: var(--surface1);
+}
+
+/* Latte Theme (Light) */
+[data-theme="latte"] {
+  /* Background Colors */
+  --base: #eff1f5;
+  --mantle: #e6e9ef;
+  --crust: #dce0e8;
+  
+  /* Surface Colors */
+  --surface0: #ccd0da;
+  --surface1: #bcc0cc;
+  --surface2: #acb0be;
+  
+  /* Overlay Colors */
+  --overlay0: #9ca0b0;
+  --overlay1: #8c8fa1;
+  --overlay2: #7c7f93;
+  
+  /* Text Colors */
+  --text: #4c4f69;
+  --subtext1: #5c5f77;
+  --subtext0: #6c6f85;
+  
+  /* Accent Colors */
+  --rosewater: #dc8a78;
+  --flamingo: #dd7878;
+  --pink: #ea76cb;
+  --mauve: #8839ef;
+  --red: #d20f39;
+  --maroon: #e64553;
+  --peach: #fe640b;
+  --yellow: #df8e1d;
+  --green: #40a02b;
+  --teal: #179299;
+  --sky: #04a5e5;
+  --sapphire: #209fb5;
+  --blue: #1e66f5;
+  --lavender: #7287fd;
+  
+  /* Semantic Colors */
+  --primary-bg: var(--base);
+  --secondary-bg: var(--surface0);
+  --tertiary-bg: var(--surface1);
+  --primary-text: var(--text);
+  --secondary-text: var(--subtext1);
+  --muted-text: var(--subtext0);
+  --accent-primary: var(--blue);
+  --accent-secondary: var(--mauve);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
+  --border: var(--surface2);
+  --hover: var(--surface1);
+}
+
+/* Frappe Theme (Medium Dark) */
+[data-theme="frappe"] {
+  /* Background Colors */
+  --base: #303446;
+  --mantle: #292c3c;
+  --crust: #232634;
+  
+  /* Surface Colors */
+  --surface0: #414559;
+  --surface1: #51576d;
+  --surface2: #626880;
+  
+  /* Overlay Colors */
+  --overlay0: #737994;
+  --overlay1: #838ba7;
+  --overlay2: #949cbb;
+  
+  /* Text Colors */
+  --text: #c6d0f5;
+  --subtext1: #b5bfe2;
+  --subtext0: #a5adce;
+  
+  /* Accent Colors */
+  --rosewater: #f2d5cf;
+  --flamingo: #eebebe;
+  --pink: #f4b8e4;
+  --mauve: #ca9ee6;
+  --red: #e78284;
+  --maroon: #ea999c;
+  --peach: #ef9f76;
+  --yellow: #e5c890;
+  --green: #a6d189;
+  --teal: #81c8be;
+  --sky: #99d1db;
+  --sapphire: #85c1dc;
+  --blue: #8caaee;
+  --lavender: #babbf1;
+  
+  /* Semantic Colors */
+  --primary-bg: var(--base);
+  --secondary-bg: var(--surface0);
+  --tertiary-bg: var(--surface1);
+  --primary-text: var(--text);
+  --secondary-text: var(--subtext1);
+  --muted-text: var(--subtext0);
+  --accent-primary: var(--blue);
+  --accent-secondary: var(--mauve);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
+  --border: var(--surface2);
+  --hover: var(--surface1);
+}
+
+/* Macchiato Theme (Dark) */
+[data-theme="macchiato"] {
+  /* Background Colors */
+  --base: #24273a;
+  --mantle: #1e2030;
+  --crust: #181926;
+  
+  /* Surface Colors */
+  --surface0: #363a4f;
+  --surface1: #494d64;
+  --surface2: #5b6078;
+  
+  /* Overlay Colors */
+  --overlay0: #6e738d;
+  --overlay1: #8087a2;
+  --overlay2: #939ab7;
+  
+  /* Text Colors */
+  --text: #cad3f5;
+  --subtext1: #b8c0e0;
+  --subtext0: #a5adcb;
+  
+  /* Accent Colors */
+  --rosewater: #f4dbd6;
+  --flamingo: #f0c6c6;
+  --pink: #f5bde6;
+  --mauve: #c6a0f6;
+  --red: #ed8796;
+  --maroon: #ee99a0;
+  --peach: #f5a97f;
+  --yellow: #eed49f;
+  --green: #a6da95;
+  --teal: #8bd5ca;
+  --sky: #91d7e3;
+  --sapphire: #7dc4e4;
+  --blue: #8aadf4;
+  --lavender: #b7bdf8;
+  
+  /* Semantic Colors */
+  --primary-bg: var(--base);
+  --secondary-bg: var(--surface0);
+  --tertiary-bg: var(--surface1);
+  --primary-text: var(--text);
+  --secondary-text: var(--subtext1);
+  --muted-text: var(--subtext0);
+  --accent-primary: var(--blue);
+  --accent-secondary: var(--mauve);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
+  --border: var(--surface2);
+  --hover: var(--surface1);
+}
+
+
+/* Gruvbox Theme */
+[data-theme="gruvbox"] {
+  /* Background Colors */
+  --base: #282828;
+  --mantle: #1d2021;
+  --crust: #1d2021;
+  
+  /* RGB Values for rgba() functions */
+  --base-rgb: 40, 40, 40;
+  --secondary-bg-rgb: 60, 56, 54;
+  --tertiary-bg-rgb: 80, 73, 69;
+  --border-rgb: 102, 92, 84;
+  --accent-primary-rgb: 69, 133, 136;
+  
+  /* Surface Colors */
+  --surface0: #3c3836;
+  --surface1: #504945;
+  --surface2: #665c54;
+  
+  /* Overlay Colors */
+  --overlay0: #7c6f64;
+  --overlay1: #928374;
+  --overlay2: #a89984;
+  
+  /* Text Colors */
+  --text: #ebdbb2;
+  --subtext1: #d5c4a1;
+  --subtext0: #bdae93;
+  
+  /* Accent Colors */
+  --rosewater: #fb4934;
+  --flamingo: #fe8019;
+  --pink: #d3869b;
+  --mauve: #b16286;
+  --red: #cc241d;
+  --maroon: #9d0006;
+  --peach: #fe8019;
+  --yellow: #fabd2f;
+  --green: #98971a;
+  --teal: #689d6a;
+  --sky: #83a598;
+  --sapphire: #458588;
+  --blue: #458588;
+  --lavender: #b16286;
+  
+  /* Semantic Colors */
+  --primary-bg: var(--base);
+  --secondary-bg: var(--surface0);
+  --tertiary-bg: var(--surface1);
+  --primary-text: var(--text);
+  --secondary-text: var(--subtext1);
+  --muted-text: var(--subtext0);
+  --accent-primary: var(--blue);
+  --accent-secondary: var(--yellow);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
+  --border: var(--surface2);
+  --hover: var(--surface1);
+}
+
+/* Lush Theme (Inspired by lush.nvim's vibrant colors) */
+[data-theme="lush"] {
+  /* Background Colors */
+  --base: #0f0f23;
+  --mantle: #0a0a1a;
+  --crust: #050510;
+  
+  /* RGB Values for rgba() functions */
+  --base-rgb: 15, 15, 35;
+  --secondary-bg-rgb: 26, 26, 53;
+  --tertiary-bg-rgb: 37, 37, 71;
+  --border-rgb: 48, 48, 88;
+  --accent-primary-rgb: 99, 102, 241;
+  
+  /* Surface Colors */
+  --surface0: #1a1a35;
+  --surface1: #252547;
+  --surface2: #303058;
+  
+  /* Overlay Colors */
+  --overlay0: #3b3b6a;
+  --overlay1: #46467c;
+  --overlay2: #51518e;
+  
+  /* Text Colors */
+  --text: #e0e0ff;
+  --subtext1: #c0c0e0;
+  --subtext0: #a0a0c0;
+  
+  /* Accent Colors - Vibrant and lush */
+  --rosewater: #ff9eb5;
+  --flamingo: #ff7eb6;
+  --pink: #ff6bcb;
+  --mauve: #d946ef;
+  --red: #ff4d6d;
+  --maroon: #e11d48;
+  --peach: #ff8c42;
+  --yellow: #f59e0b;
+  --green: #10b981;
+  --teal: #06b6d4;
+  --sky: #0ea5e9;
+  --sapphire: #3b82f6;
+  --blue: #6366f1;
+  --lavender: #8b5cf6;
+  
+  /* Semantic Colors */
+  --primary-bg: var(--base);
+  --secondary-bg: var(--surface0);
+  --tertiary-bg: var(--surface1);
+  --primary-text: var(--text);
+  --secondary-text: var(--subtext1);
+  --muted-text: var(--subtext0);
+  --accent-primary: var(--blue);
+  --accent-secondary: var(--pink);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
+  --border: var(--surface2);
+  --hover: var(--surface1);
+}
+
+/* Theme transition animations and global styles */
+* {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--accent-primary);
+  color: var(--base);
+}

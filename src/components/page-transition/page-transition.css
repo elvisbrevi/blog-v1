@@ -1,0 +1,25 @@
+.page-transition {
+  width: 100%;
+  min-height: 100vh;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-transition.transitioning {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Smooth navigation effect */
+.page-transition::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-bg);
+  z-index: -1;
+  pointer-events: none;
+}
