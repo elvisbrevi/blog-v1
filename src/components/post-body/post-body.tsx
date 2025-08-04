@@ -1,6 +1,7 @@
 import './post-body.css';
 import { useEffect, useState } from 'react';
 import * as cheerio from 'cheerio';
+import { marked } from 'marked';
 import { Loading } from '../loading/loading';
 import { BlogPost } from '../../services/blog-service';
 
@@ -8,11 +9,14 @@ const PostBody = ( post : BlogPost) => {
 
     const [postContent, setPostContent] = useState<string>("");
     useEffect(() => {
-        // For now, display markdown content as-is
-        // In a real implementation, you'd convert markdown to HTML here
-        const htmlContent = post.content.replace(/\n/g, '<br>');
-        const finalContent = replaceImgWithLink(htmlContent);
-        setPostContent(finalContent);
+        async function processMarkdown() {
+            // Convert markdown to HTML
+            const htmlContent = await marked(post.content);
+            const finalContent = replaceImgWithLink(htmlContent);
+            setPostContent(finalContent);
+        }
+        
+        processMarkdown();
     }, [post.content]);
 
     if (!post) {
