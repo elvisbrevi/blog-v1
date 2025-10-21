@@ -1,53 +1,53 @@
-/* Modern Theme System - Enhanced with new themes */
+/* Minimal Theme System - Clean and Simple */
 
-/* Vague2k Theme - Default */
+/* Minimal Light Theme - Default */
 :root {
   /* Background Colors */
-  --base: #18181a;
-  --mantle: #161618;
-  --crust: #141416;
-  
+  --base: #ffffff;
+  --mantle: #fafafa;
+  --crust: #f5f5f5;
+
   /* RGB Values for rgba() functions */
-  --base-rgb: 24, 24, 26;
-  --secondary-bg-rgb: 44, 44, 48;
-  --tertiary-bg-rgb: 58, 58, 64;
-  --border-rgb: 72, 72, 90;
-  --accent-primary-rgb: 66, 165, 245;
-  --accent-secondary-rgb: 221, 160, 221;
-  --green-rgb: 129, 199, 132;
-  --blue-rgb: 66, 165, 245;
-  
+  --base-rgb: 255, 255, 255;
+  --secondary-bg-rgb: 250, 250, 250;
+  --tertiary-bg-rgb: 245, 245, 245;
+  --border-rgb: 224, 224, 224;
+  --accent-primary-rgb: 26, 26, 26;
+  --accent-secondary-rgb: 102, 102, 102;
+  --green-rgb: 26, 26, 26;
+  --blue-rgb: 26, 26, 26;
+
   /* Surface Colors */
-  --surface0: #2c2c30;
-  --surface1: #3a3a40;
-  --surface2: #48485a;
-  
+  --surface0: #fafafa;
+  --surface1: #f5f5f5;
+  --surface2: #e0e0e0;
+
   /* Overlay Colors */
-  --overlay0: #565670;
-  --overlay1: #646480;
-  --overlay2: #727290;
-  
+  --overlay0: #d0d0d0;
+  --overlay1: #b0b0b0;
+  --overlay2: #909090;
+
   /* Text Colors */
-  --text: #dfdfe0;
-  --subtext1: #c0c0c7;
-  --subtext0: #a1a1aa;
-  
+  --text: #1a1a1a;
+  --subtext1: #666666;
+  --subtext0: #999999;
+
   /* Accent Colors */
-  --rosewater: #f7c7c7;
-  --flamingo: #f4a7a7;
-  --pink: #f48fb1;
-  --mauve: #dda0dd;
-  --red: #ff6b6b;
-  --maroon: #e57373;
-  --peach: #ffb74d;
-  --yellow: #fff176;
-  --green: #81c784;
-  --teal: #4db6ac;
-  --sky: #4fc3f7;
-  --sapphire: #29b6f6;
-  --blue: #42a5f5;
-  --lavender: #b39ddb;
-  
+  --rosewater: #1a1a1a;
+  --flamingo: #1a1a1a;
+  --pink: #1a1a1a;
+  --mauve: #666666;
+  --red: #1a1a1a;
+  --maroon: #1a1a1a;
+  --peach: #1a1a1a;
+  --yellow: #1a1a1a;
+  --green: #1a1a1a;
+  --teal: #1a1a1a;
+  --sky: #1a1a1a;
+  --sapphire: #1a1a1a;
+  --blue: #1a1a1a;
+  --lavender: #666666;
+
   /* Semantic Colors */
   --primary-bg: var(--base);
   --secondary-bg: var(--surface0);
@@ -64,51 +64,54 @@
   --hover: var(--surface1);
 }
 
-/* Catppuccin Mocha Theme */
+/* Minimal Dark Theme */
 [data-theme="mocha"] {
   /* Background Colors */
-  --base: #1e1e2e;
-  --mantle: #181825;
-  --crust: #11111b;
-  
+  --base: #0a0a0a;
+  --mantle: #141414;
+  --crust: #1a1a1a;
+
   /* RGB Values for rgba() functions */
-  --base-rgb: 30, 30, 46;
-  --secondary-bg-rgb: 49, 50, 68;
-  --tertiary-bg-rgb: 69, 71, 90;
-  --border-rgb: 88, 91, 112;
-  --accent-primary-rgb: 137, 180, 250;
-  
+  --base-rgb: 10, 10, 10;
+  --secondary-bg-rgb: 20, 20, 20;
+  --tertiary-bg-rgb: 26, 26, 26;
+  --border-rgb: 42, 42, 42;
+  --accent-primary-rgb: 245, 245, 245;
+  --accent-secondary-rgb: 160, 160, 160;
+  --green-rgb: 245, 245, 245;
+  --blue-rgb: 245, 245, 245;
+
   /* Surface Colors */
-  --surface0: #313244;
-  --surface1: #45475a;
-  --surface2: #585b70;
-  
+  --surface0: #141414;
+  --surface1: #1a1a1a;
+  --surface2: #2a2a2a;
+
   /* Overlay Colors */
-  --overlay0: #6c7086;
-  --overlay1: #7f849c;
-  --overlay2: #9399b2;
-  
+  --overlay0: #3a3a3a;
+  --overlay1: #4a4a4a;
+  --overlay2: #5a5a5a;
+
   /* Text Colors */
-  --text: #cdd6f4;
-  --subtext1: #bac2de;
-  --subtext0: #a6adc8;
-  
+  --text: #f5f5f5;
+  --subtext1: #a0a0a0;
+  --subtext0: #666666;
+
   /* Accent Colors */
-  --rosewater: #f5e0dc;
-  --flamingo: #f2cdcd;
-  --pink: #f5c2e7;
-  --mauve: #cba6f7;
-  --red: #f38ba8;
-  --maroon: #eba0ac;
-  --peach: #fab387;
-  --yellow: #f9e2af;
-  --green: #a6e3a1;
-  --teal: #94e2d5;
-  --sky: #89dceb;
-  --sapphire: #74c7ec;
-  --blue: #89b4fa;
-  --lavender: #b4befe;
-  
+  --rosewater: #f5f5f5;
+  --flamingo: #f5f5f5;
+  --pink: #f5f5f5;
+  --mauve: #a0a0a0;
+  --red: #f5f5f5;
+  --maroon: #f5f5f5;
+  --peach: #f5f5f5;
+  --yellow: #f5f5f5;
+  --green: #f5f5f5;
+  --teal: #f5f5f5;
+  --sky: #f5f5f5;
+  --sapphire: #f5f5f5;
+  --blue: #f5f5f5;
+  --lavender: #a0a0a0;
+
   /* Semantic Colors */
   --primary-bg: var(--base);
   --secondary-bg: var(--surface0);
@@ -410,22 +413,13 @@
   --hover: var(--surface1);
 }
 
-/* Theme transition animations and global styles */
+/* Minimal global styles - no animations */
 * {
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Scroll behavior */
-html {
-  scroll-behavior: smooth;
+  transition: none;
 }
 
 /* Selection styling */
 ::selection {
-  background-color: var(--accent-primary);
-  color: var(--base);
+  background-color: var(--primary-text);
+  color: var(--primary-bg);
 }
