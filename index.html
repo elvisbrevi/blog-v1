@@ -6,61 +6,50 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <!-- Prevent white flash on load -->
     <style>
       html {
-        background-color: #18181a !important;
-        color: #dfdfe0 !important;
+        background-color: #F5F3EE !important;
+        color: #1C1C1C !important;
       }
       body {
-        background-color: #18181a !important;
-        color: #dfdfe0 !important;
+        background-color: #F5F3EE !important;
+        color: #1C1C1C !important;
         margin: 0;
         padding: 0;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
         transition: none !important;
       }
-      /* Loading animation to show while CSS loads */
+      /* Minimal loading text */
       .initial-loader {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: #18181a;
+        background: #F5F3EE;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 9999;
         opacity: 1;
-        transition: opacity 0.3s ease;
       }
       .initial-loader.hide {
         opacity: 0;
         pointer-events: none;
       }
-      .loader-dots {
-        display: flex;
-        gap: 0.5rem;
-      }
-      .loader-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #42a5f5;
-        animation: pulse 1.5s ease-in-out infinite;
-      }
-      .loader-dot:nth-child(1) { animation-delay: 0s; }
-      .loader-dot:nth-child(2) { animation-delay: 0.2s; background: #dda0dd; }
-      .loader-dot:nth-child(3) { animation-delay: 0.4s; background: #81c784; }
-      @keyframes pulse {
-        0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
-        40% { opacity: 1; transform: scale(1.2); }
+      .loader-text {
+        color: #999999;
+        font-size: 1rem;
+        font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
       }
     </style>
-    
-    <!-- Fonts are now self-hosted for better performance -->
-    
+
     <link rel="stylesheet" href="/css/panda-syntax-dark.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/fancybox.css" />
@@ -77,11 +66,7 @@
   <body>
     <!-- Initial loader to prevent white flash -->
     <div class="initial-loader" id="initial-loader">
-      <div class="loader-dots">
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-      </div>
+      <div class="loader-text">Loading...</div>
     </div>
     
     <div id="root"></div>
@@ -117,7 +102,6 @@
     <script src="/js/fancybox.umd.js"></script>
     <script src="/js/highlight.min.js"></script>
     <script src="/js/clipboard.min.js"></script>
-    <script type="module" src="/src/scripts/scroll-gradient.js"></script>
     <script>
       // Highlight
       hljs.configure({

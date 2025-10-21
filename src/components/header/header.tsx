@@ -1,5 +1,4 @@
 import './header.css';
-import { ThemeSwitcher } from '../theme-switcher/theme-switcher';
 
 const Header = () => {
   return (
@@ -14,7 +13,6 @@ const Header = () => {
             <a className="nav-link" href="/about">About me</a>
           </li>
         </ul>
-        <ThemeSwitcher />
       </div>
     </nav>
   );

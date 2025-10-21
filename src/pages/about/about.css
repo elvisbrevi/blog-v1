@@ -11,12 +11,14 @@
 
 .about-container .title {
   color: var(--primary-text);
+  font-family: var(--font-serif);
   font-size: 2rem;
   font-weight: 400;
   margin: 0 0 2rem 0;
   text-align: left;
   border-bottom: 1px solid var(--border);
   padding-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 .about-container p {
