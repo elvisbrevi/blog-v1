@@ -10,12 +10,15 @@ const PostBody = ( post : BlogPost) => {
     const [postContent, setPostContent] = useState<string>("");
     useEffect(() => {
         async function processMarkdown() {
+            // Clean markdown content before processing
+            const cleanedMarkdown = cleanMarkdownImages(post.content);
+
             // Convert markdown to HTML
-            const htmlContent = await marked(post.content);
+            const htmlContent = await marked(cleanedMarkdown);
             const finalContent = replaceImgWithLink(htmlContent);
             setPostContent(finalContent);
         }
-        
+
         processMarkdown();
     }, [post.content]);
 
@@ -27,6 +30,17 @@ const PostBody = ( post : BlogPost) => {
         <div className="post-body" dangerouslySetInnerHTML={{ __html: postContent }} />
     );
 };
+
+function cleanMarkdownImages(markdown: string): string {
+    // Remove HTML attributes from markdown image syntax
+    // Example: ![alt](url align="center") -> ![alt](url)
+    let cleaned = markdown.replace(/!\[(.*?)\]\((.*?)\s+align=["'].*?["']\)/g, '![$1]($2)');
+
+    // Also handle any other HTML attributes within markdown image syntax
+    cleaned = cleaned.replace(/!\[(.*?)\]\((.*?)\s+\w+=["'].*?["']\)/g, '![$1]($2)');
+
+    return cleaned;
+}
 
 function replaceImgWithLink(html: string): string {
     const $ = cheerio.load(html);
