@@ -3,49 +3,49 @@
 /* Minimal Light Theme - Default */
 :root {
   /* Background Colors */
-  --base: #ffffff;
-  --mantle: #fafafa;
-  --crust: #f5f5f5;
+  --base: #F5F3EE;
+  --mantle: #EFEEE9;
+  --crust: #E8E7E2;
 
   /* RGB Values for rgba() functions */
-  --base-rgb: 255, 255, 255;
-  --secondary-bg-rgb: 250, 250, 250;
-  --tertiary-bg-rgb: 245, 245, 245;
-  --border-rgb: 224, 224, 224;
-  --accent-primary-rgb: 26, 26, 26;
-  --accent-secondary-rgb: 102, 102, 102;
-  --green-rgb: 26, 26, 26;
-  --blue-rgb: 26, 26, 26;
+  --base-rgb: 245, 243, 238;
+  --secondary-bg-rgb: 239, 238, 233;
+  --tertiary-bg-rgb: 232, 231, 226;
+  --border-rgb: 224, 223, 218;
+  --accent-primary-rgb: 28, 28, 28;
+  --accent-secondary-rgb: 153, 153, 153;
+  --green-rgb: 28, 28, 28;
+  --blue-rgb: 28, 28, 28;
 
   /* Surface Colors */
-  --surface0: #fafafa;
-  --surface1: #f5f5f5;
-  --surface2: #e0e0e0;
+  --surface0: #EFEEE9;
+  --surface1: #E8E7E2;
+  --surface2: #E0DFDA;
 
   /* Overlay Colors */
-  --overlay0: #d0d0d0;
-  --overlay1: #b0b0b0;
-  --overlay2: #909090;
+  --overlay0: #D0CFCA;
+  --overlay1: #B0AFAA;
+  --overlay2: #90908A;
 
   /* Text Colors */
-  --text: #1a1a1a;
+  --text: #1C1C1C;
   --subtext1: #666666;
   --subtext0: #999999;
 
   /* Accent Colors */
-  --rosewater: #1a1a1a;
-  --flamingo: #1a1a1a;
-  --pink: #1a1a1a;
+  --rosewater: #1C1C1C;
+  --flamingo: #1C1C1C;
+  --pink: #1C1C1C;
   --mauve: #666666;
-  --red: #1a1a1a;
-  --maroon: #1a1a1a;
-  --peach: #1a1a1a;
-  --yellow: #1a1a1a;
-  --green: #1a1a1a;
-  --teal: #1a1a1a;
-  --sky: #1a1a1a;
-  --sapphire: #1a1a1a;
-  --blue: #1a1a1a;
+  --red: #1C1C1C;
+  --maroon: #1C1C1C;
+  --peach: #1C1C1C;
+  --yellow: #1C1C1C;
+  --green: #1C1C1C;
+  --teal: #1C1C1C;
+  --sky: #1C1C1C;
+  --sapphire: #1C1C1C;
+  --blue: #1C1C1C;
   --lavender: #666666;
 
   /* Semantic Colors */
@@ -62,6 +62,11 @@
   --error: var(--red);
   --border: var(--surface2);
   --hover: var(--surface1);
+
+  /* Fonts */
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Minimal global styles - no animations */

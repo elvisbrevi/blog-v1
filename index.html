@@ -6,18 +6,23 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <!-- Prevent white flash on load -->
     <style>
       html {
-        background-color: #ffffff !important;
-        color: #1a1a1a !important;
+        background-color: #F5F3EE !important;
+        color: #1C1C1C !important;
       }
       body {
-        background-color: #ffffff !important;
-        color: #1a1a1a !important;
+        background-color: #F5F3EE !important;
+        color: #1C1C1C !important;
         margin: 0;
         padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
         transition: none !important;
       }
       /* Minimal loading text */
@@ -27,7 +32,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: #ffffff;
+        background: #F5F3EE;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -39,13 +44,12 @@
         pointer-events: none;
       }
       .loader-text {
-        color: #666666;
+        color: #999999;
         font-size: 1rem;
+        font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
       }
     </style>
-    
-    <!-- Fonts are now self-hosted for better performance -->
-    
+
     <link rel="stylesheet" href="/css/panda-syntax-dark.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/fancybox.css" />

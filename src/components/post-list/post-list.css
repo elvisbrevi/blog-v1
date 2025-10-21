@@ -22,9 +22,11 @@
   color: var(--primary-text);
   text-decoration: none;
   display: block;
+  font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 1.25rem;
-  line-height: 1.4;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
 }
 
 .post-list li a:hover {
@@ -41,11 +43,11 @@
 }
 
 .post-date {
-  color: var(--secondary-text);
+  color: var(--muted-text);
   font-size: 0.85rem;
   font-weight: 400;
   margin-right: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-mono);
 }
 
 .post-excerpt {
