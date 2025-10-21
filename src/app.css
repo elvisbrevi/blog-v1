@@ -1,95 +1,30 @@
-/* Modern Main Layout */
+/* Minimal Main Layout */
 main {
-  max-width: 1400px;
+  max-width: 650px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   min-height: calc(100vh - 200px);
-  position: relative;
-  z-index: 100;
 }
 
-/* Glass morphism row container */
+/* Minimal row container */
 .row {
   width: 100%;
-  max-width: 900px;
+  max-width: 650px;
   margin: 0 auto;
-  position: relative;
-  z-index: 100;
 }
 
-/* Modern Glass Container */
+/* Minimal Container */
 .container {
-  background: rgba(var(--secondary-bg-rgb, 49, 50, 68), 0.15);
-  backdrop-filter: blur(15px) saturate(150%);
-  border: 1px solid rgba(var(--border-rgb, 88, 91, 112), 0.2);
-  border-radius: 24px;
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 100;
+  background: var(--primary-bg);
+  padding: 0;
+  margin-bottom: 3rem;
 }
 
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
-  opacity: 0.6;
-}
-
-.container:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(var(--accent-primary-rgb, 137, 180, 250), 0.1);
-  border-color: rgba(var(--accent-primary-rgb, 137, 180, 250), 0.3);
-}
-
-/* Floating Card System */
+/* Minimal Card System */
 .card {
-  background: linear-gradient(135deg, 
-    rgba(var(--secondary-bg-rgb, 49, 50, 68), 0.2), 
-    rgba(var(--tertiary-bg-rgb, 69, 71, 90), 0.15));
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(var(--border-rgb, 88, 91, 112), 0.2);
-  border-radius: 20px;
-  padding: 2rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(var(--accent-primary-rgb, 137, 180, 250), 0.05), 
-    rgba(var(--accent-secondary-rgb, 203, 166, 247), 0.05));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.card:hover {
-  transform: translateY(-6px) rotateX(5deg);
-  box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.1),
-    0 5px 15px rgba(0, 0, 0, 0.08);
-  border-color: rgba(var(--accent-primary-rgb, 137, 180, 250), 0.4);
-}
-
-.card:hover::after {
-  opacity: 1;
+  background: var(--primary-bg);
+  padding: 0;
+  margin-bottom: 2rem;
 }
 
 /* Responsive adjustments */
