@@ -51,21 +51,6 @@
   display: flex;
 }
 
-/* Theme switcher button */
-.theme-switcher {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--primary-text);
-  padding: 0.25rem 0.5rem;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 400;
-}
-
-.theme-switcher:hover {
-  opacity: 0.6;
-}
-
 /* Mobile responsive */
 @media (max-width: 768px) {
   .navbar {
@@ -85,10 +70,5 @@
   .navbar .list ul {
     flex-wrap: wrap;
     gap: 1rem;
-  }
-
-  .theme-switcher {
-    font-size: 0.85rem;
-    padding: 0.25rem 0.5rem;
   }
 }

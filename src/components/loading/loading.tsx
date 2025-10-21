@@ -1,7 +1,7 @@
 import './loading.css';
 
 export const Loading = () => {
-    return (
-        <div className="container color-range"></div>
-    );
+  return (
+    <div className="loading-container">Loading...</div>
+  );
 };
