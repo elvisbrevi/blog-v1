@@ -76,8 +76,8 @@
 }
 
 .post-body pre {
-  background-color: var(--secondary-bg);
-  border: 1px solid var(--border);
+  background-color: #2E3440;
+  border: 1px solid #434c5e;
   padding: 1.5rem;
   margin: 1.5rem 0;
   overflow-x: auto;
@@ -90,7 +90,7 @@
   background: none;
   border: none;
   padding: 0;
-  color: var(--primary-text);
+  color: #D8DEE9;
   font-size: inherit;
 }
 
