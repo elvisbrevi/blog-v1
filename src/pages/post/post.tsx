@@ -4,6 +4,7 @@ import PostBody from '../../components/post-body/post-body';
 import { Loading } from '../../components/loading/loading';
 import { useParams } from 'react-router-dom';
 import { BlogPost, getBlogPost } from '../../services/blog-service';
+import OptimizedImage from '../../components/optimized-image/optimized-image';
 
 const PostPage = () => {
   const [post, setPost] = useState<BlogPost | null>(null);
@@ -33,7 +34,15 @@ const PostPage = () => {
           <div className="post-content">
               <span className="post-date">{post.date.substring(0, 10)}</span>
               <h1 className="title">{post.title}</h1>
-              <img className="post-featured-image" width={500} src={post.cover} />
+              {post.cover && (
+                <OptimizedImage
+                  src={post.cover}
+                  alt={post.title}
+                  className="post-featured-image"
+                  aspectRatio="16/9"
+                  priority={true}
+                />
+              )}
               <PostBody {...post} />
           </div>
         </div>

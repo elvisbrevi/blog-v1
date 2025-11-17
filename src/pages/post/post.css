@@ -41,11 +41,15 @@
 }
 
 .post-featured-image {
-  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.post-featured-image .optimized-image {
   max-height: 400px;
   object-fit: cover;
-  border: 1px solid var(--border);
-  margin: 2rem 0;
 }
 
 .post-content .post-body {
@@ -140,7 +144,7 @@
     gap: 0.5rem;
   }
 
-  .post-featured-image {
+  .post-featured-image .optimized-image {
     max-height: 250px;
   }
 
