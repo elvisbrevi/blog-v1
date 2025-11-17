@@ -1,0 +1,62 @@
+/* Optimized Image Component */
+.optimized-image-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--secondary-bg);
+}
+
+.optimized-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.optimized-image.loaded {
+  opacity: 1;
+}
+
+.optimized-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--secondary-bg) 0%,
+    var(--border) 50%,
+    var(--secondary-bg) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.optimized-image-placeholder.loading {
+  /* Shimmer effect while loading */
+}
+
+.optimized-image-placeholder.error {
+  background: var(--secondary-bg);
+  color: var(--muted-text);
+  font-size: 0.875rem;
+  animation: none;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Ensure aspect ratio is maintained */
+.optimized-image-container img {
+  object-fit: cover;
+}
