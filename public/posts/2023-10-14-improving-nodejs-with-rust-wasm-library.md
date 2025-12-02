@@ -73,7 +73,7 @@ wasm-pack build --target web
 
 then you will see an output like this:
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1697222302376/6a1bb6c0-827f-4e93-85b6-fb519bfa59b5.png align="center")
+![](/images/posts/rust-wasm-1.png)
 
 create an index.html to call the wasm library:
 
@@ -110,7 +110,7 @@ python3 -m http.server
 
 then go to a local server in my case http://\[::\]:8000/, you will see an alert message from the wasm library, like this:
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1697222485225/33c9afce-7469-400f-a4b0-7a0cad017270.png align="center")
+![](/images/posts/rust-wasm-2.png)
 
 ### **Integrating with Node.js**
 
@@ -169,7 +169,7 @@ node index.js
 
 you will see an output like this:
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1697224065362/39f321fc-f53b-4ee0-85e8-6406a32d31f6.png align="center")
+![](/images/posts/rust-wasm-3.png)
 
 In computing, performance often becomes a significant concern, especially for operations that are computationally intensive. The Fibonacci sequence generation is one such operation. Given the inherent recursion in its calculation, the Fibonacci function can be slow, especially for larger values.
 

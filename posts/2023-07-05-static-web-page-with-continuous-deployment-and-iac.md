@@ -42,7 +42,7 @@ The AWS services I use are:
 
 # 🗺️ Solution Diagram
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1686587280898/6b0d2fc6-43bd-4900-93ca-c39295d1d7da.png align="center")
+![](/images/posts/static-web-1.png)
 
 # 🗄️ GitHub Repository
 
@@ -87,7 +87,7 @@ Now we will create a GitHub repository for storing the source code, and create c
     
     if previous steps worked correctly you should see your new repo in the list:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687914545603/dabdeb65-d090-467a-ade7-742be9ee75bf.png align="center")
+    ![](/images/posts/static-web-2.png)
     
 
 # 👩🏿‍💻 Static WebSite (Vite Project)
@@ -103,7 +103,7 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     
     After running the previous command, the terminal asks for the name and type of project, I called "frontend" and choose Preact such framework and TypeScript such variant, you will see an output like this:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687277813325/25230c9a-d4aa-41b3-89fb-411886dbe6ff.png align="center")
+    ![](/images/posts/static-web-3.png)
     
 2. Now build and run the website locally run these commands:
     
@@ -120,12 +120,12 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     
     you see an output like this:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687282040112/3ec48d80-4cfa-4eb5-a212-d8ca929a52bf.png align="center")
+    ![](/images/posts/static-web-4.png)
     
     open your web browser and navigate to the "Local" URL, http://localhost:5173/ and right now you can see your website locally:
     
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687282281080/716b206b-d4be-4f0d-b865-19f75f987f8b.png align="center")
+![](/images/posts/static-web-5.png)
 
 # 🏰 Infrastructure as Code (AWS CDK )
 
@@ -152,11 +152,11 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     
     after running `cdk init` you will be this output in the terminal:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687297263852/49541cf0-ddf7-42e6-944c-5f6518a447f3.png align="center")
+    ![](/images/posts/static-web-6.png)
     
 3. Open a project with your favorite editor, in my case use [VS Code](https://code.visualstudio.com/) and edit, you should edit the file located in the 'lib' folder, in my case the file is called 'iac-stack.ts' and contain a class, in my case, called IacStack, that contains a constructor that will hold the resource I need created, look like this:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687300221635/ac1525ed-f245-4ba1-9629-80727a31d9d5.png align="center")
+    ![](/images/posts/static-web-7.png)
     
 4. Before adding resources, we need to add the imports necessary for instanced the resources classes:
     
@@ -429,7 +429,7 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     
 7. Now, before deploying this stack you must set your environment variables for your CDK Project, go to the "bin" folder in your IAC project, and open the .ts file, in my case called "iac.ts", this looks like this:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687434369524/a88c6bf6-ff66-497f-95e4-16c18af18d45.png align="center")
+    ![](/images/posts/static-web-8.png)
     
     Uncomment the line with default env variables, and delete other lines' comments, the result of your `bin/iac.ts` will look like this:
     
@@ -462,11 +462,11 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     
     In the terminal you will see the list of resources that will be created and ask you to confirm the AWS services creation:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687879783527/5c78ec05-274e-469f-8456-48beacb4c12d.png align="center")
+    ![](/images/posts/static-web-9.png)
     
     accept changes by typing y and pressing enter, now resources will be created, if all is ok you will see an output like this:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687880989757/6bd3f349-41df-448a-a21d-89a5cdbab85d.png align="center")
+    ![](/images/posts/static-web-10.png)
     
     and you can check the AWS resources created with the stack by typing the command, where `IacStack` is the name of the stack:
     
@@ -476,13 +476,13 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     
     you will see a list of resources like this:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687882139798/24260aa6-99f7-47da-bf2e-5663114083f7.png align="center")
+    ![](/images/posts/static-web-11.png)
     
 9. **Copy the "PhysicalResourceId" of AWS::S3::Bucket and AWS::CloudFront::Distribution resource types, we need these values later.**
     
     Now, you can open the static site in your web browser, and go to the URL domain, in my case `https://elvisbrevi.com`:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687882447871/774c4ea4-d1d8-48fc-97f9-4e12f824e7f8.png align="center")
+    ![](/images/posts/static-web-12.png)
     
 
 # 🔄 CI/CD (GitHub Actions)
@@ -529,7 +529,7 @@ Before creating continuous integrations and continuous delivery for your project
     
     And you will see an output like this:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1688467648773/94c2fe81-6077-42b3-8f73-9802ae7ed8e9.png align="center")
+    ![](/images/posts/static-web-13.png)
     
 
 ## 🚀 Workflows
@@ -553,7 +553,7 @@ Each workflow is composed of one or more jobs, which are individual units of wor
     
     if you have done this correctly, you will see a directories hierarchy like this in your editor code:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1687949803769/83097460-9efa-4ca0-ad4f-61c7ca0c37d0.png align="center")
+    ![](/images/posts/static-web-14.png)
     
 2. Then edit the infrastructure workflow `iac.yml` file, and paste this code:
     
@@ -739,7 +739,7 @@ Each workflow is composed of one or more jobs, which are individual units of wor
     
     You can see something like this:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1688471190402/62cc6f6b-7b28-47e1-ba07-6e08a3c2b080.png align="center")
+    ![](/images/posts/static-web-15.png)
     
 
 # 🎮 Demo
@@ -775,7 +775,7 @@ All configurations are ready, we created a GitHub repository for version control
     
     You can see that it only shows the `iac` workflow running because we only made a change in the `iac` project folder, and you will see an output like this when the workflow is complete:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1688516895788/da93148d-a1c6-4979-acb7-3eb089662f3e.png align="center")
+    ![](/images/posts/static-web-16.png)
     
 * Now, make a change in your frontend project, edit your main page in `frontend/src/app.tsx`:
     
@@ -807,11 +807,11 @@ All configurations are ready, we created a GitHub repository for version control
     
     Now, you can see that it only shows the `frontend` workflow running because we only made a change in the `frontend` project folder:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1688517107573/8f1e92c3-402d-4177-8df1-aca8788a861e.png align="center")
+    ![](/images/posts/static-web-17.png)
     
     Finally, our changes are deployed automatically:
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1688517503838/af72f6fc-0ecf-407a-8209-1fe0c589008d.png align="center")
+    ![](/images/posts/static-web-18.png)
     
     # 🤔 Conclusion
     
