@@ -4,7 +4,7 @@ date: "2023-10-14 19:38:21"
 description: "Introduction
 WebAssembly (Wasm) is a binary instruction format that allows code written in languages like Rust to run on the web. By integrating Rust-Wasm libraries into Node.js, we can achieve better performance and utilize the power of Rust's memor..."
 tags: ["Rust", "wasm", "Node.js", "node"]
-cover: "https://cdn.hashnode.com/res/hashnode/image/upload/v1697312244910/d1486ed2-9f2a-4eca-a3a0-ceccebd91c7e.webp"
+cover: "/images/covers/rust-wasm-cover.svg"
 ---
 
 # Improving Node.js with Rust-Wasm Library

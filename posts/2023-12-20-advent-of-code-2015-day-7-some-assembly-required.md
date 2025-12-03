@@ -5,7 +5,7 @@ description: "Puzzle Part One:
 This year, Santa brought little Bobby Tables a set of wires and bitwise logic gates! Unfortunately, little Bobby is a little under the recommended age range, and he needs help assembling the circuit.
 Each wire has an identifier (some..."
 tags: ["adventofcode2015"]
-cover: "https://cdn.hashnode.com/res/hashnode/image/upload/v1703079583973/095cf230-8368-44ad-87bf-e28f5ec53124.png"
+cover: "/images/covers/aoc-day-7-cover.svg"
 ---
 
 # Advent of Code 2015, Day 7: Some Assembly Required

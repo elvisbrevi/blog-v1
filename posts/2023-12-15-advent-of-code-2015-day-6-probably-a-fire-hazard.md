@@ -5,7 +5,7 @@ description: "Puzzle Part One:
 Because your neighbors keep defeating you in the holiday house decorating contest year after year, you've decided to deploy one million lights in a 1000x1000 grid.
 Furthermore, because you've been especially nice this year, Santa has..."
 tags: ["adventofcode2015"]
-cover: "https://cdn.hashnode.com/res/hashnode/image/upload/v1702649764433/8fc91e5e-0f66-453a-a992-819713eed8a7.png"
+cover: "/images/covers/aoc-day-6-cover.svg"
 ---
 
 # Advent of Code 2015, Day 6: Probably a Fire Hazard

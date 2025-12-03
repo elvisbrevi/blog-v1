@@ -3,7 +3,7 @@ title: "Static Web Page with Continuous Deployment and IAC"
 date: "2023-07-05 00:51:01"
 description: "This article is about how I made my blog (elvisbrevi.com) using AWS 'free tier' services to host a static site created with Vite and AWS Cloud Development Kit for creating Cloudformation Stack and deploying them with GitHub Actions, the complete code..."
 tags: ["CDK", "GitHub Actions", "github-cli", "React", "S3", "cloudfront"]
-cover: "https://cdn.hashnode.com/res/hashnode/image/upload/v1697335651065/3ae432a5-96e7-43a2-9296-b175b6545841.webp"
+cover: "/images/covers/static-web-cover.svg"
 ---
 
 # Static Web Page with Continuous Deployment and IAC
