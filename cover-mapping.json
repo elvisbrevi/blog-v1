@@ -1,0 +1,52 @@
+{
+  "rust-wasm-cover.webp": {
+    "title": "Rust-WASM",
+    "post": "Improving Node.js with Rust-Wasm Library",
+    "color": "#FF6B35"
+  },
+  "static-web-cover.webp": {
+    "title": "Static Web",
+    "post": "Static Web Page with CI/CD and IAC",
+    "color": "#004E89"
+  },
+  "aoc-day-1-cover.png": {
+    "title": "AoC Day 1",
+    "post": "Advent of Code 2015 Day 1",
+    "color": "#2D3142"
+  },
+  "aoc-day-2-cover.png": {
+    "title": "AoC Day 2",
+    "post": "Advent of Code 2015 Day 2",
+    "color": "#2D3142"
+  },
+  "aoc-day-3-cover.png": {
+    "title": "AoC Day 3",
+    "post": "Advent of Code 2015 Day 3",
+    "color": "#2D3142"
+  },
+  "aoc-day-4-cover.png": {
+    "title": "AoC Day 4",
+    "post": "Advent of Code 2015 Day 4",
+    "color": "#2D3142"
+  },
+  "aoc-day-5-cover.png": {
+    "title": "AoC Day 5",
+    "post": "Advent of Code 2015 Day 5",
+    "color": "#2D3142"
+  },
+  "aoc-day-6-cover.png": {
+    "title": "AoC Day 6",
+    "post": "Advent of Code 2015 Day 6",
+    "color": "#2D3142"
+  },
+  "aoc-day-7-cover.png": {
+    "title": "AoC Day 7",
+    "post": "Advent of Code 2015 Day 7",
+    "color": "#2D3142"
+  },
+  "aoc-day-8-cover.jpeg": {
+    "title": "AoC Day 8",
+    "post": "Advent of Code 2015 Day 8",
+    "color": "#2D3142"
+  }
+}

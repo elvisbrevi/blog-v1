@@ -5,7 +5,7 @@ description: "Puzzle Part One:
 Space on the sleigh is limited this year, and so Santa will be bringing his list as a digital copy. He needs to know how much space it will take up when stored.
 It is common in many programming languages to provide a way to escapespe..."
 tags: ["adventofcode2015"]
-cover: "https://cdn.hashnode.com/res/hashnode/image/upload/v1705691034256/81bc5cb5-5f0a-40ec-945e-310b48cc38c2.jpeg"
+cover: "/images/covers/aoc-day-8-cover.svg"
 ---
 
 # Advent of Code 2015, Day 8: Matchsticks
