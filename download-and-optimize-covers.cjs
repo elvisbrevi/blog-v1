@@ -72,6 +72,19 @@ function formatBytes(bytes) {
   return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
 }
 
+// Función para redimensionar imagen con ImageMagick
+function resizeImage(inputPath, outputPath) {
+  const filename = path.basename(outputPath);
+  try {
+    // Redimensionar a 1200x600 (óptimo para feature images)
+    execSync(`convert "${inputPath}" -resize 1200x600 -quality 85 "${outputPath}"`, { stdio: 'pipe' });
+    return true;
+  } catch (e) {
+    console.warn(`  ⚠️  ImageMagick no disponible, usando archivo original`);
+    return false;
+  }
+}
+
 // Función para optimizar imágenes
 function optimizeImage(inputPath, outputPath) {
   const ext = path.extname(inputPath).toLowerCase();
@@ -79,44 +92,42 @@ function optimizeImage(inputPath, outputPath) {
 
   try {
     if (ext === '.webp') {
-      // Para WebP, usar cwebp si está disponible
-      try {
-        execSync(`cwebp -q 80 "${inputPath}" -o "${outputPath}"`, { stdio: 'pipe' });
-        return true;
-      } catch (e) {
-        // Si cwebp no funciona, copiar original
+      // Para WebP, intentar redimensionar primero, luego copiar
+      let tempResized = inputPath + '.resized';
+      if (resizeImage(inputPath, tempResized)) {
+        fs.copyFileSync(tempResized, outputPath);
+        fs.unlinkSync(tempResized);
+      } else {
+        // Si falla redimensionamiento, copiar original
         fs.copyFileSync(inputPath, outputPath);
-        return true;
       }
-    } else if (ext === '.png') {
-      // Para PNG, optimizar con pngquant y optipng
-      let tempPath = inputPath;
-
-      try {
-        execSync(`pngquant --force --quality=70-85 --output "${inputPath}.temp" "${inputPath}"`, { stdio: 'pipe' });
-        fs.renameSync(`${inputPath}.temp`, tempPath);
-      } catch (e) {
-        // Si falla pngquant, continuar con el archivo original
-      }
-
-      try {
-        execSync(`optipng -quiet -o2 "${tempPath}"`, { stdio: 'pipe' });
-      } catch (e) {
-        // Si falla optipng, continuar
-      }
-
-      fs.copyFileSync(tempPath, outputPath);
       return true;
-    } else if (ext === '.jpeg' || ext === '.jpg') {
-      // Para JPEG, usar jpegoptim
-      try {
-        execSync(`jpegoptim --max=85 --output "${outputPath}" "${inputPath}"`, { stdio: 'pipe' });
-        return true;
-      } catch (e) {
-        // Si falla jpegoptim, copiar original
-        fs.copyFileSync(inputPath, outputPath);
-        return true;
+    } else if (ext === '.png' || ext === '.jpeg' || ext === '.jpg') {
+      // Para PNG/JPEG, redimensionar a 1200x600 y optimizar
+      resizeImage(inputPath, outputPath);
+
+      // Aplicar optimizaciones adicionales según tipo
+      if (ext === '.png') {
+        try {
+          execSync(`pngquant --force --quality=70-85 --output "${outputPath}.temp" "${outputPath}"`, { stdio: 'pipe' });
+          fs.renameSync(`${outputPath}.temp`, outputPath);
+        } catch (e) {
+          // Si falla pngquant, continuar
+        }
+
+        try {
+          execSync(`optipng -quiet -o2 "${outputPath}"`, { stdio: 'pipe' });
+        } catch (e) {
+          // Si falla optipng, continuar
+        }
+      } else if (ext === '.jpeg' || ext === '.jpg') {
+        try {
+          execSync(`jpegoptim --max=85 "${outputPath}"`, { stdio: 'pipe' });
+        } catch (e) {
+          // Si falla jpegoptim, continuar
+        }
       }
+      return true;
     }
 
     // Por defecto, copiar archivo
