@@ -5,7 +5,7 @@ description: "Puzzle, Part One:
 Santa needs help mining some AdventCoins (very similar to bitcoins) to use as gifts for all the economically forward-thinking little girls and boys.
 To do this, he needs to find MD5 hashes which, in hexadecimal, start with at least ..."
 tags: ["adventofcode2015", "Rust"]
-cover: "/images/covers/aoc-day-4-cover.svg"
+cover: "/images/covers/aoc-day-4-cover.png"
 ---
 
 # Advent of Code 2015, Day 4: The Ideal Stocking Stuffer
