@@ -5,7 +5,7 @@ description: "Puzzle Part One:
 Santa is delivering presents to an infinite two-dimensional grid of houses.
 He begins by delivering a present to the house at his starting location, and then an elf at the North Pole calls him via radio and tells him where to move ne..."
 tags: ["adventofcode2015"]
-cover: "/images/covers/aoc-day-3-cover.svg"
+cover: "/images/covers/aoc-day-3-cover.png"
 ---
 
 # Advent of Code 2015, Day 3: Perfectly Spherical Houses in a Vacuum
