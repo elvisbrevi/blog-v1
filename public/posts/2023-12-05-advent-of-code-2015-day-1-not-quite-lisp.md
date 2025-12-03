@@ -3,7 +3,7 @@ title: "Advent of Code 2015, Day 1: Not Quite Lisp"
 date: "2023-12-05 16:02:21"
 description: "The Puzzle, Part One: Santa was hoping for a white Christmas, but his weather machine's 'snow' function is powered by stars, and he's fresh out! To save Christmas, he needs you to collect fifty stars by December 25th. Collect stars by helping Santa s..."
 tags: ["adventofcode2015", "Rust"]
-cover: "/images/covers/aoc-day-1-cover.svg"
+cover: "/images/covers/aoc-day-1-cover.png"
 ---
 
 # Advent of Code 2015, Day 1: Not Quite Lisp

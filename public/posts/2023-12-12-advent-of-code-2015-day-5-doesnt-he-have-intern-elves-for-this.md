@@ -9,7 +9,7 @@ It contains at least three vowels (aeiou only), like aei, xazegov, or aeiouaeiou
 
 It c..."
 tags: ["adventofcode2015"]
-cover: "/images/covers/aoc-day-5-cover.svg"
+cover: "/images/covers/aoc-day-5-cover.png"
 ---
 
 # Advent of Code 2015, Day 5: Doesn't He Have Intern-Elves For This?
