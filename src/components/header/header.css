@@ -52,23 +52,27 @@
 }
 
 /* Mobile responsive */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .navbar {
-    padding: 1.5rem 1rem;
-    flex-wrap: wrap;
+    padding: 1.25rem 1rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
   }
 
   .navbar .title {
     font-size: 0.95rem;
+    padding-bottom: 1rem;
   }
 
   .navbar .list {
-    flex-wrap: wrap;
-    gap: 1rem;
+    width: 100%;
+    border-top: 1px solid var(--border);
+    padding: 0.75rem 0;
+    gap: 1.5rem;
   }
 
   .navbar .list ul {
-    flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 }
