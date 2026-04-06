@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './optimized-image.css';
 
 interface OptimizedImageProps {
@@ -22,11 +22,24 @@ const OptimizedImage = ({
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    // Reset state when src changes
     setIsLoaded(false);
     setHasError(false);
+
+    // If the image is already cached, onLoad won't fire — check immediately
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+      setIsLoaded(true);
+      return;
+    }
+
+    // Fallback timeout: if image hasn't loaded in 10s, stop blocking the UI
+    const timeout = setTimeout(() => {
+      setIsLoaded(true);
+    }, 10000);
+
+    return () => clearTimeout(timeout);
   }, [src]);
 
   const handleLoad = () => {
@@ -73,6 +86,7 @@ const OptimizedImage = ({
         />
       )}
       <img
+        ref={imgRef}
         src={src}
         srcSet={srcSet}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
