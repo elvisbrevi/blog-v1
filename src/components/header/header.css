@@ -1,78 +1,77 @@
 /* Minimal Header */
 .navbar {
-  background: var(--primary-bg);
-  color: var(--primary-text);
-  padding: 2rem 1rem;
-  width: 100%;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background: var(--primary-bg);
+    color: var(--primary-text);
+    padding: 1rem 0.5rem;
+    width: 100%;
+    border-bottom: 1px solid #bababa /*var(--border)*/;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar a {
-  color: var(--primary-text);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 400;
+    color: var(--primary-text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .navbar a:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .navbar .title {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: 0.95rem;
-  margin: 0;
-  text-decoration: none;
-  color: var(--primary-text);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0;
+    text-decoration: none;
+    color: var(--primary-text);
 }
 
 .navbar .list {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 .navbar .list ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar .list ul li {
-  display: flex;
+    display: flex;
 }
 
 /* Mobile responsive */
 @media (max-width: 600px) {
-  .navbar {
-    padding: 1.25rem 1rem 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-  }
+    .navbar {
+        padding: 1.25rem 1rem 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
 
-  .navbar .title {
-    font-size: 0.95rem;
-    padding-bottom: 1rem;
-  }
+    .navbar .title {
+        font-size: 2rem;
+    }
 
-  .navbar .list {
-    width: 100%;
-    border-top: 1px solid var(--border);
-    padding: 0.75rem 0;
-    gap: 1.5rem;
-  }
+    .navbar .list {
+        width: 100%;
+        border-top: 1px solid var(--border);
+        padding: 0.75rem 0;
+        gap: 1.5rem;
+    }
 
-  .navbar .list ul {
-    gap: 1.5rem;
-  }
+    .navbar .list ul {
+        gap: 1.5rem;
+    }
 }
