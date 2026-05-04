@@ -62,11 +62,61 @@
   --error: var(--red);
   --border: var(--surface2);
   --hover: var(--surface1);
+  --link-color: var(--primary-text);
+  --link-hover-color: var(--secondary-text);
+  --title-color: var(--primary-text);
 
   /* Fonts */
   --font-serif: Georgia, 'Times New Roman', Times, serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', Courier, monospace;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Minimal Dark Theme */
+[data-theme="dark"] {
+  --base: #1E293B;
+  --mantle: #273449;
+  --crust: #1a2332;
+
+  --base-rgb: 30, 41, 59;
+  --secondary-bg-rgb: 39, 52, 73;
+  --tertiary-bg-rgb: 45, 58, 80;
+  --border-rgb: 51, 65, 85;
+  --accent-primary-rgb: 249, 115, 22;
+  --accent-secondary-rgb: 251, 146, 60;
+  --green-rgb: 249, 115, 22;
+  --blue-rgb: 249, 115, 22;
+
+  --surface0: #273449;
+  --surface1: #2d3a50;
+  --surface2: #334155;
+
+  --overlay0: #3b4a63;
+  --overlay1: #4a5b77;
+  --overlay2: #5a6c8a;
+
+  --text: #E5E7EB;
+  --subtext1: #9CA3AF;
+  --subtext0: #6B7280;
+
+  --rosewater: #F97316;
+  --flamingo: #F97316;
+  --pink: #F97316;
+  --mauve: #9CA3AF;
+  --red: #F97316;
+  --maroon: #F97316;
+  --peach: #F97316;
+  --yellow: #F97316;
+  --green: #F97316;
+  --teal: #F97316;
+  --sky: #F97316;
+  --sapphire: #F97316;
+  --blue: #F97316;
+  --lavender: #9CA3AF;
+
+  --link-color: #F97316;
+  --link-hover-color: #FB923C;
+  --title-color: #F97316;
 }
 
 /* Minimal global styles - no animations */

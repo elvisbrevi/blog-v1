@@ -14,8 +14,7 @@
 }
 
 .post-title {
-    /* color: var(--primary-text); */
-    color: #006cac;
+    color: var(--title-color);
     font-family: var(--font-serif);
     font-size: 1.6rem;
     font-weight: 400;

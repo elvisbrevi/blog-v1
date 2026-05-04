@@ -43,14 +43,15 @@
 }
 
 .post-body a {
-  color: var(--primary-text);
+  color: var(--link-color);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
 
 .post-body a:hover {
-  opacity: 0.6;
+  color: var(--link-hover-color);
+  opacity: 1;
 }
 
 .post-body blockquote {

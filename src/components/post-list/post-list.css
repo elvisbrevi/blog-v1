@@ -18,7 +18,7 @@
 }
 
 .post-list .post-link {
-    color: var(--primary-text);
+    color: var(--link-color);
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,8 @@
 }
 
 .post-list .post-link:hover {
-    opacity: 0.8;
+    color: var(--link-hover-color);
+    opacity: 1;
 }
 
 .post-thumbnail {
@@ -45,7 +46,7 @@
 }
 
 .post-title {
-    color: var(--primary-text);
+    color: var(--title-color);
     font-family: var(--font-serif);
     font-weight: 400;
     font-size: 2rem;

@@ -11,11 +11,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+    <!-- Prevent FOUC: apply theme before render -->
+    <script>
+      (function () {
+        var theme = localStorage.getItem('theme');
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
     <!-- Prevent white flash on load -->
     <style>
       html {
         background-color: #F5F3EE !important;
         color: #1C1C1C !important;
+      }
+      [data-theme="dark"] html,
+      html[data-theme="dark"] {
+        background-color: #1E293B !important;
+        color: #E5E7EB !important;
       }
       body {
         background-color: #F5F3EE !important;
@@ -24,6 +40,10 @@
         padding: 0;
         font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
         transition: none !important;
+      }
+      [data-theme="dark"] body {
+        background-color: #1E293B !important;
+        color: #E5E7EB !important;
       }
       /* Minimal loading text */
       .initial-loader {
@@ -39,6 +59,9 @@
         z-index: 9999;
         opacity: 1;
       }
+      [data-theme="dark"] .initial-loader {
+        background: #1E293B;
+      }
       .initial-loader.hide {
         opacity: 0;
         pointer-events: none;
@@ -47,6 +70,9 @@
         color: #999999;
         font-size: 1rem;
         font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+      }
+      [data-theme="dark"] .loader-text {
+        color: #6B7280;
       }
     </style>
 
