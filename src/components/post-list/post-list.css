@@ -10,7 +10,7 @@
 
 .post-list li {
     background: var(--primary-bg);
-    border-bottom: 1px solid #bababa /*var(--border)*/;
+    border-bottom: 1px solid var(--border);
 }
 
 .post-list li:last-child {

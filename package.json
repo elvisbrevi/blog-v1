@@ -4,8 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/copy-posts.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/copy-posts.mjs",
     "build": "tsc -b && vite build",
+    "copy-posts": "node scripts/copy-posts.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
