@@ -6,7 +6,7 @@ title: Side Projects
 
 A collection of personal projects I've built outside of work.
 
-## [vidcapture](https://elvisbrevi.github.io/vidcapture-landing/)
+## [vidcapture](https://vidcapture.elvisbrevi.cl/)
 
 A Rust CLI that records your macOS screen and audio without leaving the terminal — no GUI, no project files, no export dialog. Stop a capture with one keypress or on a timer, split long sessions into independently playable segments, then pull a millisecond-precise range out of the result and burn in timed text labels, all from the same prompt. Shells out to ffmpeg and published on crates.io.
 
