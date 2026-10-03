@@ -1,51 +1,15 @@
 /* Minimal Main Layout */
 main {
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  min-height: calc(100vh - 200px);
-}
-
-/* Minimal row container */
-.row {
+  flex: 1 0 auto;
   width: 100%;
   max-width: 650px;
   margin: 0 auto;
-}
-
-/* Minimal Container */
-.container {
-  background: var(--primary-bg);
-  padding: 0;
-  margin-bottom: 3rem;
-}
-
-/* Minimal Card System */
-.card {
-  background: var(--primary-bg);
-  padding: 0;
-  margin-bottom: 2rem;
+  padding: 3rem 2rem 4rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   main {
-    padding: 1rem 0.5rem;
-  }
-  
-  .container {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-  }
-  
-  .row {
-    padding: 0 0.5rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  main {
-    padding: 3rem 2rem;
+    padding: 1.5rem 1rem 3rem;
   }
 }

@@ -1,49 +1,29 @@
 import './post-list.css';
-import { useEffect, useState } from 'react';
-import { Loading } from '../loading/loading';
-import { BlogPost, loadBlogPosts } from '../../services/blog-service';
-import OptimizedImage from '../optimized-image/optimized-image';
+import { use } from 'react';
+import { Link } from 'react-router-dom';
+import { loadBlogPosts } from '../../services/blog-service';
+import PostThumbnail from './post-thumbnail';
 
 const PostList = () => {
-
-  const [posts, setPosts] = useState<BlogPost[] | null>(null);
-
-  useEffect(() => {
-    async function fetchDataAsync() {
-      const postsData = await loadBlogPosts();
-      setPosts(postsData);
-    }
-
-    fetchDataAsync();
-  }, []);
-
-  if (posts === null) {
-    return <Loading />;
-  }
+  // Suspends until the posts are loaded (see the <Suspense> in blog.tsx).
+  const posts = use(loadBlogPosts());
 
   return (
     <ul className="post-list">
       {posts.map((post, index) => (
         <li key={post.slug}>
-          <a href={`/post/${post.slug}`} className="post-link">
-            {post.cover && (
-              <div className="post-thumbnail">
-                <OptimizedImage
-                  src={post.cover}
-                  alt={post.title}
-                  aspectRatio="16/9"
-                  priority={index === 0}
-                />
-              </div>
-            )}
+          <Link to={`/post/${post.slug}`} className={post.cover ? 'post-link' : 'post-link no-cover'}>
             <div className="post-info">
-              <span className="post-date">{post.date.slice(0, 10)}</span>
+              <time className="post-date" dateTime={post.date.slice(0, 10)}>
+                {post.date.slice(0, 10)}
+              </time>
               <h2 className="post-title">{post.title}</h2>
-              {post.description && (
-                <p className="post-excerpt">{post.description}</p>
-              )}
             </div>
-          </a>
+            {post.description && (
+              <p className="post-excerpt">{post.description}</p>
+            )}
+            {post.cover && <PostThumbnail cover={post.cover} eager={index < 3} />}
+          </Link>
         </li>
       ))}
     </ul>

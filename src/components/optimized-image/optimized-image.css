@@ -5,16 +5,13 @@
   background: var(--secondary-bg);
 }
 
+/* Painted over the placeholder as soon as the browser decodes it,
+   without waiting for React to handle onLoad. */
 .optimized-image {
+  position: relative;
   width: 100%;
   height: auto;
   display: block;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.optimized-image.loaded {
-  opacity: 1;
 }
 
 .optimized-image-placeholder {
@@ -59,4 +56,10 @@
 /* Ensure aspect ratio is maintained */
 .optimized-image-container img {
   object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .optimized-image-placeholder {
+    animation: none;
+  }
 }

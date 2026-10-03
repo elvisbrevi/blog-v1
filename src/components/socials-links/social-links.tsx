@@ -1,33 +1,34 @@
 import './social-links.css';
+import { GitHubIcon, LinkedInIcon, XIcon } from '../icons/icons';
+import { SOCIAL_LINKS } from '../../site';
+
+const ICONS = {
+  linkedin: LinkedInIcon,
+  github: GitHubIcon,
+  twitter: XIcon,
+};
 
 const SocialLinks = () => {
   return (
-    <div className="social-links">
-      <a
-        id="link-linkedin"
-        href="https://www.linkedin.com/in/elvisbrevi/"
-        target="_blank"
-        className="linkedin" 
-      >
-        <i className="bi bi-linkedin mr-10"></i>
-      </a>
-      <a
-        id="link-github"
-        href="https://github.com/elvisbrevi"
-        target="_blank"
-        className="github" 
-      >
-        <i className="bi bi-github"></i>
-      </a>
-      <a
-        id="link-twitter"
-        href="https://twitter.com/elvisbrevi"
-        target="_blank"
-        className="twitter" 
-      >
-        <i className="bi bi-twitter-x"></i>
-      </a>
-    </div>
+    <ul className="social-links">
+      {SOCIAL_LINKS.map((link) => {
+        const Icon = ICONS[link.id];
+        return (
+          <li key={link.id}>
+            <a
+              id={`link-${link.id}`}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={link.id}
+            >
+              <Icon />
+              <span>{link.label}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 

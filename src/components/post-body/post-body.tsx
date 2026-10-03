@@ -1,61 +1,31 @@
 import './post-body.css';
-import { useEffect, useState } from 'react';
-import * as cheerio from 'cheerio';
-import { marked } from 'marked';
-import { Loading } from '../loading/loading';
+import { useEffect, useMemo, useRef } from 'react';
 import { BlogPost } from '../../services/blog-service';
+import { handleCodeCopy, renderMarkdown, stripLeadingTitle } from '../../services/markdown-service';
+import { highlightCode } from '../../services/highlight';
+import { enableLightbox } from '../../services/lightbox';
 
-const PostBody = ( post : BlogPost) => {
+const PostBody = (post: BlogPost) => {
+    const ref = useRef<HTMLDivElement>(null);
 
-    const [postContent, setPostContent] = useState<string>("");
+    // The page renders the title above the cover, so drop the copy in the markdown.
+    const postContent = useMemo(
+        () => renderMarkdown(stripLeadingTitle(post.content, post.title), { highlight: highlightCode }),
+        [post.content, post.title]
+    );
+
     useEffect(() => {
-        async function processMarkdown() {
-            // Clean markdown content before processing
-            const cleanedMarkdown = cleanMarkdownImages(post.content);
-
-            // Convert markdown to HTML
-            const htmlContent = await marked(cleanedMarkdown);
-            const finalContent = replaceImgWithLink(htmlContent);
-            setPostContent(finalContent);
-        }
-
-        processMarkdown();
-    }, [post.content]);
-
-    if (!post) {
-        return <Loading />;
-    }
+        enableLightbox(ref.current);
+    }, [postContent]);
 
     return (
-        <div className="post-body" dangerouslySetInnerHTML={{ __html: postContent }} />
+        <div
+            ref={ref}
+            className="post-body"
+            onClick={handleCodeCopy}
+            dangerouslySetInnerHTML={{ __html: postContent }}
+        />
     );
 };
-
-function cleanMarkdownImages(markdown: string): string {
-    // Remove HTML attributes from markdown image syntax
-    // Example: ![alt](url align="center") -> ![alt](url)
-    let cleaned = markdown.replace(/!\[(.*?)\]\((.*?)\s+align=["'].*?["']\)/g, '![$1]($2)');
-
-    // Also handle any other HTML attributes within markdown image syntax
-    cleaned = cleaned.replace(/!\[(.*?)\]\((.*?)\s+\w+=["'].*?["']\)/g, '![$1]($2)');
-
-    return cleaned;
-}
-
-function replaceImgWithLink(html: string): string {
-    const $ = cheerio.load(html);
-  
-    $('img').each((_, element) => {
-        const imgSrc = $(element).attr('src');
-        const newLink = $('<a>')
-            .attr('href', `${imgSrc}`)
-            .attr('data-fancybox', '')
-            .append($(element).clone());
-
-        $(element).replaceWith(newLink);
-    });
-  
-    return $.html();
-  }
 
 export default PostBody;

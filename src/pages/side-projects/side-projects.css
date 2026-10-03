@@ -1,36 +1,12 @@
-.side-projects-container {
-  background-color: var(--primary-bg);
-  border: none;
-  padding: 0;
-  margin: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
 .side-projects-container .markdown-page h1 {
-  color: var(--primary-text);
-  font-family: var(--font-serif);
   font-size: 2rem;
-  font-weight: 400;
-  margin: 0 0 2rem 0;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1rem;
-  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
 }
 
-.side-projects-container .markdown-page h1:first-child {
-  margin-top: 0;
-}
-
+/* Each project: a linked title and a short description */
 .side-projects-container .markdown-page h2 {
-  color: var(--primary-text);
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin: 1.5rem 0 0.75rem 0;
-  text-align: left;
+  font-size: 1.3rem;
+  margin: 2.25rem 0 0.5rem 0;
 }
 
 .side-projects-container .markdown-page h2 a {
@@ -38,43 +14,25 @@
   text-decoration: none;
 }
 
+.side-projects-container .markdown-page h2 a::after {
+  content: " ↗";
+  color: var(--muted-text);
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+
 .side-projects-container .markdown-page h2 a:hover {
+  opacity: 1;
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
 }
 
 .side-projects-container .markdown-page p {
-  color: var(--secondary-text);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.side-projects-container .markdown-page {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.side-projects-container a {
-  color: var(--primary-text);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
-
-.side-projects-container a:hover {
-  opacity: 0.6;
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
-  .side-projects-container {
-    padding: 0;
-    margin: 1.5rem 0;
-  }
-
   .side-projects-container .markdown-page h1 {
     font-size: 1.75rem;
   }

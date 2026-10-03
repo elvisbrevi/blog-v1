@@ -1,0 +1,19 @@
+/* 404 and error pages */
+.status-page {
+  padding: 2rem 0;
+}
+
+.status-page .status-code {
+  color: var(--muted-text);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.status-page h1 {
+  font-size: 2rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.status-page a {
+  color: var(--primary-text);
+}

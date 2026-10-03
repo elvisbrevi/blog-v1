@@ -94,6 +94,7 @@ const OptimizedImage = ({
         width={width}
         height={height}
         loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : undefined}
         decoding="async"
         onLoad={handleLoad}
         onError={handleError}

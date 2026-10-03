@@ -1,0 +1,29 @@
+/* Short introduction above the post list */
+.home-intro {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.home-intro h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.home-intro p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.home-intro a {
+  color: var(--primary-text);
+}
+
+@media (max-width: 768px) {
+  .home-intro {
+    padding-bottom: 1.5rem;
+  }
+
+  .home-intro h1 {
+    font-size: 1.6rem;
+  }
+}
