@@ -1,5 +1,6 @@
 ---
 title: Side Projects
+description: Personal projects I've built outside of work, from Rust command-line tools and a Microsoft Teams assistant to a .NET commit-message generator and game prototypes.
 ---
 
 # Side Projects

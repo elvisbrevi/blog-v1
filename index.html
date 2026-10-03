@@ -2,14 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>@elvisbrevi</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- site-meta -->
+    <meta name="theme-color" content="#F5F3EE" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1E293B" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <link rel="manifest" href="/images/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title="Elvis Brevi" href="/rss.xml" />
+    <!-- Body text font, requested before the CSS that uses it is parsed -->
+    <link rel="preload" href="/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Prevent FOUC: apply theme before render -->
     <script>
@@ -25,61 +28,15 @@
     <!-- Prevent white flash on load -->
     <style>
       html {
-        background-color: #F5F3EE !important;
-        color: #1C1C1C !important;
+        background-color: #F5F3EE;
+        color: #1C1C1C;
       }
-      [data-theme="dark"] html,
       html[data-theme="dark"] {
-        background-color: #1E293B !important;
-        color: #E5E7EB !important;
-      }
-      body {
-        background-color: #F5F3EE !important;
-        color: #1C1C1C !important;
-        margin: 0;
-        padding: 0;
-        font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
-        transition: none !important;
-      }
-      [data-theme="dark"] body {
-        background-color: #1E293B !important;
-        color: #E5E7EB !important;
-      }
-      /* Minimal loading text */
-      .initial-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #F5F3EE;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        opacity: 1;
-      }
-      [data-theme="dark"] .initial-loader {
-        background: #1E293B;
-      }
-      .initial-loader.hide {
-        opacity: 0;
-        pointer-events: none;
-      }
-      .loader-text {
-        color: #999999;
-        font-size: 1rem;
-        font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
-      }
-      [data-theme="dark"] .loader-text {
-        color: #6B7280;
+        background-color: #1E293B;
+        color: #E5E7EB;
       }
     </style>
 
-    <link rel="stylesheet" href="/css/nord-syntax.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/fancybox.css" />
-  </head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQM69H99KC"></script>
     <script>
@@ -89,79 +46,9 @@
 
       gtag('config', 'G-BQM69H99KC');
     </script>
+  </head>
   <body>
-    <!-- Initial loader to prevent white flash -->
-    <div class="initial-loader" id="initial-loader">
-      <div class="loader-text">Loading...</div>
-    </div>
-    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    
-    <!-- Hide loader once everything is loaded -->
-    <script>
-      window.addEventListener('load', function() {
-        setTimeout(() => {
-          const loader = document.getElementById('initial-loader');
-          if (loader) {
-            loader.classList.add('hide');
-            setTimeout(() => {
-              loader.style.display = 'none';
-            }, 300);
-          }
-        }, 100);
-      });
-      
-      // Also hide loader when React app mounts
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(() => {
-          const loader = document.getElementById('initial-loader');
-          if (loader && document.getElementById('root').children.length > 0) {
-            loader.classList.add('hide');
-            setTimeout(() => {
-              loader.style.display = 'none';
-            }, 300);
-          }
-        }, 500);
-      });
-    </script>
-    <script src="/js/fancybox.umd.js"></script>
-    <script src="/js/highlight.min.js"></script>
-    <script src="/js/clipboard.min.js"></script>
-    <script>
-      // Highlight
-      hljs.configure({
-        languageDetectRe: /\blang-([\w-]+)\b/i
-      });
-      hljs.highlightAll();
-
-      // Clipboard
-      var clipboard = new ClipboardJS('.btn-copy-code', {
-        target: function (trigger) {
-          return trigger.nextElementSibling;
-        },
-      });
-
-      // Clipboard success
-      clipboard.on('success', function (e) {
-        let oldtext = e.trigger.textContent;
-        var old = e.trigger.cloneNode(true);
-        e.trigger.textContent = 'Copied!';
-
-        setTimeout(() => 
-          {
-            e.trigger.parentElement.prepend(old);
-            e.trigger.remove();
-          },
-        2000);
-
-        e.clearSelection();
-      });
-
-      // Fancybox
-      Fancybox.bind("[data-fancybox]", {
-        // Your custom options
-      });
-    </script>
   </body>
 </html>

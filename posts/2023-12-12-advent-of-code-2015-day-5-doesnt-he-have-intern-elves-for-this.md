@@ -1,13 +1,7 @@
 ---
 title: "Advent of Code 2015, Day 5: Doesn't He Have Intern-Elves For This?"
 date: "2023-12-12 10:31:58"
-description: "Puzzle Part One
-Santa needs help figuring out which strings in his text file are naughty or nice.
-A nice string is one with all of the following properties:
-
-It contains at least three vowels (aeiou only), like aei, xazegov, or aeiouaeiouaeiou.
-
-It c..."
+description: "Telling naughty strings from nice ones in Rust, first with vowel and double-letter rules, then with letter pairs and repeats."
 tags: ["adventofcode2015"]
 cover: "/images/covers/aoc-day-5-cover.webp"
 ---

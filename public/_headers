@@ -1,0 +1,4 @@
+# Cloudflare Pages response headers: https://developers.cloudflare.com/pages/configuration/headers/
+# Vite puts a content hash in every file name under /assets/, so they never change.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,7 +1,7 @@
 ---
 title: "Static Web Page with Continuous Deployment and IAC"
 date: "2023-07-05 00:51:01"
-description: "This article is about how I made my blog (elvisbrevi.com) using AWS 'free tier' services to host a static site created with Vite and AWS Cloud Development Kit for creating Cloudformation Stack and deploying them with GitHub Actions, the complete code..."
+description: "How I hosted my blog on AWS's free tier: a Vite site on S3 and CloudFront, infrastructure as code with AWS CDK and continuous deployment with GitHub Actions."
 tags: ["CDK", "GitHub Actions", "github-cli", "React", "S3", "cloudfront"]
 cover: "/images/covers/static-web-cover.webp"
 ---
@@ -10,7 +10,7 @@ cover: "/images/covers/static-web-cover.webp"
 
 This article is about how I made my blog ([elvisbrevi.com](http://elvisbrevi.com)) using AWS "free tier" services to host a static site created with Vite and AWS Cloud Development Kit for creating Cloudformation Stack and deploying them with GitHub Actions, the complete code of this project you can find here [https://github.com/elvisbrevi/static-site-cdk](https://github.com/elvisbrevi/static-site-cdk).
 
-# 📚 Prerequisites
+## 📚 Prerequisites
 
 * Basic bash knowledge, the intention is to use only the terminal for configuration.
     
@@ -23,7 +23,7 @@ This article is about how I made my blog ([elvisbrevi.com](http://elvisbrevi.com
 * To have installed [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html) (Typescript version for this case).
     
 
-# 🗂️ Description
+## 🗂️ Description
 
 I have a mono-repository hosted on GitHub that contains two projects. The first is a Preact website created with Vite, and the second is a CDK project, infrastructure as code, to create the AWS CloudFormation stack with services that will host the first project (the Preact website) on the web. Additionally, I used GitHub Actions to perform automatic deployments when changes are made to the AWS infrastructure code or the static website.
 
@@ -40,11 +40,11 @@ The AWS services I use are:
 * **CDK (Cloud Development Kit)** for IAC (infrastructure as code).
     
 
-# 🗺️ Solution Diagram
+## 🗺️ Solution Diagram
 
 ![](/images/posts/static-web-1.png)
 
-# 🗄️ GitHub Repository
+## 🗄️ GitHub Repository
 
 Now we will create a GitHub repository for storing the source code, and create continuous integration and continuous deployment for the project. You can create this by going to [https://github.com/new](https://github.com/new) or using the command line tool [GitHub CLI](https://cli.github.com/) instead, I will show you how to do this last thing:
 
@@ -90,7 +90,7 @@ Now we will create a GitHub repository for storing the source code, and create c
     ![](/images/posts/static-web-2.png)
     
 
-# 👩🏿‍💻 Static WebSite (Vite Project)
+## 👩🏿‍💻 Static WebSite (Vite Project)
 
 I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](https://preactjs.com/) with [TypeScript](https://www.typescriptlang.org/), but you can choose a framework if you prefer, follow these steps to create the front:
 
@@ -127,7 +127,7 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
 
 ![](/images/posts/static-web-5.png)
 
-# 🏰 Infrastructure as Code (AWS CDK )
+## 🏰 Infrastructure as Code (AWS CDK )
 
 1. Create a folder for infrastructure as code in the root of the project and go there:
     
@@ -485,9 +485,9 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     ![](/images/posts/static-web-12.png)
     
 
-# 🔄 CI/CD (GitHub Actions)
+## 🔄 CI/CD (GitHub Actions)
 
-## 🔐 Github Secrets
+### 🔐 Github Secrets
 
 Before creating continuous integrations and continuous delivery for your project, we need to specify in our GitHub repository some key values from AWS, Access Key ID, Secret access key, our Bucket, and CloudFront Distribution ids previously created in the CDK project deployment, and that you can see with aws cloudformation `describe-stack-resources --stack-name IacStack` command.
 
@@ -532,7 +532,7 @@ Before creating continuous integrations and continuous delivery for your project
     ![](/images/posts/static-web-13.png)
     
 
-## 🚀 Workflows
+### 🚀 Workflows
 
 A GitHub workflow is an automated sequence of actions that are executed in response to specific events in a GitHub repository. These workflows are defined using a YAML file that describes the tasks to be performed, as well as the rules and conditions for their execution.
 
@@ -742,7 +742,7 @@ Each workflow is composed of one or more jobs, which are individual units of wor
     ![](/images/posts/static-web-15.png)
     
 
-# 🎮 Demo
+## 🎮 Demo
 
 All configurations are ready, we created a GitHub repository for version control and CI/CD, a static website with Vite, and the infrastructure for this with Amazon Web Services. Now we can modify our project and the changes will be published automatically.
 

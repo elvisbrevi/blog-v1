@@ -7,4 +7,15 @@
   padding: 2rem;
   color: var(--secondary-text);
   font-size: 1rem;
+  /* Only shown if loading takes a while, so fast loads don't flash it. */
+  animation: loading-appear 0s linear 0.3s both;
+}
+
+@keyframes loading-appear {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
 }

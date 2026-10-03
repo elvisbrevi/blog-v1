@@ -1,9 +1,7 @@
 ---
 title: "Advent of Code 2015, Day 3: Perfectly Spherical Houses in a Vacuum"
 date: "2023-12-07 21:05:53"
-description: "Puzzle Part One:
-Santa is delivering presents to an infinite two-dimensional grid of houses.
-He begins by delivering a present to the house at his starting location, and then an elf at the North Pole calls him via radio and tells him where to move ne..."
+description: "Counting the houses Santa visits on an infinite grid in Rust, then sharing the route with Robo-Santa."
 tags: ["adventofcode2015"]
 cover: "/images/covers/aoc-day-3-cover.webp"
 ---

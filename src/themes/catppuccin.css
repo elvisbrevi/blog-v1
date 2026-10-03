@@ -29,8 +29,9 @@
 
   /* Text Colors */
   --text: #1C1C1C;
-  --subtext1: #666666;
-  --subtext0: #999999;
+  /* Body and muted text meet WCAG AA contrast on --base */
+  --subtext1: #555555;
+  --subtext0: #6E6E6E;
 
   /* Accent Colors */
   --rosewater: #1C1C1C;
@@ -96,8 +97,8 @@
   --overlay2: #5a6c8a;
 
   --text: #E5E7EB;
-  --subtext1: #9CA3AF;
-  --subtext0: #6B7280;
+  --subtext1: #A8AFBB;
+  --subtext0: #8590A0;
 
   --rosewater: #F97316;
   --flamingo: #F97316;

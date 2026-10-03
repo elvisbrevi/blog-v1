@@ -1,9 +1,7 @@
 ---
 title: "Advent of Code 2015, Day 6: Probably a Fire Hazard"
 date: "2023-12-15 14:34:28"
-description: "Puzzle Part One:
-Because your neighbors keep defeating you in the holiday house decorating contest year after year, you've decided to deploy one million lights in a 1000x1000 grid.
-Furthermore, because you've been especially nice this year, Santa has..."
+description: "Switching a 1000×1000 grid of lights in Rust, parsing Santa's instructions with regex, then adjusting each light's brightness."
 tags: ["adventofcode2015"]
 cover: "/images/covers/aoc-day-6-cover.webp"
 ---

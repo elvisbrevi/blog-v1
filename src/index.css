@@ -15,16 +15,6 @@ html {
   color: var(--text) !important;
 }
 
-html {
-  background-color: var(--primary-bg);
-  color: var(--primary-text);
-}
-
-body {
-  background: transparent;
-  color: var(--primary-text);
-}
-
 /* Minimal body styles */
 body {
   min-height: 100vh;
@@ -35,6 +25,13 @@ body {
   font-size: 15px;
   font-weight: 400;
   overflow-x: hidden;
+}
+
+/* Header, page and footer: the footer stays at the bottom on short pages */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Typography */
@@ -58,6 +55,10 @@ p {
   color: var(--secondary-text);
 }
 
+strong {
+  font-weight: 600;
+}
+
 a {
   color: var(--link-color);
   text-decoration: underline;
@@ -70,109 +71,49 @@ a:hover {
   opacity: 1;
 }
 
-/* Minimal Header */
-header {
-  background: var(--primary-bg);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+/* Visible focus for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--primary-text);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-.title {
-  color: var(--primary-text);
-  font-size: 1.25rem;
-  font-weight: 400;
-  margin: 0;
-  text-align: center;
+/* Code blocks rendered by src/services/markdown-service.ts (Nord palette in both themes) */
+.code-block {
+  margin: 1.5rem 0;
+  background-color: #2E3440;
+  border: 1px solid #434c5e;
 }
 
-/* Minimal Navigation */
-.menu-btn {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 0.5rem;
-  background: transparent;
-  border: none;
-}
-
-.menu-btn__burger {
-  width: 1.5rem;
-  height: 1px;
-  background: var(--primary-text);
-  margin: 3px 0;
-}
-
-.nav {
+.code-block-header {
   display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-}
-
-.nav__list {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
+  justify-content: space-between;
   align-items: center;
-  padding: 0;
-  margin: 0;
+  gap: 1rem;
+  padding: 0.3rem 0.5rem 0.3rem 1.5rem;
+  border-bottom: 1px solid #3B4252;
+  color: #A0A8B7;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
 }
 
-.nav__item a {
-  color: var(--primary-text);
-  font-weight: 400;
-  font-size: 0.95rem;
-  text-decoration: none;
+.copy-code {
+  margin-left: auto;
+  padding: 0.25rem 0.5rem;
+  background: none;
+  border: none;
+  color: #D8DEE9;
+  font: inherit;
+  cursor: pointer;
 }
 
-.nav__item a:hover {
-  opacity: 0.6;
+.copy-code:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-/* Mobile responsive navigation */
 @media (max-width: 768px) {
-  header {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu-btn {
-    display: flex;
-  }
-
-  .nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--secondary-bg);
-    border-top: 1px solid var(--border);
-    padding: 1rem;
-    display: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav.active {
-    display: block;
-  }
-
-  .nav__list {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-  }
-
-  .nav__item {
-    text-align: center;
-    width: 100%;
-  }
-
-  .nav__item a {
-    display: block;
-    width: 100%;
-    padding: 1rem;
+  .code-block-header {
+    padding-left: 1rem;
   }
 }

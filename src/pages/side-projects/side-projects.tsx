@@ -1,37 +1,17 @@
 import './side-projects.css';
-import { useEffect, useState } from 'react';
+import { use } from 'react';
 import MarkdownPage from '../../components/markdown-page/markdown-page';
-import { loadStaticPage, StaticPage } from '../../services/static-pages-service';
-import { Loading } from '../../components/loading/loading';
+import { loadStaticPage } from '../../services/static-pages-service';
+import { usePageMeta } from '../../hooks/use-page-meta';
 
 const SideProjectsPage = () => {
-  const [page, setPage] = useState<StaticPage | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadPage() {
-      const data = await loadStaticPage('side-projects.md');
-      setPage(data);
-      setLoading(false);
-    }
-    loadPage();
-  }, []);
-
-  if (loading) {
-    return <Loading />;
-  }
+  // Suspends until the page is loaded (see the <Suspense> in app.tsx).
+  const page = use(loadStaticPage('side-projects.md'));
+  usePageMeta(page?.title, page?.description);
 
   return (
-    <div>
-      <div className="row">
-        <div />
-        <div>
-          <div className="side-projects-container">
-            <MarkdownPage page={page} />
-          </div>
-        </div>
-        <div />
-      </div>
+    <div className="side-projects-container">
+      <MarkdownPage page={page} />
     </div>
   );
 };

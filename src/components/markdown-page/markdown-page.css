@@ -65,16 +65,18 @@
   background-color: var(--secondary-bg);
   color: var(--primary-text);
   padding: 0.2rem 0.4rem;
+  border-radius: 3px;
   font-family: var(--font-mono);
   font-size: 0.9em;
   border: none;
 }
 
+/* Border and spacing come from the .code-block wrapper (index.css). */
 .markdown-page pre {
   background-color: #2E3440;
-  border: 1px solid #434c5e;
+  border: none;
   padding: 1.5rem;
-  margin: 1.5rem 0;
+  margin: 0;
   overflow-x: auto;
   font-family: var(--font-mono);
   font-size: 0.875rem;

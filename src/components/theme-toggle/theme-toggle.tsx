@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import './theme-toggle.css';
+import { MoonIcon, SunIcon } from '../icons/icons';
 
 const STORAGE_KEY = 'theme';
 
@@ -43,11 +44,7 @@ const ThemeToggle = () => {
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {theme === 'dark' ? (
-        <i className="bi bi-sun-fill" />
-      ) : (
-        <i className="bi bi-moon-fill" />
-      )}
+      {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
     </button>
   );
 };
