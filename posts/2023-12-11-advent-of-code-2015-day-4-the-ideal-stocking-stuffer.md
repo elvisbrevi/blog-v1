@@ -1,9 +1,7 @@
 ---
 title: "Advent of Code 2015, Day 4: The Ideal Stocking Stuffer"
 date: "2023-12-11 10:45:01"
-description: "Puzzle, Part One:
-Santa needs help mining some AdventCoins (very similar to bitcoins) to use as gifts for all the economically forward-thinking little girls and boys.
-To do this, he needs to find MD5 hashes which, in hexadecimal, start with at least ..."
+description: "Mining AdventCoins in Rust by brute-forcing MD5 hashes that start with five, and then six, zeroes."
 tags: ["adventofcode2015", "Rust"]
 cover: "/images/covers/aoc-day-4-cover.webp"
 ---

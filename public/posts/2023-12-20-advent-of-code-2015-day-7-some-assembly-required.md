@@ -1,9 +1,7 @@
 ---
 title: "Advent of Code 2015, Day 7: Some Assembly Required"
 date: "2023-12-20 16:51:19"
-description: "Puzzle Part One:
-This year, Santa brought little Bobby Tables a set of wires and bitwise logic gates! Unfortunately, little Bobby is a little under the recommended age range, and he needs help assembling the circuit.
-Each wire has an identifier (some..."
+description: "Emulating a circuit of wires and bitwise logic gates in Rust to find the signal that reaches wire a."
 tags: ["adventofcode2015"]
 cover: "/images/covers/aoc-day-7-cover.webp"
 ---
@@ -212,4 +210,4 @@ Now, take the signal you got on wire `a`, override wire `b` to that signal, and 
 
 ## My Solution:
 
-The same code is fine, joust only changes the b value.
+The same code works; just change the value of `b`.

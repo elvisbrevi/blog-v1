@@ -1,19 +1,18 @@
 ---
 title: "Improving Node.js with Rust-Wasm Library"
 date: "2023-10-14 19:38:21"
-description: "Introduction
-WebAssembly (Wasm) is a binary instruction format that allows code written in languages like Rust to run on the web. By integrating Rust-Wasm libraries into Node.js, we can achieve better performance and utilize the power of Rust's memor..."
+description: "Compiling a Rust library to WebAssembly with wasm-pack, calling it from the browser and from Node.js, and timing it against plain JavaScript."
 tags: ["Rust", "wasm", "Node.js", "node"]
 cover: "/images/covers/rust-wasm-cover.webp"
 ---
 
 # Improving Node.js with Rust-Wasm Library
 
-### **Introduction**
+## Introduction
 
 WebAssembly (Wasm) is a binary instruction format that allows code written in languages like Rust to run on the web. By integrating Rust-Wasm libraries into Node.js, we can achieve better performance and utilize the power of Rust's memory safety features. In this tutorial, we'll walk you through the process using the `rust-wasm-lib` repository as a reference.
 
-### **Prerequisites**
+## Prerequisites
 
 * Basic knowledge of Rust and Node.js.
     
@@ -22,7 +21,7 @@ WebAssembly (Wasm) is a binary instruction format that allows code written in la
 * Node.js and npm are installed on your machine.
     
 
-### **Setting up a New Rust Project**
+## Setting up a New Rust Project
 
 First, you must have both Rust and wasm-pack installed. You can get them from here and here if you haven't done this yet.
 
@@ -62,7 +61,7 @@ pub fn fibonacci(n: u32) -> u32 {
 }
 ```
 
-### **Directly in the Browser**
+## Directly in the Browser
 
 To run your WebAssembly module directly in the browser, at the root of the project, compile the Rust code targeting the web:
 
@@ -112,7 +111,7 @@ then go to a local server in my case http://\[::\]:8000/, you will see an alert 
 
 ![](/images/posts/rust-wasm-2.png)
 
-### **Integrating with Node.js**
+## Integrating with Node.js
 
 To harness your WASM in a Node.js ambiance, in the root folder compile the wasm library for node:
 
@@ -177,7 +176,7 @@ Let's delve into the performance comparison between Rust-WASM and pure JavaScrip
 
 Both implementations (Rust-WASM and JavaScript) employ a recursive approach to calculate the Fibonacci sequence:
 
-### **Performance Test Results**
+## Performance Test Results
 
 For `num = 40`, the Fibonacci value is `102334155`.
 
@@ -185,10 +184,10 @@ For `num = 40`, the Fibonacci value is `102334155`.
 
 **JavaScript:** In contrast, the pure JavaScript version took roughly `1.543s`, which is almost twice the time.
 
-### **Analysis**
+## Analysis
 
 The Rust-WASM implementation appears to be significantly faster in this specific test case, clocking in at nearly half the execution time of the pure JavaScript approach. This speed-up showcases the efficiency and performance advantages that can be gained when leveraging WebAssembly, even more so when the logic is computationally demanding. Rust's inherent performance, combined with the efficiency of WebAssembly, can lead to noticeable performance improvements.
 
-### **Conclusion**
+## Conclusion
 
 This comparison underscores the power of WebAssembly, especially when paired with a performant language like Rust. Developers looking to squeeze out extra performance from their applications, especially for compute-intensive tasks, might find integrating Rust-WASM a beneficial endeavor. Not only does it bolster speed, but it also offers a cross-platform runtime with consistent performance across different environments. Happy coding!
