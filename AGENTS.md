@@ -11,6 +11,11 @@ npm run preview    # Vite preview (production build preview)
 
 Build runs `tsc -b` first — type errors block the bundle.
 
+**No GitHub Actions**, in this or any of the author's repos: never add
+`.github/workflows/` or any other hosted CI. Check locally with
+`npm run lint && npm run build` before pushing; Cloudflare Pages builds every
+pushed branch.
+
 ## Architecture
 
 **Client-side SPA** — React 19 + React Router v7 + TypeScript 5.7, bundled with Vite 6. No SSR/SSG. No database. All content is markdown files loaded at runtime via `fetch()`. Deployed on Cloudflare Pages (every branch gets a preview URL).
@@ -48,7 +53,7 @@ Static pages (about, side-projects) are `.md` files in `public/static-pages/`, w
 - **Fancybox** stays vendored in `public/js/fancybox.umd.js` + `public/css/fancybox.css`; `src/services/lightbox.ts` loads them the first time a page with images is rendered.
 - **Fonts and icons**: IBM Plex Mono is self-hosted from `@fontsource/ibm-plex-mono` (`src/fonts/fonts.css`, weights 400, 400 italic and 600); headings use the system serif stack. Icons are inline SVGs from Bootstrap Icons in `src/components/icons/icons.tsx` — no Google Fonts or icon font.
 - **Caching**: `public/_headers` makes Cloudflare Pages cache the fingerprinted files in `/assets/` for a year.
-- **No tests, no CI**: nothing in `.github/workflows/`.
+- **No tests and no CI**, on purpose (see the GitHub Actions rule under Commands).
 - **`server.fs.allow: ['..']`** in Vite config allows dev server to read from parent directories.
 
 - **CSS**: plain CSS with custom properties. No Tailwind, no CSS modules. Warm off-white theme (`#F5F3EE`). All transitions are disabled globally (`* { transition: none; }`). Lazy pages bring their own CSS, so scope selectors to the component (e.g. `.post-list .post-title`) to avoid one page's styles leaking into another after navigation.
