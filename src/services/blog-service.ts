@@ -1,4 +1,4 @@
-import { POST_FILES } from './post-files';
+import { POST_FILES } from 'virtual:post-files';
 
 export interface BlogPost {
   title: string;
@@ -22,11 +22,6 @@ const WORDS_PER_MINUTE = 200;
 function dateFromFilename(filename: string): string {
   return filename.match(/^(\d{4}-\d{2}-\d{2})/)?.[1] ?? '';
 }
-
-// Newest first, by the date in the filename.
-const SORTED_FILES = [...POST_FILES].sort((a, b) =>
-  dateFromFilename(b).localeCompare(dateFromFilename(a))
-);
 
 export async function parseMarkdownPost(markdownContent: string, filename: string): Promise<BlogPost> {
   const { default: matter } = await import('./front-matter');
@@ -83,7 +78,7 @@ function fetchPost(filename: string): Promise<BlogPost | null> {
 }
 
 export function loadBlogPosts(): Promise<BlogPost[]> {
-  allPosts ??= Promise.all(SORTED_FILES.map(fetchPost)).then((posts) =>
+  allPosts ??= Promise.all(POST_FILES.map(fetchPost)).then((posts) =>
     posts.filter((post): post is BlogPost => post !== null)
   );
   return allPosts;
@@ -98,9 +93,9 @@ export function getBlogPost(slug: string): Promise<BlogPost | null> {
 export function getAdjacentPosts(slug: string): Promise<AdjacentPosts> {
   let request = adjacentRequests.get(slug);
   if (!request) {
-    const index = SORTED_FILES.indexOf(`${slug}.md`);
-    const newer = index > 0 ? SORTED_FILES[index - 1] : undefined;
-    const older = index >= 0 ? SORTED_FILES[index + 1] : undefined;
+    const index = POST_FILES.indexOf(`${slug}.md`);
+    const newer = index > 0 ? POST_FILES[index - 1] : undefined;
+    const older = index >= 0 ? POST_FILES[index + 1] : undefined;
     request = Promise.all([
       newer ? fetchPost(newer) : null,
       older ? fetchPost(older) : null

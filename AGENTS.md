@@ -23,14 +23,15 @@ Build runs `tsc -b` first — type errors block the bundle.
 ## Content loading (critical)
 
 ### Blog posts
-Posts live in `/posts/` (source). `scripts/copy-posts.mjs` copies them to `/public/posts/` (served) automatically via `predev` and `prebuild` hooks. The list of post filenames is hardcoded in the `POST_FILES` array in `src/services/post-files.ts`, which both the app and the build read.
+Posts live in `/posts/` (source) and are found by filename: every `posts/YYYY-MM-DD-slug.md` is a post, served at `/post/YYYY-MM-DD-slug` (the slug allows lowercase letters, digits and hyphens). There is no list to edit. `scripts/post-files.ts` lists them newest first; `scripts/vite-plugin-site.ts` serves that list to the app as the `virtual:post-files` module (typed in `src/vite-env.d.ts`) and uses it for the build's pages, feed and sitemap. A `.md` that doesn't match the pattern is left out with a warning; a post missing `title`, `date` or `description` is still published, also with a warning.
+
+`scripts/copy-posts.mjs` mirrors `posts/` into `/public/posts/` (served), removing copies of deleted posts, via the `predev` and `prebuild` hooks. While `npm run dev` runs, the plugin keeps that copy in sync and reloads the page when a post is added, edited or removed. `public/posts/` is tracked in git, so commit it together with `posts/`.
 
 **To add a new post:**
-1. Create the `.md` file in `posts/`, with `title`, `date`, `description` (one sentence; it's the list excerpt and the meta description), `tags` and `cover` in the front matter
-2. Add the filename to `POST_FILES` in `src/services/post-files.ts`
-3. If it has a cover, add a 352px-wide copy to `public/images/covers/thumbs/` with the same name for the post list: `convert cover.webp -resize 352x -strip -quality 78 thumbs/cover.webp` (without it the list falls back to the full cover)
+1. Create `posts/YYYY-MM-DD-slug.md` with `title`, `date`, `description` (one sentence; it's the list excerpt and the meta description), `tags` and `cover` in the front matter
+2. If it has a cover, add a 352px-wide copy to `public/images/covers/thumbs/` with the same name for the post list: `convert cover.webp -resize 352x -strip -quality 78 thumbs/cover.webp` (without it the list falls back to the full cover)
 
-The copy to `public/posts/` is handled automatically by `npm run dev` / `npm run build`. The post page already shows the title, so the leading `# Title` line in the markdown is not rendered.
+To remove or rename a post, delete or rename its file in `posts/`. The post page already shows the title, so the leading `# Title` line in the markdown is not rendered.
 
 ### Static pages
 Static pages (about, side-projects) are `.md` files in `public/static-pages/`, with `title` and `description` front matter. Each page component hardcodes the filename it loads (e.g. `loadStaticPage('about.md')` in `src/pages/about/about.tsx`). To add a new static page: add the `.md` to `public/static-pages/`, add a route in `src/app.tsx`, create a page component that calls `loadStaticPage`, and add its name to `STATIC_PAGES` in `scripts/vite-plugin-site.ts`.
