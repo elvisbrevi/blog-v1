@@ -2,7 +2,7 @@
 // to write the RSS feed, the sitemap and each page's <head> tags).
 export const SITE = {
   name: 'Elvis Brevi',
-  url: 'https://elvisbrevi.com',
+  url: 'https://elvisbrevi.cl',
   description:
     'Notes, write-ups and side projects by Elvis Brevi, a full-stack developer exploring Rust, C# and the cloud.',
 };

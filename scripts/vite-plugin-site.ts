@@ -1,13 +1,21 @@
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { copyFileSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
+import { basename, dirname, resolve } from 'node:path';
 import matter from 'gray-matter';
 import type { Plugin, Rollup } from 'vite';
-import { POST_FILES } from '../src/services/post-files';
 import { pageTitle, SITE } from '../src/site';
+import { ignoredPostsWarning, listPostFiles } from './post-files';
 
 // Static pages that get their own HTML file: route name = markdown file in
 // public/static-pages/ (title and description come from its front matter).
 const STATIC_PAGES = ['about', 'side-projects'];
+
+// Front matter every post needs: the list, the post page and the link previews
+// show them.
+const REQUIRED_FRONT_MATTER = ['title', 'date', 'description'];
+
+// The list of posts the app imports (see src/vite-env.d.ts).
+const POST_FILES_MODULE = 'virtual:post-files';
+const RESOLVED_POST_FILES_MODULE = '\0' + POST_FILES_MODULE;
 
 const META_PLACEHOLDER = '<!-- site-meta -->';
 const META_START = '<!-- site-meta:start -->';
@@ -94,9 +102,11 @@ function readFrontMatter(file: string): Record<string, unknown> {
   return matter(readFileSync(file, 'utf8')).data;
 }
 
-function readPosts(root: string): PostInfo[] {
-  return POST_FILES.map((file) => {
+function readPosts(root: string, warn: (message: string) => void): PostInfo[] {
+  return listPostFiles(resolve(root, 'posts')).files.map((file) => {
     const data = readFrontMatter(resolve(root, 'posts', file));
+    const missing = REQUIRED_FRONT_MATTER.filter((key) => !data[key]);
+    if (missing.length) warn(`posts/${file} has no ${missing.join(', ')} in its front matter`);
     const date = new Date(String(data.date ?? file.slice(0, 10)));
     return {
       slug: file.replace(/\.md$/, ''),
@@ -147,6 +157,54 @@ ${urls.join('\n')}
 }
 
 /**
+ * Serves `virtual:post-files`: the posts in posts/, found by name (see
+ * scripts/post-files.ts). In dev it also keeps public/posts/ in sync with
+ * posts/ and reloads the page when a post is added, edited or removed.
+ */
+function postFilesPlugin(): Plugin {
+  let postsDir = resolve('posts');
+  let publicPostsDir = resolve('public', 'posts');
+
+  return {
+    name: 'post-files',
+    configResolved(config) {
+      postsDir = resolve(config.root, 'posts');
+      publicPostsDir = resolve(config.publicDir, 'posts');
+    },
+    resolveId(id) {
+      return id === POST_FILES_MODULE ? RESOLVED_POST_FILES_MODULE : undefined;
+    },
+    load(id) {
+      if (id !== RESOLVED_POST_FILES_MODULE) return;
+      const { files, ignored } = listPostFiles(postsDir);
+      if (ignored.length) this.warn(ignoredPostsWarning(ignored));
+      return `export const POST_FILES = ${JSON.stringify(files)};\n`;
+    },
+    configureServer(server) {
+      const sync = (event: 'add' | 'change' | 'unlink') => (file: string) => {
+        if (dirname(file) !== postsDir || !file.endsWith('.md')) return;
+        const copy = resolve(publicPostsDir, basename(file));
+        if (event === 'unlink') {
+          rmSync(copy, { force: true });
+        } else {
+          mkdirSync(publicPostsDir, { recursive: true });
+          copyFileSync(file, copy);
+        }
+        if (event !== 'change') {
+          const module = server.moduleGraph.getModuleById(RESOLVED_POST_FILES_MODULE);
+          if (module) server.moduleGraph.invalidateModule(module);
+        }
+        server.ws.send({ type: 'full-reload' });
+      };
+      server.watcher.add(postsDir);
+      server.watcher.on('add', sync('add'));
+      server.watcher.on('change', sync('change'));
+      server.watcher.on('unlink', sync('unlink'));
+    }
+  };
+}
+
+/**
  * Fills the <head> of index.html with the title, description, canonical URL
  * and social tags, and on build also writes:
  * - post/<slug>.html, about.html and side-projects.html: index.html with that
@@ -154,7 +212,7 @@ ${urls.join('\n')}
  *   so they only see these. Cloudflare Pages serves them at /post/<slug>, etc.
  * - rss.xml, sitemap.xml and robots.txt.
  */
-export function sitePlugin(): Plugin {
+function siteMetaPlugin(): Plugin {
   let root = process.cwd();
 
   return {
@@ -184,7 +242,7 @@ export function sitePlugin(): Plugin {
 
       const frontMatterParser = '/src/services/front-matter.ts';
       const postChunks = chunkPreloads(bundle, ['/src/pages/post/post.tsx', frontMatterParser]);
-      const posts = readPosts(root);
+      const posts = readPosts(root, (message) => this.warn(message));
       for (const post of posts) {
         emitPage(`post/${post.slug}.html`, {
           path: `/post/${post.slug}`,
@@ -227,4 +285,8 @@ export function sitePlugin(): Plugin {
       });
     }
   };
+}
+
+export function sitePlugin(): Plugin[] {
+  return [postFilesPlugin(), siteMetaPlugin()];
 }
