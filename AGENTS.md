@@ -18,7 +18,7 @@ Build runs `tsc -b` first — type errors block the bundle.
 - **Routing**: `createBrowserRouter` in `src/app.tsx`. Internal links must use React Router's `<Link>`/`<NavLink>` (a plain `<a href>` reloads the whole app). `<ScrollRestoration>` restores the scroll position on back/forward.
 - **Code splitting**: the post, about and side-projects pages are `lazy()` routes, so the post list doesn't download `marked` or highlight.js.
 - **Data loading**: services return cached promises (one request per file per page load) that pages read with React's `use()` inside `<Suspense>`. Keep returning the same promise for the same input, or `use()` suspends forever.
-- **Site metadata**: `src/site.ts` holds the site URL (`https://elvisbrevi.com`), name, description and social links, shared by the app and the build.
+- **Site metadata**: `src/site.ts` holds the site URL (`https://elvisbrevi.cl`), name, description and social links, shared by the app and the build.
 
 ## Content loading (critical)
 

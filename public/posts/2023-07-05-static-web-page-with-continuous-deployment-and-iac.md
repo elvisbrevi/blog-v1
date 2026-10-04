@@ -8,7 +8,7 @@ cover: "/images/covers/static-web-cover.webp"
 
 # Static Web Page with Continuous Deployment and IAC
 
-This article is about how I made my blog ([elvisbrevi.com](http://elvisbrevi.com)) using AWS "free tier" services to host a static site created with Vite and AWS Cloud Development Kit for creating Cloudformation Stack and deploying them with GitHub Actions, the complete code of this project you can find here [https://github.com/elvisbrevi/static-site-cdk](https://github.com/elvisbrevi/static-site-cdk).
+This article is about how I made my blog ([elvisbrevi.cl](http://elvisbrevi.cl)) using AWS "free tier" services to host a static site created with Vite and AWS Cloud Development Kit for creating Cloudformation Stack and deploying them with GitHub Actions, the complete code of this project you can find here [https://github.com/elvisbrevi/static-site-cdk](https://github.com/elvisbrevi/static-site-cdk).
 
 ## 📚 Prerequisites
 
@@ -33,7 +33,7 @@ The AWS services I use are:
     
 * **S3** **Bucket**, with a "Block All" policy, for hosting the static site.
     
-* **Cloudfront**, for distributing the static content from S3 in an optimized way. I have configured a CloudFront distribution to attach the domain, [elvisbrevi.com](http://elvisbrevi.com) name to the bucket.
+* **Cloudfront**, for distributing the static content from S3 in an optimized way. I have configured a CloudFront distribution to attach the domain, [elvisbrevi.cl](http://elvisbrevi.cl) name to the bucket.
     
 * **AWS Certificate Manager**, Secured website using HTTPS protocol. Requested Public Certificates from AWS Certificate Manager. Attached is the SSL/TLS certificate to CloudFront Distribution.
     
@@ -187,10 +187,10 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     
     `'constructs'` The `Construct` class is the base class for all CDK constructs. Constructs are the building blocks of a CDK application and represent AWS resources or groups of resources. They provide a way to define and configure AWS infrastructure in a modular and reusable manner.
     
-5. The domain name, in my case I added a name for my domain, that I previously buy with AWS service Route53, in my case, I called "elvisbrevi.com".
+5. The domain name, in my case I added a name for my domain, that I previously buy with AWS service Route53, in my case, I called "elvisbrevi.cl".
     
     ```typescript
-    const DOMAIN_NAME = "elvisbrevi.com";
+    const DOMAIN_NAME = "elvisbrevi.cl";
     const WWW_DOMAIN_NAME = `www.${DOMAIN_NAME}`;
     ```
     
@@ -332,7 +332,7 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     import { CloudFrontTarget } from 'aws-cdk-lib/aws-route53-targets';
     import { Construct } from 'constructs';
     
-    const DOMAIN_NAME = "elvisbrevi.com";
+    const DOMAIN_NAME = "elvisbrevi.cl";
     const WWW_DOMAIN_NAME = `www.${DOMAIN_NAME}`;
     
     export class IacStack extends cdk.Stack {
@@ -480,7 +480,7 @@ I use [Vite](https://vitejs.dev/) to make a simple static website in [Preact](ht
     
 9. **Copy the "PhysicalResourceId" of AWS::S3::Bucket and AWS::CloudFront::Distribution resource types, we need these values later.**
     
-    Now, you can open the static site in your web browser, and go to the URL domain, in my case `https://elvisbrevi.com`:
+    Now, you can open the static site in your web browser, and go to the URL domain, in my case `https://elvisbrevi.cl`:
     
     ![](/images/posts/static-web-12.png)
     
@@ -815,4 +815,4 @@ All configurations are ready, we created a GitHub repository for version control
     
     # 🤔 Conclusion
     
-    In this article, I shared my experience creating my blog ([elvisbrevi.com](http://elvisbrevi.com)) using the free services of AWS in its "free tier" layer. I used Vite and AWS Cloud Development Kit to create a static application and generate infrastructure as code with AWS CloudFormation. Additionally, I implemented continuous integration and deployment using GitHub Actions. I utilized services such as S3 Bucket, CloudFront, Route53, and AWS Certificate Manager to securely and optimally host my static site. And all of this was done solely using the CLI, without navigating through the AWS or GitHub interfaces. Overall, this combination of technologies allowed me to efficiently create and deploy my blog using free resources on AWS.
+    In this article, I shared my experience creating my blog ([elvisbrevi.cl](http://elvisbrevi.cl)) using the free services of AWS in its "free tier" layer. I used Vite and AWS Cloud Development Kit to create a static application and generate infrastructure as code with AWS CloudFormation. Additionally, I implemented continuous integration and deployment using GitHub Actions. I utilized services such as S3 Bucket, CloudFront, Route53, and AWS Certificate Manager to securely and optimally host my static site. And all of this was done solely using the CLI, without navigating through the AWS or GitHub interfaces. Overall, this combination of technologies allowed me to efficiently create and deploy my blog using free resources on AWS.
