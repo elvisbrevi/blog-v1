@@ -11,9 +11,24 @@ const AboutPage = () => {
   usePageMeta(page?.title, page?.description);
 
   return (
-    <div className="about-container">
-      <MarkdownPage page={page} />
-      <SocialLinks />
+    <div className="about container">
+      <figure className="about-art">
+        <img
+          src="/images/art/about-420.webp"
+          srcSet="/images/art/about-420.webp 420w, /images/art/about-840.webp 840w"
+          sizes="(max-width: 860px) 60vw, 360px"
+          width={420}
+          height={525}
+          alt="A black cat in a vermilion bucket hat looking up, with camellia petals drifting by."
+          decoding="async"
+        />
+        {/* "Profile" */}
+        <span className="about-art-jp jp-vertical" lang="ja" aria-hidden="true">プロフィール</span>
+      </figure>
+      <div className="about-text">
+        <MarkdownPage page={page} />
+        <SocialLinks />
+      </div>
     </div>
   );
 };

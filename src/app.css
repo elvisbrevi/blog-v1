@@ -1,15 +1,10 @@
-/* Minimal Main Layout */
+/* Pages set their own width: .container for wide pages, --measure for text */
 main {
   flex: 1 0 auto;
   width: 100%;
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 3rem 2rem 4rem;
+  padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(3.5rem, 8vw, 6rem);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  main {
-    padding: 1.5rem 1rem 3rem;
-  }
+main:focus {
+  outline: none;
 }

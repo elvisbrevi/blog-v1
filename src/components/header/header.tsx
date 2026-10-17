@@ -9,23 +9,27 @@ const Header = () => {
 
   return (
     <header className="site-header">
-      <nav className="navbar" aria-label="Main">
-        <Link className="title" to="/">Elvis Brevi</Link>
-        <div className="list">
+      <div className="site-header-inner container">
+        <Link className="brand" to="/">
+          {/* A hanko, the name seal: "Brevi" in katakana. */}
+          <span className="brand-seal" lang="ja" aria-hidden="true">ブレビ</span>
+          <span className="brand-name">Elvis Brevi</span>
+        </Link>
+        <nav className="site-nav" aria-label="Main">
           <ul className="nav-list">
-            <li className="nav-item">
+            <li>
               <Link className="nav-link" to="/blog" aria-current={inBlog ? 'page' : undefined}>Blog</Link>
             </li>
-            <li className="nav-item">
+            <li>
               <NavLink className="nav-link" to="/side-projects">Side Projects</NavLink>
             </li>
-            <li className="nav-item">
+            <li>
               <NavLink className="nav-link" to="/about">About me</NavLink>
             </li>
           </ul>
-          <ThemeToggle />
-        </div>
-      </nav>
+        </nav>
+        <ThemeToggle />
+      </div>
     </header>
   );
 };

@@ -1,14 +1,26 @@
-/* Minimal loading component */
 .loading-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  gap: 0.75rem;
+  min-height: 240px;
   padding: 2rem;
-  color: var(--secondary-text);
-  font-size: 1rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   /* Only shown if loading takes a while, so fast loads don't flash it. */
   animation: loading-appear 0s linear 0.3s both;
+}
+
+/* A small sun that slowly rises and sets */
+.loading-sun {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: var(--salmon);
+  animation: loading-sun 1.2s ease-in-out infinite alternate;
 }
 
 @keyframes loading-appear {
@@ -17,5 +29,16 @@
   }
   to {
     visibility: visible;
+  }
+}
+
+@keyframes loading-sun {
+  from {
+    transform: translateY(0.25rem);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(-0.25rem);
+    opacity: 1;
   }
 }

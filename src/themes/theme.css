@@ -1,0 +1,99 @@
+/*
+ * Theme: Showa-era Japanese print. Cream paper, indigo ink, salmon and peach,
+ * with vermilion, sage and mustard as small accents.
+ * Light ("paper") is the default; [data-theme="dark"] is "night": the indigo
+ * ink becomes the paper.
+ */
+:root {
+  /* Palette */
+  --cream: #FFF5E0;
+  --peach: #FFDBC3;
+  --salmon: #EE9E8E;
+  --indigo: #190933;
+  --vermilion: #D9482B;
+  --sage: #9DAA7C;
+  --mustard: #E9A93B;
+
+  /* Surfaces */
+  --bg: var(--cream);
+  --surface: #FFFBF2;
+  --surface-warm: #FFEBD3;
+  --surface-accent: var(--peach);
+  --sun: var(--salmon);
+
+  /* Text (all of them meet WCAG AA on --bg, --surface and --surface-warm) */
+  --text: var(--indigo);
+  --text-soft: #4A3B5E;
+  --text-muted: #6B5E7B;
+  --link: var(--indigo);
+  --link-underline: var(--salmon);
+  --accent-text: #A8341C;
+
+  /* Lines, pills and the hard "print" shadow */
+  --border: rgba(25, 9, 51, 0.14);
+  --border-strong: var(--indigo);
+  --pill-bg: var(--indigo);
+  --pill-text: var(--cream);
+  --shadow: var(--indigo);
+
+  /* Code blocks are always a night panel */
+  --code-bg: var(--indigo);
+  --code-border: transparent;
+  --code-text: var(--cream);
+  --code-muted: #B9AAC6;
+
+  /* Paper grain over the background */
+  --grain-opacity: 0.3;
+
+  /* Fonts */
+  --font-display: 'Dela Gothic One', 'Hiragino Sans', 'Yu Gothic', 'Arial Black', sans-serif;
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+
+  /* Layout */
+  --wide: 1120px;
+  --measure: 42rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --radius: 18px;
+  --radius-small: 10px;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: var(--indigo);
+  --surface: #22103F;
+  --surface-warm: #22103F;
+  --surface-accent: #2A1750;
+  --sun: #4A2A5E;
+
+  --text: var(--cream);
+  --text-soft: #E6D9EC;
+  --text-muted: #B9AAC6;
+  --link: var(--peach);
+  --link-underline: var(--salmon);
+  --accent-text: #F2B7A3;
+
+  --border: rgba(255, 245, 224, 0.14);
+  --border-strong: var(--cream);
+  --pill-bg: var(--salmon);
+  --pill-text: var(--indigo);
+  --shadow: var(--salmon);
+
+  --code-bg: #10051F;
+  --code-border: rgba(255, 245, 224, 0.12);
+
+  --grain-opacity: 0.2;
+
+  color-scheme: dark;
+}
+
+/* No animated transitions anywhere */
+* {
+  transition: none;
+}
+
+::selection {
+  background-color: var(--salmon);
+  color: var(--indigo);
+}

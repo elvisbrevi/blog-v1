@@ -1,5 +1,5 @@
 @import './fonts/fonts.css';
-@import './themes/catppuccin.css';
+@import './themes/theme.css';
 @import './animations/scroll-animations.css';
 
 /* Reset and base styles */
@@ -11,20 +11,35 @@
 
 /* Prevent white flash during theme changes */
 html {
-  background-color: var(--base) !important;
+  background-color: var(--bg) !important;
   color: var(--text) !important;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* Minimal body styles */
+/* Paper grain: tiled SVG noise printed in the ink color */
 body {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .04 0 0 0 0 .2 0 0 0 -3 1.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
-  background: var(--primary-bg);
-  color: var(--muted-text);
-  font-family: var(--font-mono);
-  line-height: 1.6;
-  font-size: 15px;
+  background: var(--bg);
+  color: var(--text-soft);
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 1.65;
   font-weight: 400;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--grain);
+  opacity: var(--grain-opacity);
+  pointer-events: none;
 }
 
 /* Header, page and footer: the footer stays at the bottom on short pages */
@@ -34,55 +49,120 @@ body {
   min-height: 100vh;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--primary-text);
-  font-family: var(--font-serif);
-  font-weight: 400;
-  line-height: 1.3;
-  margin-bottom: 1.5rem;
-  margin-top: 2rem;
-  letter-spacing: -0.02em;
+img {
+  max-width: 100%;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  text-wrap: balance;
+}
 
 p {
-  margin-bottom: 1rem;
-  color: var(--secondary-text);
+  color: var(--text-soft);
 }
 
 strong {
   font-weight: 600;
+  color: var(--text);
 }
 
 a {
-  color: var(--link-color);
+  color: var(--link);
   text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-decoration-color: var(--link-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 a:hover {
-  color: var(--link-hover-color);
-  opacity: 1;
+  text-decoration-color: currentColor;
 }
 
 /* Visible focus for keyboard users */
 :focus-visible {
-  outline: 2px solid var(--primary-text);
+  outline: 3px solid var(--vermilion);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
-/* Code blocks rendered by src/services/markdown-service.ts (Nord palette in both themes) */
+/* Hidden until focused: lets keyboard users jump over the header */
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2000;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* Page width shared by the header, the footer and the wide pages */
+.container {
+  width: 100%;
+  max-width: calc(var(--wide) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Small uppercase label, like the captions on a print */
+.label {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* Dark rounded badge (counts, post numbers) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* Decorative Japanese set vertically, top to bottom (always aria-hidden) */
+.jp-vertical {
+  writing-mode: vertical-rl;
+  color: var(--text);
+  font-family: var(--font-display);
+  letter-spacing: 0.18em;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Code blocks rendered by src/services/markdown-service.ts */
 .code-block {
-  margin: 1.5rem 0;
-  background-color: #2E3440;
-  border: 1px solid #434c5e;
+  margin: 2rem 0;
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-small);
+  background-color: var(--code-bg);
+  overflow: hidden;
 }
 
 .code-block-header {
@@ -90,30 +170,113 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 0.3rem 0.5rem 0.3rem 1.5rem;
-  border-bottom: 1px solid #3B4252;
-  color: #A0A8B7;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.5rem 0.35rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 245, 224, 0.1);
+  color: var(--code-muted);
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* A little salmon sun before the language name */
+.code-block-header::before {
+  content: '';
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--salmon);
+}
+
+.code-block-header span {
+  margin-right: auto;
 }
 
 .copy-code {
-  margin-left: auto;
-  padding: 0.25rem 0.5rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid rgba(255, 245, 224, 0.25);
+  border-radius: 999px;
   background: none;
-  border: none;
-  color: #D8DEE9;
+  color: var(--cream);
   font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
   cursor: pointer;
 }
 
 .copy-code:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  background: var(--cream);
+  color: var(--indigo);
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  color: var(--code-text);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  tab-size: 4;
+}
+
+.code-block pre code {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 @media (max-width: 768px) {
-  .code-block-header {
-    padding-left: 1rem;
+  body {
+    font-size: 1.0625rem;
   }
+
+  .code-block {
+    margin-inline: calc(-1 * var(--gutter));
+    border-radius: 0;
+    border-inline: none;
+  }
+
+  .code-block-header {
+    padding-left: var(--gutter);
+  }
+
+  .code-block pre {
+    padding: 1rem var(--gutter);
+    font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Pill-shaped button (links styled as actions) */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background: var(--salmon);
+  border-color: var(--salmon);
+  color: var(--indigo);
 }

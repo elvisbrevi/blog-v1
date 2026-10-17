@@ -1,4 +1,4 @@
-import './markdown-page.css';
+import '../../themes/prose.css';
 import { useEffect, useMemo, useRef } from 'react';
 import { StaticPage } from '../../services/static-pages-service';
 import { handleCodeCopy, renderMarkdown } from '../../services/markdown-service';
@@ -23,7 +23,7 @@ const MarkdownPage = ({ page }: MarkdownPageProps) => {
     return (
         <div
             ref={ref}
-            className="markdown-page"
+            className="markdown-page prose"
             onClick={handleCodeCopy}
             dangerouslySetInnerHTML={{ __html: content }}
         />

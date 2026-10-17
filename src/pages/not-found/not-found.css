@@ -1,19 +1,47 @@
 /* 404 and error pages */
 .status-page {
-  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 6vw, 4.5rem);
+  padding-block: 1rem;
 }
 
-.status-page .status-code {
-  color: var(--muted-text);
-  font-size: 0.85rem;
-  margin: 0;
+.status-art {
+  width: min(70vw, 360px);
 }
 
-.status-page h1 {
-  font-size: 2rem;
-  margin: 0.5rem 0 1rem 0;
+.status-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  background: var(--indigo);
+  box-shadow: 0 24px 48px -24px rgba(25, 9, 51, 0.6);
+  transform: rotate(-2deg);
 }
 
-.status-page a {
-  color: var(--primary-text);
+.status-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 26rem;
+}
+
+.status-jp {
+  color: var(--salmon);
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.status-text h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+.status-text .button {
+  margin-top: 0.5rem;
 }

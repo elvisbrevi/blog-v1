@@ -32,15 +32,18 @@ function createMarked(highlight?: CodeHighlighter): Marked {
             image({ href, title, text }: Tokens.Image) {
                 const src = escapeHtml(href);
                 const titleAttribute = title ? ` title="${escapeHtml(title)}"` : '';
-                return `<a href="${src}" data-fancybox><img src="${src}" alt="${escapeHtml(text)}"${titleAttribute} loading="lazy" decoding="async"></a>`;
+                // Without alt text the link would have no accessible name.
+                const label = text ? '' : ' aria-label="Enlarge image"';
+                return `<a href="${src}" data-fancybox${label}><img src="${src}" alt="${escapeHtml(text)}"${titleAttribute} loading="lazy" decoding="async"></a>`;
             },
             // Code blocks get a header with their language and a copy button
-            // (handled by handleCodeCopy).
+            // (handled by handleCodeCopy). The <pre> is focusable so keyboard
+            // users can scroll long lines.
             code({ text, lang }: Tokens.Code) {
                 const language = escapeHtml((lang ?? '').trim().split(/\s+/)[0]);
                 const body = highlight?.(text, language) ?? escapeHtml(text);
                 const className = language ? `hljs language-${language}` : 'hljs';
-                return `<div class="code-block"><div class="code-block-header"><span>${language}</span><button type="button" class="copy-code">Copy</button></div><pre><code class="${className}">${body}</code></pre></div>\n`;
+                return `<div class="code-block"><div class="code-block-header"><span>${language}</span><button type="button" class="copy-code">Copy</button></div><pre tabindex="0"><code class="${className}">${body}</code></pre></div>\n`;
             }
         }
     });

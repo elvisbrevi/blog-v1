@@ -89,6 +89,18 @@ export function getBlogPost(slug: string): Promise<BlogPost | null> {
   return POST_FILES.includes(filename) ? fetchPost(filename) : NOT_FOUND;
 }
 
+// Posts are numbered in publication order, like the issues of a zine: the
+// oldest is No. 01.
+export function postNumber(slug: string): string {
+  const index = POST_FILES.indexOf(`${slug}.md`);
+  return index < 0 ? '' : String(POST_FILES.length - index).padStart(2, '0');
+}
+
+// 2026-10-05 (or a full ISO date) -> 2026.10.05
+export function formatDate(date: string): string {
+  return date.slice(0, 10).replace(/-/g, '.');
+}
+
 // The posts published right after and right before the given one.
 export function getAdjacentPosts(slug: string): Promise<AdjacentPosts> {
   let request = adjacentRequests.get(slug);

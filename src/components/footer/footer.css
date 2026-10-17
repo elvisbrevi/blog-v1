@@ -1,42 +1,89 @@
-/* Minimal footer, aligned with the content column */
+/* Night band with a scalloped (wave) top edge */
 .site-footer {
-  border-top: 1px solid var(--border);
+  --footer-bg: var(--indigo);
+  position: relative;
+  margin-top: 1.5rem;
+  background: var(--footer-bg);
+  color: var(--cream);
+}
+
+[data-theme="dark"] .site-footer {
+  --footer-bg: #10051F;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 14px;
+  background: radial-gradient(circle at 14px 14px, var(--footer-bg) 13.5px, transparent 14px) 0 0 / 28px 14px repeat-x;
 }
 
 .site-footer-inner {
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem 1.5rem;
-  color: var(--muted-text);
-  font-size: 0.85rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 1.5rem 2rem;
+  padding-block: 3rem 2rem;
+}
+
+.footer-jp {
+  color: var(--salmon);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+
+.footer-thanks {
+  margin-top: 0.5rem;
+  color: var(--cream);
+  font-size: 1.15rem;
+  font-style: italic;
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  gap: 0.5rem;
   list-style: none;
 }
 
 .footer-links a {
-  color: var(--muted-text);
+  display: block;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(255, 245, 224, 0.3);
+  border-radius: 999px;
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .footer-links a:hover {
-  color: var(--primary-text);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  border-color: var(--salmon);
+  background: var(--salmon);
+  color: var(--indigo);
 }
 
-@media (max-width: 768px) {
+.footer-copy {
+  grid-column: 1 / -1;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 245, 224, 0.15);
+  color: #CDBFD6;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
   .site-footer-inner {
-    padding: 1.5rem 1rem;
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 }
