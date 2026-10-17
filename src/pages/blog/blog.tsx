@@ -37,7 +37,7 @@ const BlogPage = () => {
             sizes="(max-width: 860px) 70vw, 420px"
             width={480}
             height={600}
-            alt="A black cat typing on a laptop at a low wooden desk, next to a bowl of ramen, under a salmon sun."
+            alt="Elvis typing on a laptop at a low wooden desk, next to a bowl of ramen, under a salmon sun."
             fetchPriority="high"
             decoding="async"
           />

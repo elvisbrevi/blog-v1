@@ -14,7 +14,7 @@ const NotFoundPage = () => {
           sizes="(max-width: 760px) 70vw, 360px"
           width={400}
           height={400}
-          alt="A black cat under a paper umbrella on a rainy night, holding a map upside down."
+          alt="Elvis under a paper umbrella on a rainy night, holding a map upside down."
           decoding="async"
         />
       </figure>
