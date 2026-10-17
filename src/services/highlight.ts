@@ -13,7 +13,7 @@ import rust from 'highlight.js/lib/languages/rust';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
 import yaml from 'highlight.js/lib/languages/yaml';
-import '../themes/nord-syntax.css';
+import '../themes/syntax.css';
 
 hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('csharp', csharp);

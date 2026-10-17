@@ -2,7 +2,7 @@
 .optimized-image-container {
   position: relative;
   overflow: hidden;
-  background: var(--secondary-bg);
+  background: var(--surface-accent);
 }
 
 /* Painted over the placeholder as soon as the browser decodes it,
@@ -22,9 +22,9 @@
   height: 100%;
   background: linear-gradient(
     90deg,
-    var(--secondary-bg) 0%,
-    var(--border) 50%,
-    var(--secondary-bg) 100%
+    var(--surface-accent) 0%,
+    var(--surface-warm) 50%,
+    var(--surface-accent) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
@@ -38,8 +38,8 @@
 }
 
 .optimized-image-placeholder.error {
-  background: var(--secondary-bg);
-  color: var(--muted-text);
+  background: var(--surface-accent);
+  color: var(--text-muted);
   font-size: 0.875rem;
   animation: none;
 }

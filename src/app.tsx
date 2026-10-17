@@ -19,8 +19,9 @@ function Layout() {
 
   return (
     <>
+      <a className="skip-link" href="#main">Skip to content</a>
       <Header />
-      <main>
+      <main id="main" tabIndex={-1}>
         {/* Keyed by path so each page gets its own loading state. */}
         <Suspense key={pathname} fallback={<Loading />}>
           <Outlet />

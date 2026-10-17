@@ -1,136 +1,118 @@
-/* Minimal Header */
 .site-header {
-    background: var(--primary-bg);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
 }
 
-/* Same width and gutters as the content column (main in app.css). */
-.navbar {
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 1.25rem 2rem;
-    color: var(--primary-text);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5rem;
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 4.25rem;
 }
 
-.navbar a {
-    color: var(--primary-text);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 400;
+/* Brand: name seal + name */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: auto;
+  color: var(--text);
+  text-decoration: none;
 }
 
-.navbar a:hover {
-    opacity: 0.6;
+.brand-seal {
+  display: inline-grid;
+  place-items: center;
+  width: 1.7rem;
+  padding: 0.3rem 0;
+  border-radius: 6px;
+  background: var(--vermilion);
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  line-height: 1.05;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.05em;
+  transform: rotate(-4deg);
+  box-shadow: inset 0 0 0 2px rgba(255, 245, 224, 0.35);
 }
 
-.navbar .title {
-    font-family: var(--font-mono);
-    font-weight: 600;
-    font-size: 1.5rem;
-    margin: 0;
-    text-decoration: none;
-    color: var(--primary-text);
-    white-space: nowrap;
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
-.navbar .list {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+.brand:hover .brand-seal {
+  transform: rotate(4deg);
 }
 
-.navbar .list ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
+/* Sections, as pills */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
 }
 
-.navbar .list ul li {
-    display: flex;
+.nav-link {
+  display: block;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-/* Current section */
-.navbar .nav-link[aria-current="page"] {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 6px;
+.nav-link:hover {
+  border-color: var(--border-strong);
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-    /*
-     * Two-tier bar: brand + theme toggle on the first row, sections on the
-     * second. `display: contents` on .list lets its children (the section
-     * list and the toggle) become direct grid items of .navbar, so the
-     * toggle can sit next to the title without changing the markup.
-     */
-    .navbar {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        align-items: center;
-        gap: 0 0.75rem;
-        padding: 0.5rem 1rem 0;
-    }
+.nav-link[aria-current="page"] {
+  background: var(--pill-bg);
+  color: var(--pill-text);
+}
 
-    .navbar .title {
-        grid-row: 1;
-        grid-column: 1;
-        font-size: 1.25rem;
-        line-height: 1.3;
-        text-align: left;
-        /* Keep the brand on one line, ellipsize rather than push the toggle out. */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+@media (max-width: 720px) {
+  /* Two rows: brand + theme toggle, then the sections */
+  .site-header-inner {
+    flex-wrap: wrap;
+    gap: 0 0.75rem;
+    min-height: 0;
+    padding-top: 0.6rem;
+  }
 
-    .navbar .list {
-        display: contents;
-    }
+  .brand-name {
+    font-size: 1.15rem;
+  }
 
-    .navbar .list .theme-toggle {
-        grid-row: 1;
-        grid-column: 2;
-        justify-self: end;
-    }
+  .site-nav {
+    order: 3;
+    width: calc(100% + 2 * var(--gutter));
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 0.5rem var(--gutter) 0.6rem;
+    /* Sections stay on a single line and scroll if they run out of room. */
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
 
-    .navbar .list ul {
-        grid-row: 2;
-        grid-column: 1 / -1;
-        gap: 1.25rem;
-        margin-top: 0.5rem;
-        border-top: 1px solid var(--border);
-        /* Sections stay on a single line and scroll if they run out of room. */
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
 
-    .navbar .list ul::-webkit-scrollbar {
-        display: none;
-    }
-
-    .navbar .list ul li {
-        flex: 0 0 auto;
-    }
-
-    .navbar .nav-link {
-        display: block;
-        /* Vertical padding doubles as the touch target. */
-        padding: 0.7rem 0;
-        font-size: 0.95rem;
-        line-height: 1.4;
-        white-space: nowrap;
-    }
+  .nav-link {
+    /* Taller touch target */
+    padding: 0.55rem 0.9rem;
+  }
 }

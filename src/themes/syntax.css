@@ -1,0 +1,92 @@
+/*
+ * highlight.js theme for the night code panels, drawn from the site palette.
+ * Every color meets WCAG AA on --code-bg in both themes.
+ */
+.hljs {
+  color: var(--code-text);
+  background: transparent;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #9E92B5;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link,
+.hljs-tag {
+  color: #EE9E8E;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-meta .hljs-string {
+  color: #B5C68A;
+}
+
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-template-variable {
+  color: #FFC56B;
+}
+
+.hljs-title,
+.hljs-title.function_,
+.hljs-function .hljs-title,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #8EC5EE;
+}
+
+.hljs-type,
+.hljs-built_in,
+.hljs-title.class_,
+.hljs-class .hljs-title,
+.hljs-name {
+  color: #FFDBC3;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-property {
+  color: #F2B7A3;
+}
+
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-doctag {
+  color: #B9AAC6;
+}
+
+.hljs-variable,
+.hljs-params,
+.hljs-subst,
+.hljs-punctuation,
+.hljs-operator {
+  color: var(--code-text);
+}
+
+.hljs-deletion {
+  color: #F2B7A3;
+  background-color: rgba(217, 72, 43, 0.25);
+}
+
+.hljs-addition {
+  background-color: rgba(157, 170, 124, 0.2);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 600;
+}

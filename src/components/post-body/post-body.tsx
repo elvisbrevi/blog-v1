@@ -1,4 +1,4 @@
-import './post-body.css';
+import '../../themes/prose.css';
 import { useEffect, useMemo, useRef } from 'react';
 import { BlogPost } from '../../services/blog-service';
 import { handleCodeCopy, renderMarkdown, stripLeadingTitle } from '../../services/markdown-service';
@@ -21,7 +21,7 @@ const PostBody = (post: BlogPost) => {
     return (
         <div
             ref={ref}
-            className="post-body"
+            className="post-body prose"
             onClick={handleCodeCopy}
             dangerouslySetInnerHTML={{ __html: postContent }}
         />

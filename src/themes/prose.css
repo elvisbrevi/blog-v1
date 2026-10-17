@@ -1,0 +1,204 @@
+/*
+ * Rendered markdown (posts and static pages). Imported by the components that
+ * render it, so it ships with the lazy pages; everything is scoped to .prose.
+ */
+.prose {
+  color: var(--text-soft);
+  font-size: 1.1875rem;
+  line-height: 1.7;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: var(--text);
+  scroll-margin-top: 6rem;
+}
+
+.prose h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+  line-height: 1.08;
+}
+
+/* h2: display type with a small salmon block, like the color chips on a print */
+.prose h2 {
+  position: relative;
+  margin: 3rem 0 1rem;
+  padding-left: 1.4rem;
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  line-height: 1.2;
+}
+
+.prose h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  background: var(--salmon);
+}
+
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  margin: 2.25rem 0 0.75rem;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.prose h3 {
+  font-size: 1.4rem;
+}
+
+.prose h4 {
+  font-size: 1.2rem;
+}
+
+.prose p,
+.prose ul,
+.prose ol,
+.prose table,
+.prose blockquote {
+  margin-bottom: 1.4rem;
+}
+
+.prose p {
+  color: inherit;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose a {
+  color: var(--link);
+  text-decoration-color: var(--link-underline);
+}
+
+.prose a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Lists: salmon markers */
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.4rem;
+  padding-left: 0.25rem;
+}
+
+.prose li > p {
+  margin-bottom: 0.6rem;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin: 0.4rem 0 0.8rem;
+}
+
+.prose li::marker {
+  color: var(--vermilion);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.prose blockquote {
+  padding: 1.1rem 1.4rem;
+  border-left: 4px solid var(--vermilion);
+  border-radius: 0 var(--radius-small) var(--radius-small) 0;
+  background: var(--surface-warm);
+  color: var(--text);
+  font-style: italic;
+}
+
+.prose blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* Inline code; blocks are styled in index.css (.code-block) */
+.prose :not(pre) > code {
+  padding: 0.12em 0.4em;
+  border-radius: 5px;
+  background: var(--surface-accent);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  overflow-wrap: anywhere;
+}
+
+/* Images open in a lightbox (see markdown-service.ts) */
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+}
+
+.prose a[data-fancybox] {
+  display: block;
+  cursor: zoom-in;
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.prose th,
+.prose td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.prose th {
+  border-bottom: 2px solid var(--border-strong);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* × × × */
+.prose hr {
+  height: auto;
+  margin: 3rem 0;
+  border: none;
+  background: none;
+  color: var(--vermilion);
+  font-family: var(--font-mono);
+  letter-spacing: 1.2em;
+  text-align: center;
+}
+
+.prose hr::before {
+  content: '× × ×';
+}
+
+@media (max-width: 768px) {
+  .prose {
+    font-size: 1.125rem;
+  }
+}

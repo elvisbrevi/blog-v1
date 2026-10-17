@@ -1,16 +1,18 @@
 .theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
   background: none;
-  border: none;
+  color: var(--text);
+  font-size: 1.05rem;
   cursor: pointer;
-  padding: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-text);
-  font-size: 1.3rem;
-  line-height: 1;
 }
 
 .theme-toggle:hover {
-  opacity: 0.6;
+  background: var(--pill-bg);
+  color: var(--pill-text);
 }

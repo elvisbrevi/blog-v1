@@ -1,18 +1,18 @@
-/* Minimal - No animations */
-
-/* Simple scrollbar styling */
+/* No scroll animations, only the scrollbar colors */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--primary-bg);
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+  background: var(--salmon);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-text);
+  background: var(--text-muted);
 }
