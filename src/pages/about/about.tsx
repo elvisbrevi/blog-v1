@@ -19,7 +19,7 @@ const AboutPage = () => {
           sizes="(max-width: 860px) 60vw, 360px"
           width={420}
           height={525}
-          alt="Portrait of Elvis looking up, with camellia petals drifting by."
+          alt="Portrait of Elvis, with camellia petals drifting by."
           decoding="async"
         />
         {/* "Profile" */}
