@@ -49,7 +49,8 @@ function escapeXml(value: string): string {
 
 function metaTags(page: PageMeta): string {
   const url = SITE.url + page.path;
-  const image = SITE.url + (page.image ?? '/images/android-chrome-512x512.png');
+  // Pages without a cover share the site's card (hero illustration + name).
+  const image = SITE.url + (page.image ?? '/images/og-card.jpg');
   const tags = [
     `<title>${escapeXml(pageTitle(page.title))}</title>`,
     `<meta name="description" content="${escapeXml(page.description)}" />`,
@@ -60,7 +61,7 @@ function metaTags(page: PageMeta): string {
     `<meta property="og:description" content="${escapeXml(page.description)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${image}" />`,
-    `<meta name="twitter:card" content="${page.image ? 'summary_large_image' : 'summary'}" />`
+    `<meta name="twitter:card" content="summary_large_image" />`
   ];
   if (page.publishedTime) {
     tags.push(`<meta property="article:published_time" content="${page.publishedTime}" />`);
