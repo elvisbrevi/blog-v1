@@ -40,7 +40,7 @@ const SideProjectsPage = () => {
             sizes="(max-width: 860px) 92vw, 560px"
             width={720}
             height={480}
-            alt="A black cat building a tin robot at a wooden workbench, with a kite, a game controller and a small screen."
+            alt="Elvis building a tin robot at a wooden workbench, with a kite, a game controller and a small screen."
             decoding="async"
           />
           {/* "Side projects" */}
